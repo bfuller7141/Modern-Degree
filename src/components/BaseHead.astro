@@ -1,0 +1,42 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "Modern Degree HVAC Services",
+  description = "Modern Degree HVAC Services is a full-service heating, cooling, ductwork and insulation company based in Buckeye, Arizona, serving the West Valley.",
+  image = ""
+} = Astro.props as Props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph / Social Tags -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={image} />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preload" href="https://use.typekit.net/tlu2buf.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/tlu2buf.css" /></noscript>
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/root.css" />
+  <link rel="stylesheet" href="/styles/main-styles.css" />
+</head>
