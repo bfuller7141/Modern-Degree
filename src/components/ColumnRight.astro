@@ -1,0 +1,89 @@
+---
+export interface Props {
+    title: string;
+    titleSpan: string;
+    description: string;
+    primaryLink: string;
+    primaryAria: string;
+    primaryText: string;
+    secondaryLink?: string;
+    secondaryAria?: string;
+    secondaryText?: string;
+    imageSource: string;
+    imageAlt: string;
+    features?: { title: string; desc: string }[];
+}
+const { title, titleSpan, description, primaryAria, primaryLink, primaryText, secondaryLink, secondaryAria, secondaryText, imageSource, imageAlt, features = [] } = Astro.props;
+---
+<div class="wrapper-column">
+    <div class="wrapper large">
+        <h2 class="title-section">
+            {title} <br>
+            <span class="title-section highlight">{titleSpan}</span>
+        </h2>
+        <p class="body-text">
+            {description}
+        </p>
+        {features.length > 0 && (
+            <ul class="feature-list">
+                {features.map((feat) => (
+                <li class="feature-item">
+                    <h4 class="feature-title">{feat.title}</h4>
+                    <p class="feature-desc body-text">{feat.desc}</p>
+                </li>
+                ))}
+            </ul>
+        )}
+        <div class="wrapper-button">
+            <a
+                href= {primaryLink}
+                class="button-primary"
+                aria-label= {primaryAria}
+            >
+                {primaryText}
+            </a>
+            <a
+                href= {secondaryLink}
+                class="button-secondary"
+                aria-label= {secondaryAria}
+            >
+                {secondaryText}
+            </a>
+        </div>
+    </div>
+    <div class="wrapper small">
+        <img
+            src= {imageSource}
+            alt={imageAlt}
+            class="image-main"
+            loading="lazy"
+            width="651"
+            height="579"
+        />
+    </div>
+
+<style>
+    .wrapper-column .wrapper.large  { order: 2; }
+    .wrapper-column .wrapper.small  { order: 1; }
+
+    ul.feature-list {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      margin: 1.5rem 0 0;
+      color: var(--primary-500);
+      gap: 1rem;
+    }
+
+    .feature-title {
+      margin: 0 0 0.5rem;
+      font-size: var(--fs-body);
+      font-weight: 600;
+      color: var(--primary-500);
+    }
+
+    .feature-desc {
+      margin: 0;
+      font-size: var(--fs-bodysm);
+    }
+</style>

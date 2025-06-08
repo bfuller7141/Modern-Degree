@@ -28,25 +28,37 @@
     --gray-700: #626262;
     --gray-800: #515151;
     --gray-900: #3b3b3b;
+
+    /* Button Gradients */
+    --orange-btn: linear-gradient(
+        135deg,
+        #F28E22 0%,
+        #E17D1C 100%
+      );
+    --orange-btn-hover: linear-gradient(
+        135deg,
+        #333333 0%,
+        #626262 100%
+      );
   
     /* Font Sizes */
     /* Body */
-    --fs-body: clamp(1.125rem, 2.5vw, 1.25rem);
+    --fs-body: clamp(1.125rem, 2vw, 1.25rem);
     --fs-bodysm: clamp(1rem, 2vw, 1.125rem);
     --fs-bodyxs: clamp(1rem, 2vw, 1.1rem);
-    --fs-bodylg: clamp(1.25rem, 2.5vw, 1.75rem);
+    --fs-bodylg: clamp(1.25rem, 2vw, 1.75rem);
     --fs-bodyxl: clamp(1.75rem, 3vw, 2.5rem);
     /* Headings */
-    --page-title: clamp(3rem, 6vw, 5.5rem);
-    --section-title: clamp(2.5rem, 5vw, 4.5rem);
+    --page-title: clamp(2.75rem, 4.5vw, 5.25rem);
+    --section-title: clamp(2.5rem, 3.125vw, 4rem);
     --title-lg: clamp(2.5rem, 3vw, 4rem);
     --title-md: clamp(2.25rem, 2.5vw, 3.5rem);
     --title-sm: clamp(1.5rem, 2vw, 2.5rem);
     --title-xs: clamp(1.25rem, 2.5vw, 1.5rem);
 
     /* Font Styles */
-    --font-heading: 'adobe-caslon-pro', serif;
-    --font-body: 'montserrat', sans-serif;
+    --font-heading: century-gothic, sans-serif;;
+    --font-body: open-sans, sans-serif;
   
     /* Section Spacing */
     --section-spacing-horizontal: clamp(1rem, 2vw, 3rem);

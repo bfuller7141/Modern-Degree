@@ -1,0 +1,196 @@
+---
+import ModCard from "./ModCard.astro";
+const cards = [
+  {
+    title: "Regular Service Calls",
+    text: "Twice per year we come out for inside service, outside service and hard-to-reach vents. That means fewer breakdowns.",
+    icon: "/images/icons/service-calls.svg",
+    iconAlt: "Priority Service Image",
+  },
+  {
+    title: "Exclusive 10% Discounts",
+    text: "Save on every repair and new installation. Our members keep more cash in their pockets while enjoying top-tier HVAC care.",
+    icon: "/images/icons/discounts.svg",
+    iconAlt: "Discounts Image",
+  },
+  {
+    title: "Priority VIP Status",
+    text: "You move to the front of our list when summer heat spikes hit, so you don’t swelter while you wait.",
+    icon: "/images/icons/vip.svg",
+    iconAlt: "VIP Status Image",
+  },
+];
+---
+<section class="section-dark" role="region">
+  <div class="padding-dark">
+    <div class="container">
+      <div class="title-wrapper">
+        <h2 class="title-section white">Join The Mod Squad</h2>
+        <img src="/images/deco/dashes.svg" alt="" class="deco-dashes" />
+        <p class="body-text white">
+          Keep your system running peak-performance all year with our HVAC subscription plan in Arizona. As a Mod Squad member, you get two full service calls, VIP priority, and exclusive discounts.
+        </p>
+      </div>
+
+      <ul class="mod-grid">
+        {cards.map(card => (
+          <li>
+            <ModCard
+              title={card.title}
+              text={card.text}
+              icon={card.icon}
+              iconAlt={card.iconAlt}
+            />
+          </li>
+        ))}
+      </ul>
+
+      <div class="mod-slider">
+        <div class="mod-slider-wrapper">
+          {cards.map(card => (
+            <div class="mod-card-wrapper">
+              <ModCard
+                title={card.title}
+                text={card.text}
+                icon={card.icon}
+                iconAlt={card.iconAlt}
+              />
+            </div>
+          ))}
+        </div>
+        <div class="mod-slider-dots" aria-label="Slide navigation">
+          {cards.map((_, idx) => (
+            <button
+              type="button"
+              class="mod-slider-dot"
+              data-index={idx}
+              aria-label={`Slide ${idx + 1}`}
+            ></button>
+          ))}
+        </div>
+      </div>
+
+      <div class="wrapper-center">
+        <p class="body-large orange">Ready to upgrade your HVAC service?</p>
+        <p class="body-text white">
+          Download the Mod Squad contract, call us at (123) 456-7890 or click below to join.
+        </p>
+      </div>
+
+      <div class="wrapper-button center">
+        <a href="/get-started" class="button-primary" aria-label="Join the Mod Squad">
+          Join the Mod Squad
+        </a>
+        <a
+          href="/mod-squad-contract.pdf"
+          class="button-secondary text-only"
+          aria-label="Download Mod Squad Contract"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download Contract
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mod-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .mod-slider {
+    display: none;
+  }
+  @media screen and (max-width: 1004px) {
+    .mod-grid {
+      display: none;
+    }
+    .mod-slider {
+      display: block;
+      margin-top: 2rem;
+      overflow: hidden;
+    }
+    .mod-slider-wrapper {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 1rem;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .mod-slider-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+    .mod-card-wrapper {
+      flex: 0 0 auto;
+      width: 90%;
+      box-sizing: border-box;
+      scroll-snap-align: center;
+    }
+    .mod-slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .mod-slider-dot {
+      width: 10px;
+      height: 10px;
+      background-color: var(--primary-200);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .mod-slider-dot.active {
+      background-color: var(--primary-500);
+    }
+  }
+  @media screen and (min-width: 1005px) {
+    .mod-slider {
+      display: none;
+    }
+  }
+</style>
+
+<script lang="ts"> 
+  const wrapper = document.querySelector<HTMLDivElement>(".mod-slider-wrapper");
+  const dots = Array.from(document.querySelectorAll<HTMLButtonElement>(".mod-slider-dot"));
+  if (!wrapper || dots.length === 0) return;
+
+  const slides = Array.from(wrapper.children);
+
+  dots.forEach((dot, idx) => {
+    dot.addEventListener("click", () => {
+      const slide = slides[idx];
+      const left = slide.offsetLeft - (wrapper.clientWidth - slide.clientWidth) / 2;
+      wrapper.scrollTo({ left, behavior: "smooth" });
+    });
+  });
+
+  let ticking = false;
+  wrapper.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      const center = wrapper.scrollLeft + wrapper.clientWidth / 2;
+      let activeIndex = 0;
+      slides.forEach((slide, i) => {
+        const slideCenter = slide.offsetLeft + slide.clientWidth / 2;
+        if (Math.abs(slideCenter - center) < slide.clientWidth / 2) {
+          activeIndex = i;
+        }
+      });
+      dots.forEach((d, i) => d.classList.toggle("active", i === activeIndex));
+      ticking = false;
+    });
+  });
+</script>

@@ -7,11 +7,15 @@ interface Props {
 
 const {
   title = "Modern Degree HVAC Services",
-  description = "Modern Degree HVAC Services is a full-service heating, cooling, ductwork and insulation company based in Buckeye, Arizona, serving the West Valley.",
+  description = "Modern Degree HVAC Services is a full-service heating, cooling, duct work and insulation company based in Buckeye, Arizona, serving the West Valley.",
   image = ""
 } = Astro.props as Props;
 
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+// Use import.meta.env.SITE (populated from astro.config.mjs’s `site` field)
+const base = import.meta.env.SITE || "";
+const canonicalUrl = base
+  ? new URL(Astro.url.pathname, base).href
+  : "";
 ---
 
 <head>
@@ -21,18 +25,25 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
   <!-- Primary Meta Tags -->
   <title>{title}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={canonicalUrl} />
+  {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
   <!-- Open Graph / Social Tags -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:url" content={canonicalUrl} />
-  <meta property="og:image" content={image} />
+  {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+  {image && <meta property="og:image" content={image} />}
   <meta property="og:type" content="website" />
 
   <!-- Fonts -->
-  <link rel="preload" href="https://use.typekit.net/tlu2buf.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://use.typekit.net/tlu2buf.css" /></noscript>
+  <link
+    rel="preload"
+    href="https://use.typekit.net/tlu2buf.css"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript>
+    <link rel="stylesheet" href="https://use.typekit.net/tlu2buf.css" />
+  </noscript>
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="preconnect" href="https://p.typekit.net" crossorigin />
 
