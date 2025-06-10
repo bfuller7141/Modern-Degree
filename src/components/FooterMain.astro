@@ -1,5 +1,5 @@
 <footer class="footer">
-  <div class="footer-padding">
+  <div class="padding-normal">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-left">
@@ -14,13 +14,13 @@
               />
             </a>
             <div class="hours">
-              <p class="body-text white"><strong>7:00 – 5:30 M–F</strong></p>
-              <p class="body-text white"><strong>Closed Sat</strong></p>
-              <p class="body-text white"><strong>Closed Sun</strong></p>
-              <p class="body-text orange"><strong>24/7 Emergency Service</strong></p>
+              <p class="body-text white foot"><strong>7:00 – 5:30 M–F</strong></p>
+              <p class="body-text white foot"><strong>Closed Sat</strong></p>
+              <p class="body-text white foot"><strong>Closed Sun</strong></p>
+              <p class="body-text orange foot"><strong>24/7 Emergency Service</strong></p>
             </div>
           </div>
-          <p class="body-text">
+          <p class="body-text small white">
             Modern Degree brings expert HVAC care to West Valley homes. Our licensed team installs, repairs and maintains cooling, heating, ductwork and insulation with care.
           </p>
           <p class="body-text orange"><strong>Cooling | Heating | Ductwork | Insulation</strong></p>
@@ -106,9 +106,7 @@
     );
     border-top: var(--primary-500) solid 0.5rem;
   }
-  .footer-padding {
-    padding-block: var(--section-spacing-vertical-md) var(--section-spacing-horizontal);
-  }
+
   .footer-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -164,7 +162,7 @@
     border-top: 1px solid var(--gray-300);
     padding-top: 1.5rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-end;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -184,6 +182,12 @@
     font-size: 0.875rem;
     margin: 0;
   }
+  .body-text.foot {
+    margin: 0;
+    padding:0;
+    line-height: 1;
+  }
+
   @media (max-width: 768px) {
     .footer-grid {
       grid-template-columns: 1fr;
