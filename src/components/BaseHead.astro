@@ -18,14 +18,12 @@ const canonicalUrl = base
   : "";
 ---
 
-<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Primary Meta Tags -->
   <title>{title}</title>
   <meta name="description" content={description} />
-  {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
   <!-- Open Graph / Social Tags -->
   <meta property="og:title" content={title} />
@@ -34,7 +32,7 @@ const canonicalUrl = base
   {image && <meta property="og:image" content={image} />}
   <meta property="og:type" content="website" />
 
-  <!-- Fonts -->
+<!-- Fonts -->
   <link
     rel="preload"
     href="https://use.typekit.net/tlu2buf.css"
@@ -47,7 +45,12 @@ const canonicalUrl = base
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="preconnect" href="https://p.typekit.net" crossorigin />
 
-  <!-- Styles -->
+<!-- Styles -->
   <link rel="stylesheet" href="/styles/root.css" />
   <link rel="stylesheet" href="/styles/main-styles.css" />
-</head>
+
+<!-- Favicon -->
+   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+   <link rel="manifest" href="/site.webmanifest">

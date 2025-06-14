@@ -1,0 +1,236 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import ModCTA from "../components/ModCTA.astro";
+import ColumnRight from "../components/ColumnRight.astro";
+import ModFeature from "../components/ModFeature.astro";
+import FAQ from "../components/FAQ.astro";
+import MainCTA from "../components/MainCTA.astro";
+import FooterMain from "../components/FooterMain.astro";
+import TestimoniaGrid from "../components/TestimoniaGrid.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="About Modern Degree Services | West Valley HVAC Team"
+      description="Learn how Modern Degree Services became Buckeye and West Valley’s trusted HVAC provider. Our licensed, local team delivers AC repair, installation, ductwork, insulation and 24/7 emergency service with clear pricing and fast response."
+      image=""
+    />
+    <link rel="canonical" href="https://www.moderndegreeservices.com/about" />
+  </head>
+
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero" role="banner" aria-labelledby="about-hero-title">
+        <div class="padding-hero large-bottom">
+          <div class="container">
+            <div class="wrapper-center">
+              <h1 id="about-hero-title" class="title-page center">
+                Your Local Arizona<br />
+                <span class="title-page highlight">HVAC Specialists</span>
+              </h1>
+              <p class="body-text center short">
+                At Modern Degree Services, we serve Buckeye and the surrounding West Valley communities. Our licensed and insured technicians deliver honest advice, transparent pricing and reliable HVAC solutions for your home.
+              </p>
+              <div class="wrapper-button">
+                <a href="/contact" class="button-primary">
+                  Get a Free Quote
+                </a>
+                <a href="tel:+14807192917" class="button-secondary">
+                  Call Us Today
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Values & Mission Section -->
+      <section
+        class="section-dark"
+        role="region"
+        aria-labelledby="mission-values-title"
+      >
+        <div class="padding-dark">
+          <div class="container">
+            <div class="wrapper-column">
+              <div class="wrapper large">
+                <h2 id="mission-values-title" class="title-section white">
+                  Our Mission &amp; <span class="title-section highlight">Values</span>
+                </h2>
+                <p class="body-text white">
+                  We keep West Valley families comfortable year-round with expert HVAC service, honest communication and commitment to quality craftsmanship.
+                </p>
+
+                <div class="values-grid">
+                  <div class="value-item">
+                    <h3 class="value-title">Integrity First</h3>
+                    <p class="body-text white no-padding">
+                      We offer honest assessments, clear pricing and recommendations that serve your best interests.
+                    </p>
+                  </div>
+                  <div class="value-item">
+                    <h3 class="value-title">Quality Craftsmanship</h3>
+                    <p class="body-text white no-padding">
+                      We use premium parts, proven methods and pay meticulous attention to every detail.
+                    </p>
+                  </div>
+                  <div class="value-item">
+                    <h3 class="value-title">Community Focus</h3>
+                    <p class="body-text white no-padding">
+                      We support neighbors with reliable service and build lasting relationships across West Valley.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="wrapper-button">
+                  <a href="/contact" class="button-primary">
+                    Get a Free Quote
+                  </a>
+                  <a href="tel:+14807192917" class="button-secondary text-only">
+                    Call Us Today
+                  </a>
+                </div>
+              </div>
+
+              <div class="wrapper small">
+                <img
+                  src="/images/static/team-photo.webp"
+                  alt="Two Modern Degree HVAC team members standing behind a branded pop-up tent and promotional table at an outdoor event"
+                  class="image-main"
+                  loading="lazy"
+                  width="500"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team & Expertise Section -->
+      <section role="region" aria-labelledby="team-expertise-title">
+        <div class="padding-normal">
+          <div class="container">
+            <ColumnRight
+              title="Licensed Professionals"
+              titleSpan="You Can Trust"
+              description="Our certified HVAC technicians bring years of hands-on experience and ongoing training in the latest energy-efficient systems and safety protocols, ensuring top-quality service on every job."
+              primaryLink="/contact"
+              primaryText="Get a Free Quote"
+              secondaryLink="tel:+14807192917"
+              secondaryText="Call Us Today"
+              imageSource="/images/static/truck.webp"
+              imageAlt="Modern Degree HVAC service truck with branded wrap showing HVAC, ductwork and insulation services parked in a residential neighborhood"
+              features={[
+                {
+                  title: "Fully Licensed & Insured",
+                  desc: "All our technicians carry proper licensing, insurance and bonding to protect your home and give you peace of mind."
+                },
+                {
+                  title: "Ongoing Education",
+                  desc: "We invest in regular training on new HVAC technologies, industry standards and safety best practices to serve you better."
+                },
+                {
+                  title: "Local Expertise",
+                  desc: "Raised in Buckeye and the West Valley, we understand Arizona’s climate challenges and solutions that keep you comfortable."
+                }
+              ]}
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials & CTA -->
+      <section role="region" aria-labelledby="testimonials-title">
+        <div class="padding-normal">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2 id="testimonials-title" class="title-section">
+                Proudly Serving the West Valley
+              </h2>
+              <img
+                src="/images/deco/dashes.svg"
+                alt=""
+                aria-hidden="true"
+                role="presentation"
+                class="deco-dashes"
+              />
+            </div>
+
+            <TestimoniaGrid />
+            <ModCTA />
+          </div>
+        </div>
+      </section>
+
+      <!-- Mod Feature -->
+      <ModFeature />
+
+      <!-- FAQ Section -->
+      <section
+        role="region"
+        aria-labelledby="about-faq-title"
+      >
+        <div class="padding-normal">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2 id="about-faq-title" class="title-section">
+                About Our Company
+              </h2>
+              <img
+                src="/images/deco/dashes.svg"
+                alt=""
+                aria-hidden="true"
+                role="presentation"
+                class="deco-dashes"
+              />
+            </div>
+
+            <FAQ
+              items={[
+                {
+                  question: "What areas do you serve?",
+                  answer:
+                    "We’re based in Buckeye and proudly serve the entire West Valley, including Goodyear, Avondale, Surprise, Peoria, Sun City West, Litchfield Park and El Mirage."
+                },
+                {
+                  question: "Are your technicians licensed and insured?",
+                  answer:
+                    "Absolutely. All Modern Degree technicians carry up-to-date state licenses, insurance and bonding, so you can trust us to protect your home and safety."
+                },
+                {
+                  question: "Do you offer emergency HVAC service?",
+                  answer:
+                    "Absolutely! We provide 24/7 emergency HVAC services throughout the West Valley because we know comfort can't wait."
+                },
+                {
+                  question: "What brands do you work with?",
+                  answer:
+                    "We work with all major HVAC brands and can recommend the best systems for your home's specific needs and budget."
+                }
+              ]}
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section>
+        <div class="padding-normal small-top large-bottom">
+          <div class="container">
+            <MainCTA />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
+</html>

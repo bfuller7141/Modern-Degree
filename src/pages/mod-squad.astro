@@ -1,0 +1,257 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import ModCTA from "../components/ModCTA.astro";
+import ColumnLeft from "../components/ColumnLeft.astro";
+import ColumnRight from "../components/ColumnRight.astro";
+import MainCTA from "../components/MainCTA.astro";
+import FooterMain from "../components/FooterMain.astro";
+import ServiceFAQ from "../components/ServiceFAQ.astro";
+import ModFeature from "../components/ModFeature.astro";
+import ModCard from "../components/ModCard.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<BaseHead
+		title="Mod Squad Service Plan - Modern Degree HVAC Services | Priority HVAC Maintenance"
+		description="Join the Mod Squad for priority HVAC service, regular maintenance, exclusive discounts, and repair credits. Premium HVAC care for West Valley homeowners."
+		image="/images/static/mod-squad-hero.webp"
+	/>
+	<body>
+		<header>
+			<NavMain />
+		</header>
+		<main>
+			<!-- Hero Section -->
+			<section class="hero" role="banner">
+				<div class="padding-hero">
+					<div class="container">
+						<div class="wrapper-column">
+							<div class="wrapper large ">
+								<h1 class="title-page">
+									Join Mod Squad <br />
+									<span class="title-page highlight">Premium Plan</span>
+								</h1>
+								<p class="body-text">
+									We keep your home comfy all year round. Our licensed team handles AC repair, furnace tune-ups, duct sealing and insulation installs. Serving Buckeye, Goodyear, Litchfield Park, Surprise, Peoria, Glendale, Avondale, Sun City West and El Mirage. Fast, honest service with free, no-obligation quotes.
+								</p>
+								<div class="wrapper-button">
+									<a
+										href="/get-started"
+										class="button-primary"
+										aria-label="Get Started with Modern Degree HVAC Services"
+									>
+										Request a Free Quote
+									</a>
+									<a
+										href="/services"
+										class="button-secondary"
+										aria-label="Call Modern Degree HVAC Services"
+									>
+										Call Us Today
+									</a>
+								</div>
+								<ul class="service-list" aria-label="Our Services">
+									<li>Cooling</li>
+									<li>Heating</li>
+									<li>Duct Work</li>
+									<li>Insulation</li>
+								</ul>
+							</div>
+							<div class="wrapper small">
+								<img
+									src="/images/static/ac-testing.webp"
+									alt="Modern Degree HVAC Services"
+									class="image-hero"
+									width="693"
+									height="825"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+            <section class="reviews" role="region">
+				<ModFeature />
+			</section>
+
+			<!-- Benefits Overview Section -->
+			<section>
+				<div class="padding-normal">
+					<div class="container">
+						<ColumnLeft
+							title="Premium HVAC Care"
+							titleSpan="That Saves You Money"
+							description="The Mod Squad service plan offers numerous benefits designed to enhance your HVAC experience. As a member, you receive two regular service calls per year, including ladder service for those hard-to-reach areas. This ensures your HVAC system gets the maintenance it needs for optimal performance."
+							primaryLink="/get-started"
+							primaryAria="Join the Mod Squad Service Plan"
+							primaryText="Join Today"
+							secondaryLink="/contact"
+							secondaryAria="Contact Us About Mod Squad"
+							secondaryText="Ask Questions"
+							imageSource="/images/static/mod-squad-benefits.webp"
+							imageAlt="Mod Squad HVAC Service Benefits"
+						/>
+					</div>
+				</div>
+			</section>
+
+			<!-- Key Benefits Section -->
+			<section>
+				<div class="padding-normal">
+					<div class="container">
+						<div class="title-wrapper">
+							<h2 class="title-section">
+								Why Choose The Mod Squad
+							</h2>
+							<img
+								src="/images/deco/dashes.svg"
+								alt=""
+								class="deco-dashes"
+							/>
+						</div>
+						<div class="benefits-grid">
+							<div class="benefit-card">
+								<div class="benefit-icon">
+									<img
+										src="/images/icons/maintenance-service.svg"
+										alt="Peace of Mind"
+										width="60"
+										height="60"
+									/>
+								</div>
+								<h3 class="benefit-title">Peace of Mind</h3>
+								<p class="body-text">Complete HVAC system maintenance twice per year, including ladder service for hard-to-reach areas to ensure optimal performance.</p>
+							</div>
+							<div class="benefit-card">
+								<div class="benefit-icon">
+									<img
+										src="/images/icons/priority-service.svg"
+										alt="Priority Service"
+										width="60"
+										height="60"
+									/>
+								</div>
+								<h3 class="benefit-title">Energy Efficiency</h3>
+								<p class="body-text">Skip the line with priority scheduling for faster response times when you need service most.</p>
+							</div>
+							<div class="benefit-card">
+								<div class="benefit-icon">
+									<img
+										src="/images/icons/discount-savings.svg"
+										alt="Exclusive Discounts"
+										width="60"
+										height="60"
+									/>
+								</div>
+								<h3 class="benefit-title">Enhanced Comfort</h3>
+								<p class="body-text">Save money with member-only discounts on new installations and credit towards future repairs.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- How It Works Section -->
+			<section>
+				<div class="padding-normal">
+					<div class="container">
+						<ColumnRight
+							title="Simple Sign-Up"
+							titleSpan="Process"
+							description="Signing up for the Mod Squad service plan is a straightforward process. First, understand the benefits and terms by exploring our website and downloading our detailed contract. Once you've reviewed the contract and decided that the Mod Squad is right for you, contact us. Our team will guide you through the sign-up process, answering any questions you may have along the way."
+							primaryLink="/get-started"
+							primaryAria="Start Mod Squad Sign-Up Process"
+							primaryText="Get Started"
+							secondaryLink="/contact"
+							secondaryAria="Download Mod Squad Contract"
+							secondaryText="Download Contract"
+							imageSource="/images/static/mod-squad-signup.webp"
+							imageAlt="Mod Squad Sign-Up Process"
+							features={[
+								{ title: "Review Benefits", desc: "Explore all the advantages of Mod Squad membership and download our detailed contract." },
+								{ title: "Contact Our Team", desc: "Speak with our experts who will guide you through the sign-up process step by step." },
+								{ title: "Start Enjoying Benefits", desc: "Once signed up, immediately begin enjoying priority service and exclusive member perks." }
+							]}
+						/>
+					</div>
+				</div>
+			</section>
+
+			<!-- Pricing & Transparency Section -->
+			<section class="reviews" role="region">
+				<div class="padding-dark">
+					<div class="container">
+						<div class="wrapper-column">
+							<div class="wrapper large">
+								<h2 class="title-section white">
+									Transparent <span class="title-section highlight">Pricing</span>
+								</h2>
+								<p class="body-text white">
+									At Modern Degree Services, we believe in transparency and honesty. The costs associated with the Mod Squad service plan are clearly outlined in the contract. There are no hidden fees or surprise charges. The plan includes regular service calls, priority status, discounts on new installations, and credit towards future repairs.
+								</p>
+								<p class="body-text white">
+									If there are any costs associated with specific services, they will be clearly communicated to you upfront. We're committed to providing high-quality HVAC services at affordable prices, and our Mod Squad service plan is part of that commitment.
+								</p>
+								<div class="wrapper-button">
+									<a
+										href="/get-started"
+										class="button-primary"
+										aria-label="Get Mod Squad Pricing Information"
+									>
+										Get Pricing Info
+									</a>
+								</div>
+							</div>
+							<div class="wrapper small">
+								<img
+									src="/images/static/transparent-pricing.webp"
+									alt="Transparent HVAC Pricing"
+									width="500"
+									height="400"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- FAQ Section -->
+			<section>
+				<div class="padding-normal">
+					<div class="container">
+						<div class="title-wrapper">
+							<h2 class="title-section">
+								Mod Squad Questions
+							</h2>
+							<img
+								src="/images/deco/dashes.svg"
+								alt=""
+								class="deco-dashes"
+							/>
+						</div>
+						<ServiceFAQ items={[
+							{ question: "What's included in the two annual service calls?", answer: "Each service call includes a comprehensive HVAC system inspection, cleaning, tune-up, and ladder service for hard-to-reach components. We check all major components, replace filters, and ensure optimal performance." },
+							{ question: "How much priority do Mod Squad members get?", answer: "Mod Squad members receive priority scheduling for all service calls, meaning faster response times and preferred appointment slots, especially during peak seasons." },
+							{ question: "What kind of discounts do members receive?", answer: "Members enjoy exclusive discounts on new HVAC installations, replacement parts, and receive credits that can be applied towards future repairs and services." },
+							{ question: "Is there a contract commitment?", answer: "Yes, the Mod Squad service plan includes a contract that clearly outlines all terms, benefits, and costs. We encourage you to review the contract thoroughly before signing up." },
+							{ question: "Can I cancel my Mod Squad membership?", answer: "Contract terms and cancellation policies are clearly outlined in your membership agreement. Contact our team to discuss any questions about your membership terms." },
+							{ question: "Do you service all HVAC brands?", answer: "Yes, our Mod Squad service covers all major HVAC brands and systems. Our certified technicians are trained to work on all types of heating and cooling equipment." }
+						]} />
+					</div>
+				</div>
+			</section>
+
+			<!-- Final CTA -->
+			<section>
+				<div class="padding-normal small-top large-bottom">
+					<div class="container">
+						<ModCTA />
+					</div>
+				</div>
+			</section>
+		</main>
+		<FooterMain />
+	</body>
+</html>

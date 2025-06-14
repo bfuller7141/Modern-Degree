@@ -1,0 +1,26 @@
+---
+
+import { shuffle } from 'lodash-es'; // or implement your own shuffle
+
+// Load all review markdown files
+const reviewModules = import.meta.glob('../content/reviews/*.md', { eager: true }) as Record<
+  string,
+  { frontmatter: { author: string; text: string; rating: number; date: string } }
+>;
+
+let reviews = Object.values(reviewModules).map((m) => m.frontmatter);
+
+// Randomize order and take up to 6
+reviews = shuffle(reviews).slice(0, 6);
+---
+<div class="testimonial-area-grid">
+  {reviews.map((review) => (
+    <div class="area-item">
+      <p class="review-stars">
+        {Array(review.rating).fill('★').join(' ')}
+      </p>
+      <p class="body-text">{review.text}</p>
+      <p class="body-text"><span class="bold-text">{review.author}</span></p>
+    </div>
+  ))}
+</div>

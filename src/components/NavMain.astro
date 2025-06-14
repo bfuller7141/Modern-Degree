@@ -1,32 +1,65 @@
 ---
+import { getCollection } from 'astro:content';
+
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" },
+  { href: '/',      label: 'Home' },
+  { href: '/about', label: 'About' },
+  // we’ll mark “Services” as having a dropdown, but its items come from content:
+  { label: 'Services', hasDropdown: true },
+  { href: '/contact', label: 'Contact' },
 ];
+
+// load all published services, sort by order
+const services = await getCollection('services', ({ data }) => data.published)
+  .then(all => all.sort((a, b) => a.data.order - b.data.order));
+
+// build dropdown items
+const servicesDropdown = services.map(svc => ({
+  href: `/services/${svc.slug}`,
+  label: svc.data.title,
+}));
 ---
+
 <nav class="navbar" role="navigation" aria-label="Main navigation">
   <div class="navbar-container">
-    <a href="/" class="navbar-logo-link">
-      <img
-        src="/images/nav-logo.svg"
-        alt="Site Logo"
-        class="navbar-logo"
-        width="7.5rem"
-        height="auto"
-      />
+    <a href="/" class="navbar-logo-link" aria-label="Home">
+      <img src="/images/nav-logo.svg" alt="Site Logo" class="navbar-logo" width="7.5rem" />
     </a>
 
-    <!-- Desktop Menu -->
     <ul class="navbar-menu">
-      {navLinks.map((link) => (
-        <li class="navbar-item" role="none">
+      {navLinks.map(link => (
+        <li class={`navbar-item ${link.hasDropdown ? 'has-dropdown' : ''}`} role="none">
           <a href={link.href} class="navbar-link" role="menuitem">
             {link.label}
+            {link.hasDropdown && (
+              <svg
+                class="dropdown-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z"
+                  fill="#f28e22"
+                />
+              </svg>
+            )}
           </a>
+
+          {link.hasDropdown && (
+            <ul class="dropdown-menu" role="menu">
+              {servicesDropdown.map(item => (
+                <li role="none">
+                  <a href={item.href} class="navbar-link" role="menuitem">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       ))}
+
       <li class="navbar-item" role="none">
         <a href="/get-started" class="navbar-cta-button" role="menuitem">
           Join Mod Squad
@@ -34,7 +67,6 @@ const navLinks = [
       </li>
     </ul>
 
-    <!-- Hamburger Button -->
     <button
       class="navbar-hamburger"
       aria-controls="mobile-menu"
@@ -50,21 +82,44 @@ const navLinks = [
     </button>
   </div>
 
-  <!-- Mobile Slide-in Menu -->
-  <div
-    id="mobile-menu"
-    class="mobile-menu"
-    aria-hidden="true"
-    tabindex="-1"
-  >
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true" tabindex="-1">
     <ul class="mobile-menu-list">
-      {navLinks.map((link) => (
+      {navLinks.map(link => (
         <li class="mobile-menu-item" role="none">
-          <a href={link.href} class="mobile-menu-link" role="menuitem">
-            {link.label}
-          </a>
+          {link.hasDropdown ? (
+            <>
+              <button class="mobile-dropdown-toggle" aria-expanded="false">
+                {link.label}
+                <svg
+                  class="dropdown-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z"
+                    fill="#f28e22"
+                  />
+                </svg>
+              </button>
+              <ul class="mobile-dropdown-menu" role="menu">
+                {servicesDropdown.map(item => (
+                  <li role="none">
+                    <a href={item.href} class="mobile-menu-link" role="menuitem">
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <a href={link.href} class="mobile-menu-link" role="menuitem">
+              {link.label}
+            </a>
+          )}
         </li>
       ))}
+
       <li class="mobile-menu-item" role="none">
         <a href="/get-started" class="mobile-menu-cta-button" role="menuitem">
           Get Started
@@ -74,53 +129,53 @@ const navLinks = [
   </div>
 
   <script type="module">
-    const btn = document.querySelector(".navbar-hamburger");
-    const mobileMenu = document.getElementById("mobile-menu");
+    const btn = document.querySelector('.navbar-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-    btn.addEventListener("click", () => {
-      const isExpanded = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!isExpanded));
-      btn.classList.toggle("is-active");
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      btn.classList.toggle('is-active');
 
       if (isExpanded) {
-        mobileMenu.classList.remove("mobile-menu-open");
-        mobileMenu.setAttribute("aria-hidden", "true");
-        btn.setAttribute("aria-label", "Open navigation menu");
+        mobileMenu.classList.remove('mobile-menu-open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
       } else {
-        mobileMenu.classList.add("mobile-menu-open");
-        mobileMenu.setAttribute("aria-hidden", "false");
-        btn.setAttribute("aria-label", "Close navigation menu");
+        mobileMenu.classList.add('mobile-menu-open');
+        mobileMenu.setAttribute('aria-hidden', 'false');
         mobileMenu.focus();
       }
     });
 
-    document.addEventListener("click", (e) => {
+    // close on outside click or Escape...
+    document.addEventListener('click', e => {
       if (
-        mobileMenu.classList.contains("mobile-menu-open") &&
+        mobileMenu.classList.contains('mobile-menu-open') &&
         !mobileMenu.contains(e.target) &&
         !btn.contains(e.target)
       ) {
-        btn.classList.remove("is-active");
-        mobileMenu.classList.remove("mobile-menu-open");
-        mobileMenu.setAttribute("aria-hidden", "true");
-        btn.setAttribute("aria-expanded", "false");
-        btn.setAttribute("aria-label", "Open navigation menu");
+        btn.classList.remove('is-active');
+        mobileMenu.classList.remove('mobile-menu-open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('mobile-menu-open')) {
+        btn.click();
       }
     });
 
-    document.addEventListener("keydown", (e) => {
-      if (
-        e.key === "Escape" &&
-        mobileMenu.classList.contains("mobile-menu-open")
-      ) {
-        btn.classList.remove("is-active");
-        mobileMenu.classList.remove("mobile-menu-open");
-        mobileMenu.setAttribute("aria-hidden", "true");
-        btn.setAttribute("aria-expanded", "false");
-        btn.setAttribute("aria-label", "Open navigation menu");
-        btn.focus();
-      }
-    });
+    // mobile dropdown toggles
+    document
+      .querySelectorAll('.mobile-dropdown-toggle')
+      .forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          toggle.nextElementSibling.classList.toggle('mobile-dropdown-open');
+        });
+      });
   </script>
 
   <style>
@@ -195,6 +250,7 @@ const navLinks = [
       line-height: 1;
       padding: 0.5rem;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
     .navbar-link:hover {
@@ -352,6 +408,130 @@ const navLinks = [
       box-shadow: 0 0 0.75rem rgba(242, 142, 34, 0.6);
       transition: all 0.3s ease;
     }
+
+    /* Desktop dropdown*/
+    .has-dropdown {
+      position: relative;
+    }
+    .dropdown-icon {
+      width: 1em;
+      height: auto;
+      margin-left: 0.25em;
+      vertical-align: middle;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    /* Rotate on desktop hover */
+    .has-dropdown:hover > a .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Rotate when mobile toggle is expanded */
+    .mobile-dropdown-toggle[aria-expanded="true"] .dropdown-icon {
+      transform: rotate(180deg);
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 1rem);
+      left: 0;
+      min-width: 15rem;
+      background: var(--navbar-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.1);
+      list-style: none;
+      margin: 0.5rem 0 0;
+      padding: 0.5rem 0;
+      z-index: 1001;
+    }
+    .navbar .dropdown-menu {
+      top: calc(100% + 0.5rem);
+    }
+    .has-dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu li {
+      margin: 0;
+    }
+    .dropdown-menu .navbar-link {
+      display: block;
+      padding: 0.5rem 1rem;
+    }
+
+    /* Mobile dropdown */
+    .mobile-dropdown-toggle {
+      background: none;
+      border: none;
+      font: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.5rem 0;
+      text-align: left;
+      cursor: pointer;
+    }
+    .mobile-dropdown-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 1rem;
+    }
+    .mobile-dropdown-open {
+      max-height: 500px;
+    }
+
+.dropdown-menu,
+.mobile-dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu {
+  display: none;
+}
+.has-dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--navbar-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.1);
+}
+
+.mobile-dropdown-toggle {
+  display: block;
+  width: 100%;
+  text-align: end;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--secondary-500);
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+.mobile-dropdown-toggle:hover {
+  color: var(--primary-500);
+}
+
+.mobile-dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.mobile-dropdown-open {
+  max-height: 500px;
+}
+
 
     /* Responsive Breakpoints */
     @media (max-width: 1440px) {

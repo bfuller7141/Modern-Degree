@@ -1,0 +1,102 @@
+---
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq-container">
+  {items.map((item) => (
+    <div class="faq-item">
+      <div class="question-wrapper" role="button" tabindex="0">
+        <h3 class="faq-question">{item.question}</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.15 397.15" class="faq-icon">
+          <path fill="currentColor" d="M341.77,155.33h-99.95V55.38c0-3.15-2.55-5.7-5.7-5.7h-75.09c-3.15,0-5.7,2.55-5.7,5.7v99.95H55.38c-3.15,0-5.7,2.55-5.7,5.7v75.09c0,3.15,2.55,5.7,5.7,5.7h99.95v99.95c0,3.15,2.55,5.7,5.7,5.7h75.09c3.15,0,5.7-2.55,5.7-5.7v-99.95h99.95c3.15,0,5.7-2.55,5.7-5.7v-75.09c0-3.15-2.55-5.7-5.7-5.7Z"/>
+        </svg>
+      </div>
+      <div class="answer-wrapper">
+        <p class="body-text">{item.answer}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .faq-container {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .faq-item {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+  .question-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .faq-question {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--brown-500);
+  }
+  .faq-icon {
+    width: 1.5rem;
+    height: auto;
+    color: var(--primary-500);
+    transition: transform 0.3s ease;
+  }
+  .answer-wrapper {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.faq-item').forEach((faqItem, _, allFaqItems) => {
+      const questionWrapper = faqItem.querySelector('.question-wrapper');
+      const answerWrapper = faqItem.querySelector('.answer-wrapper');
+      const icon = faqItem.querySelector('.faq-icon');
+      
+      if (!questionWrapper || !answerWrapper || !icon) return;
+      
+      answerWrapper.style.height = '0px';
+      
+      questionWrapper.addEventListener('click', () => {
+        const isOpen = answerWrapper.style.height !== '0px';
+        
+        // Close all other FAQ items
+        allFaqItems.forEach(other => {
+          const otherAnswer = other.querySelector('.answer-wrapper');
+          const otherIcon = other.querySelector('.faq-icon');
+          if (other !== faqItem && otherAnswer && otherIcon) {
+            otherAnswer.style.height = '0px';
+            otherIcon.style.transform = 'rotate(0deg)';
+          }
+        });
+        
+        // Toggle current item
+        if (isOpen) {
+          answerWrapper.style.height = '0px';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          answerWrapper.style.height = answerWrapper.scrollHeight + 'px';
+          icon.style.transform = 'rotate(45deg)';
+        }
+      });
+    });
+  });
+</script>

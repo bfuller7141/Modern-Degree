@@ -1,0 +1,167 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead     from '../../components/BaseHead.astro';
+import NavMain      from '../../components/NavMain.astro';
+import ColumnRight  from '../../components/ColumnRight.astro';
+import MainCTA      from '../../components/MainCTA.astro';
+import FooterMain   from '../../components/FooterMain.astro';
+import ServiceBento from '../../components/ServiceBento.astro';
+
+export async function getStaticPaths() {
+  const cities = await getCollection('cities');
+  return cities.map(city => ({
+    params: { slug: city.slug },
+    props:  { city },
+  }));
+}
+
+const { city } = Astro.props;
+const { name, page_heading, content_title, image } = city.data;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <BaseHead
+    title={`${page_heading} — Modern Degree HVAC Services`}
+    description={`Learn about our HVAC offerings in ${name}. ${content_title}`}
+    image={image}
+  />
+  <body>
+    <header><NavMain/></header>
+    <main>
+      <!-- Hero -->
+      <section class="hero" role="banner">
+        <div class="padding-hero">
+          <div class="container">
+            <div class="title-wrapper">
+              <h1 class="title-page center">{page_heading}</h1>
+              <img src="/images/deco/dashes.svg" alt="" class="deco-dashes center" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Intro -->
+      <section>
+        <div class="padding-hero md-top">
+          <div class="container">
+            <div class="wrapper-column">
+              <div class="wrapper large">
+                <h2 class="title-section">
+                  {content_title}
+                  <span class="title-section highlight">in {name}</span>
+                </h2>
+                <p class="body-text">
+                  We keep your home comfy all year round. Our licensed team handles AC repair, furnace tune-ups, duct sealing and insulation installs. Serving Buckeye, Goodyear, Litchfield Park, Surprise, Peoria, Glendale, Avondale, Sun City West and El Mirage. Fast, honest service with free, no-obligation quotes.
+                </p>
+                <div class="wrapper-button">
+                  <a href="/get-started" class="button-primary" aria-label="Request a Free Quote">
+                    Request a Free Quote
+                  </a>
+                  <a href="/services" class="button-secondary" aria-label="Call Us Today">
+                    Call Us Today
+                  </a>
+                </div>
+                <ul class="service-list" aria-label="Our Services">
+                  <li>Cooling</li>
+                  <li>Heating</li>
+                  <li>Duct Work</li>
+                  <li>Insulation</li>
+                </ul>
+              </div>
+              <div class="wrapper small">
+                <img
+                  src={image}
+                  alt={`${name} HVAC Services`}
+                  class="image-hero"
+                  loading="lazy"
+                  width="693"
+                  height="825"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews CTA -->
+      <section class="reviews" role="region">
+        <div class="padding-dark">
+          <div class="container">
+            <div class="wrapper-column center">
+              <div class="wrapper large">
+                <h2 class="title-section white">
+                  Top-Rated HVAC <span class="title-section highlight">Services</span>
+                </h2>
+                <div class="logo-wrapper">
+                  <a class="logo-link" href="#" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer">
+                    <img src="/images/logos/google-reviews.svg" alt="Google Reviews" width="170" />
+                  </a>
+                  <a class="logo-link" href="#" aria-label="Nextdoor Reviews" target="_blank" rel="noopener noreferrer">
+                    <img src="/images/logos/nextdoor-reviews.svg" alt="Nextdoor Reviews" width="228" />
+                  </a>
+                  <a class="logo-link" href="#" aria-label="Facebook Reviews" target="_blank" rel="noopener noreferrer">
+                    <img src="/images/logos/facebook-reviews.svg" alt="Facebook Reviews" width="220" />
+                  </a>
+                </div>
+                <div class="wrapper-button">
+                  <a href="#" class="button-primary" aria-label="Leave a Review" target="_blank" rel="noopener noreferrer">
+                    Leave a Review
+                  </a>
+                </div>
+              </div>
+              <div class="wrapper small">
+                <p class="review-stars">★ ★ ★ ★ ★</p>
+                <p class="body-text white">
+                  This is the second time I've had Modern Degree out to fix my AC over the last 2 years. They fit me into their schedule quickly and from first call to onsite service they have been thoughtful, efficient, and reliable. Modern Degree is my "go to" AC company!
+                </p>
+                <p class="body-text white"><span class="bold-text">Carla Howard</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Us + Bento + CTA -->
+      <section>
+        <div class="padding-normal">
+          <div class="container">
+            <ColumnRight
+              title= `Why ${name} Loves`
+              titleSpan="Modern Degree"
+              description="We know HVAC inside out. Our licensed team handles cooling, heating, ductwork and insulation with care. You get clear pricing, fast response and real peace of mind."
+              primaryLink="/get-started"
+              primaryAria="Request a Free Quote"
+              primaryText="Request a Free Quote"
+              secondaryLink="/services"
+              secondaryAria="Learn More About Our Services"
+              secondaryText="Call Us Today"
+              imageSource="/images/static/md-ac-repair.webp"
+              imageAlt="Modern Degree HVAC Services"
+              features={[
+                { title: "Local West Valley Experts", desc: "Born and raised in your community, so we get your climate and your comfort needs." },
+                { title: "Quality Craftsmanship", desc: "We use top tools, premium parts and proven techniques for lasting comfort." },
+                { title: "24/7 Emergency Service", desc: "Here 24/7 for any HVAC emergency Valley wide." }
+              ]}
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Bento + Final CTA -->
+      <section class="target-bg">
+        <div class="padding-normal large-bottom">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2 class="title-section">Your Comfort is Our Priority</h2>
+              <img src="/images/deco/dashes.svg" alt="" class="deco-dashes" />
+            </div>
+            <ServiceBento />
+            <MainCTA />
+          </div>
+        </div>
+      </section>
+    </main>
+    <FooterMain />
+  </body>
+</html>

@@ -8,23 +8,53 @@ export interface Props {
 }
 const { items } = Astro.props;
 ---
+
 <div class="faq-container">
-  {items.map((item) => (
-    <div class="faq-item">
-      <div class="question-wrapper" role="button" tabindex="0">
-        <h3 class="faq-question">{item.question}</h3>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.15 397.15" class="faq-icon">
-          <path fill="currentColor" d="M341.77,155.33h-99.95V55.38c0-3.15-2.55-5.7-5.7-5.7h-75.09c-3.15,0-5.7,2.55-5.7,5.7v99.95H55.38c-3.15,0-5.7,2.55-5.7,5.7v75.09c0,3.15,2.55,5.7,5.7,5.7h99.95v99.95c0,3.15,2.55,5.7,5.7,5.7h75.09c3.15,0,5.7-2.55,5.7-5.7v-99.95h99.95c3.15,0,5.7-2.55,5.7-5.7v-75.09c0-3.15-2.55-5.7-5.7-5.7Z"/>
-        </svg>
+  {items.map((item, idx) => {
+    const questionId = `faq-question-${idx}`;
+    const answerId   = `faq-answer-${idx}`;
+    return (
+      <div class="faq-item">
+        <h3 class="faq-question" id={questionId}>
+          <button
+            class="question-button"
+            aria-expanded="false"
+            aria-controls={answerId}
+          >
+            {item.question}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 397.15 397.15"
+              class="faq-icon"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                fill="currentColor"
+                d="M341.77,155.33h-99.95V55.38c0-3.15-2.55-5.7-5.7-5.7h-75.09c-3.15,0-5.7,2.55-5.7,5.7v99.95H55.38c-3.15,0-5.7,2.55-5.7,5.7v75.09c0,3.15,2.55,5.7,5.7,5.7h99.95v99.95c0,3.15,2.55,5.7,5.7,5.7h75.09c3.15,0,5.7-2.55,5.7-5.7v-99.95h99.95c3.15,0,5.7-2.55,5.7-5.7v-75.09c0-3.15-2.55-5.7-5.7-5.7Z"
+              />
+            </svg>
+          </button>
+        </h3>
+        <div
+          id={answerId}
+          class="answer-wrapper"
+          role="region"
+          aria-labelledby={questionId}
+        >
+          <p class="body-text">{item.answer}</p>
+        </div>
       </div>
-      <div class="answer-wrapper">
-        <p class="body-text">{item.answer}</p>
-      </div>
-    </div>
-  ))}
+    );
+  })}
 </div>
 
 <style>
+/* Keyboard focus indicator */
+  :focus-visible {
+    outline: 3px solid var(--primary-500);
+    outline-offset: 3px;
+  }
   .faq-container {
     display: grid;
     gap: 1.5rem;
@@ -36,17 +66,22 @@ const { items } = Astro.props;
     padding: 1.5rem;
     box-sizing: border-box;
   }
-  .question-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-  }
   .faq-question {
     margin: 0;
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--brown-500);
+  }
+  .question-button {
+    all: unset;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    text-align: left;
   }
   .faq-icon {
     width: 1.5rem;
@@ -62,27 +97,40 @@ const { items } = Astro.props;
 </style>
 
 <script client:load>
-  document.querySelectorAll('.faq-item').forEach((faqItem, _, allFaqItems) => {
-    const questionWrapper = faqItem.querySelector('.question-wrapper');
-    const answerWrapper = faqItem.querySelector('.answer-wrapper');
-    const icon = faqItem.querySelector('.faq-icon');
-    if (!questionWrapper || !answerWrapper || !icon) return;
-    answerWrapper.style.height = '0px';
-    questionWrapper.addEventListener('click', () => {
-      const isOpen = answerWrapper.style.height !== '0px';
-      allFaqItems.forEach(other => {
-        const otherAnswer = other.querySelector('.answer-wrapper');
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach((faqItem) => {
+    const button = faqItem.querySelector('.question-button');
+    const answer = faqItem.querySelector('.answer-wrapper');
+    const icon   = faqItem.querySelector('.faq-icon');
+    if (!button || !answer || !icon) return;
+
+    // start closed
+    answer.style.height = '0px';
+
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      // close all others
+      faqItems.forEach((other) => {
+        const otherBtn  = other.querySelector('.question-button');
+        const otherAns  = other.querySelector('.answer-wrapper');
         const otherIcon = other.querySelector('.faq-icon');
-        if (other !== faqItem && otherAnswer && otherIcon) {
-          otherAnswer.style.height = '0px';
+        if (otherBtn && otherAns && otherIcon && other !== faqItem) {
+          otherBtn.setAttribute('aria-expanded', 'false');
+          otherAns.style.height = '0px';
           otherIcon.style.transform = 'rotate(0deg)';
         }
       });
-      if (isOpen) {
-        answerWrapper.style.height = '0px';
+
+      if (isExpanded) {
+        // collapse this one
+        button.setAttribute('aria-expanded', 'false');
+        answer.style.height = '0px';
         icon.style.transform = 'rotate(0deg)';
       } else {
-        answerWrapper.style.height = answerWrapper.scrollHeight + 'px';
+        // expand this one
+        button.setAttribute('aria-expanded', 'true');
+        answer.style.height = `${answer.scrollHeight}px`;
         icon.style.transform = 'rotate(45deg)';
       }
     });

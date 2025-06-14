@@ -12,201 +12,254 @@ import FooterMain from "../components/FooterMain.astro";
 
 <!DOCTYPE html>
 <html lang="en">
-	<BaseHead
-		title=""
-		description=""
-		image=""
-	/>
-	<body>
-		<header>
-			<NavMain />
-		</header>
-		<main>
-			<section class="hero" role="banner">
-				<div class="padding-hero">
-					<div class="container">
-						<div class="wrapper-column">
-							<div class="wrapper large ">
-								<h1 class="title-page">
-									The West Valley's <br />
-									<span class="title-page highlight">HVAC Experts</span>
-								</h1>
-								<p class="body-text">
-									We keep your home comfy all year round. Our licensed team handles AC repair, furnace tune-ups, duct sealing and insulation installs. Serving Buckeye, Goodyear, Litchfield Park, Surprise, Peoria, Glendale, Avondale, Sun City West and El Mirage. Fast, honest service with free, no-obligation quotes.
-								</p>
-								<div class="wrapper-button">
-									<a
-										href="/get-started"
-										class="button-primary"
-										aria-label="Get Started with Modern Degree HVAC Services"
-									>
-										Request a Free Quote
-									</a>
-									<a
-										href="/services"
-										class="button-secondary"
-										aria-label="Call Modern Degree HVAC Services"
-									>
-										Call Us Today
-									</a>
-								</div>
-								<ul class="service-list" aria-label="Our Services">
-									<li>Cooling</li>
-									<li>Heating</li>
-									<li>Duct Work</li>
-									<li>Insulation</li>
-								</ul>
-							</div>
-							<div class="wrapper small">
-								<img
-									src="/images/static/ac-testing.webp"
-									alt="Modern Degree HVAC Services"
-									class="image-hero"
-									width="693"
-									height="825"
-								/>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="reviews" role="region">
-				<div class="padding-dark">
-					<div class="container">
-						<div class="wrapper-column center">
-							<div class="wrapper large">
-								<h2 class="title-section white">
-									Top-Rated HVAC <span class="title-section highlight">Services</span>
-								</h2>
-								<div class="logo-wrapper">
-									<a class="logo-link" href="https://www.google.com/maps/place/Modern+Degree+HVAC+Services/@33.444123,-112.446789,15z/data=!4m2!3m1!1s0x0:0x8f5c6b7d9e4f8c2a" target="_blank" rel="noopener noreferrer">
-										<img
-											src="/images/logos/google-reviews.svg"
-											alt="Google Reviews"
-											class="logo-image"
-											width="170"
-											height="auto"
-										/>
-									</a>
-									<a class="logo-link" href="https://www.google.com/maps/place/Modern+Degree+HVAC+Services/@33.444123,-112.446789,15z/data=!4m2!3m1!1s0x0:0x8f5c6b7d9e4f8c2a" target="_blank" rel="noopener noreferrer">
-										<img
-											src="/images/logos/nextdoor-reviews.svg"
-											alt="Nextdoor Reviews"
-											class="logo-image"
-											width="228"
-											height="auto"
-										/>
-									</a>
-									<a class="logo-link" href="https://www.google.com/maps/place/Modern+Degree+HVAC+Services/@33.444123,-112.446789,15z/data=!4m2!3m1!1s0x0:0x8f5c6b7d9e4f8c2a" target="_blank" rel="noopener noreferrer">
-										<img
-											src="/images/logos/facebook-reviews.svg"
-											alt="Facebook Reviews"
-											class="logo-image"
-											width="220"
-											height="auto"
-										/>
-									</a>
-								</div>
-								<div class="wrapper-button">
-									<a
-										href=""
-										class="button-primary"
-										aria-label="Leave a Review for Modern Degree HVAC Services"
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										Leave a Review
-									</a>
-								</div>
-							</div>
-							<div class="wrapper small">
-								<p class="review-stars">
-									★ ★ ★ ★ ★
-								</p>
-								<p class="body-text white">
-									This is the second time I've had Modern Degree out to fix my AC over the last 2 years. They fit me into their schedule quickly and from first call to onsite service they have been thoughtful, efficient, and reliable. Modern Degree is my "go to" AC company!
-								</p>
-								<p class="body-text white">
-									<span class="bold-text">Carla Howard</span>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="target-bg">
-				<div class="padding-normal">
-					<div class="container">
-						<div class="title-wrapper">
-							<h2 class="title-section">
-								Your Comfort is Our Priority</span>
-							</h2>
-							<img
-								src="/images/deco/dashes.svg"
-								alt=""
-								class="deco-dashes"
-							/>
-						</div>
-						<ServiceBento />
-						<ModCTA />
-					</div>
-				</div>
-			</section>
-			<section>
-				<div class="padding-normal small-top">
-					<div class="container">
-						<ColumnRight
-							title="Why Arizona Loves"
-							titleSpan="Modern Degree"
-							description="We know HVAC inside out. Our licensed team handles cooling, heating, ductwork and insulation with care. You get clear pricing, fast response and real peace of mind."
-							primaryLink="/get-started"
-							primaryAria="Get Started with Modern Degree HVAC Services"
-							primaryText="Request a Free Quote"
-							secondaryLink="/services"
-							secondaryAria="Learn More About Our Services"
-							secondaryText="Call Us Today"
-							imageSource="/images/static/md-ac-repair.webp"
-							imageAlt="Modern Degree HVAC Services"
-							features={[
-								{ title: "Local West Valley Experts", desc: "Born and raised in your community, so we get your climate and your comfort needs." },
-								{ title: "Quality Craftsmanship", desc: "We use top tools, premium parts and proven techniques for lasting comfort." },
-								{ title: "24/7 Emergency Service", desc: "Here 24/7 for any HVAC emergency Valley wide." }
-							]}
-						/>
-					</div>
-				</div>
-			</section>
-			<ModFeature />
-			<section>
-				<div class="padding-normal">
-					<div class="container">
-						<div class="title-wrapper">
-							<h2 class="title-section">
-								Frequently Asked Questions
-							</h2>
-							<img
-								src="/images/deco/dashes.svg"
-								alt=""
-								class="deco-dashes"
-							/>
-						</div>
-						<FAQ items={[
-							{ question: "What areas do you serve?", answer: "We serve Buckeye, Goodyear, Litchfield Park, Surprise, Peoria, Glendale, Avondale, Sun City West, and El Mirage." },
-							{ question: "What HVAC services do you offer?", answer: "We provide AC repair, furnace tune-ups, duct sealing, insulation installs, and more." },
-							{ question: "Are your technicians licensed?", answer: "Yes, all our technicians are fully licensed and experienced." },
-							{ question: "Do you offer free quotes?", answer: "Absolutely! We provide free, no-obligation quotes for all services." }
-						]} />
-					</div>
-				</div>
-			</section>
-			<section>
-				<div class="padding-normal">
-					<div class="container">
-						<MainCTA />
-					</div>
-				</div>
-			</section>
-		</main>
-		<FooterMain />
-	</body>
+  <head>
+    <BaseHead
+      title="Modern Degree Services | Buckeye & West Valley HVAC Experts"
+      description="Modern Degree Services delivers professional HVAC repair, installation and maintenance in Buckeye & the West Valley, serving Surprise, Peoria and Goodyear. Get your free quote today."
+      image=""
+    />
+    <link rel="canonical" href="https://www.moderndegreeservices.com" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HVACBusiness",
+      "name": "Modern Degree Services",
+      "image": "https://www.moderndegreeservices.com/images/ModernDegree-Badge_Color.svg",
+      "telephone": "+14807192917",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Buckeye",
+        "addressRegion": "AZ",
+        "postalCode": "85326",
+        "addressCountry": "US"
+      },
+      "areaServed": ["Buckeye", "Surprise", "Peoria", "Goodyear"],
+      "url": "https://www.moderndegreeservices.com",
+      "priceRange": "$$$",
+      "openingHours": ["Mo-Fr 07:00-17:30"]
+    }
+    </script>
+  </head>
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <section class="hero" role="banner">
+        <div class="padding-hero">
+          <div class="container">
+            <div class="wrapper-column">
+              <div class="wrapper large">
+                <h1 class="title-page">
+                  The West Valley's <br />
+                  <span class="title-page highlight">HVAC Experts</span>
+                </h1>
+                <p class="body-text">
+                  Modern Degree Services delivers reliable HVAC solutions across Buckeye and the surrounding West Valley communities. From AC repair and installation to ductwork, insulation, heating and hot water heater services, our certified technicians keep your home comfortable year-round.
+                </p>
+                <div class="wrapper-button">
+                  <a
+                    href="/contact"
+                    class="button-primary"
+                    aria-label="Get a free quote from Modern Degree HVAC Services"
+                  >
+                    Get a Free Quote
+                  </a>
+                  <a
+                    href="tel:+14807192917"
+                    class="button-secondary"
+                    aria-label="Call Modern Degree Services today"
+                  >
+                    Call Us Today
+                  </a>
+                </div>
+                <ul class="service-list" aria-label="Our Services">
+                  <li>Cooling</li>
+                  <li>Heating</li>
+                  <li>Duct Work</li>
+                  <li>Insulation</li>
+                </ul>
+              </div>
+              <div class="wrapper small">
+                <img
+                  src="/images/static/ac-testing.webp"
+                  alt="HVAC technician testing an outdoor air conditioner with a digital manifold gauge"
+                  class="image-hero"
+                  width="693"
+                  height="825"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="reviews"
+        role="region"
+        aria-labelledby="reviews-title"
+      >
+        <div class="padding-dark">
+          <div class="container">
+            <div class="wrapper-column">
+              <div class="wrapper large">
+                <h2
+                  id="reviews-title"
+                  class="title-section white"
+                >
+                  Top-Rated HVAC <span class="title-section highlight">Services</span>
+                </h2>
+                <div class="logo-wrapper">
+                  <a
+                    class="logo-link"
+                    href="https://www.google.com/search?client=opera&sca_esv=3035149b170ff626&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7K60HFNYBVW8GSbgPCKBna-_x6DDK7U7NuBZ5T7bgh469nl_p83ust-L116N9BU_66i0tS3f0xZIfqqzwT-dFAhyA7lRlBGWqz0vTVjLN-nRnMrTw%3D%3D&q=Modern+Degree+Services+llc+Reviews&sa=X&ved=2ahUKEwjJo5e0yu-NAxULOkQIHet0GmsQ0bkNegQIPRAD&biw=1881&bih=904&dpr=1"
+                    aria-label="View our Google Reviews"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="/images/logos/google-reviews.svg"
+                      alt="Google Reviews Logo"
+                      class="logo-image"
+                      width="170"
+                    />
+                  </a>
+                  <a
+                    class="logo-link"
+                    href="https://nextdoor.com/pages/modern-degree-llc-buckeye-az/"
+                    aria-label="View our Nextdoor Reviews"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="/images/logos/nextdoor-reviews.svg"
+                      alt="Nextdoor Reviews Logo"
+                      class="logo-image"
+                      width="228"
+                    />
+                  </a>
+                  <a
+                    class="logo-link"
+                    href="https://www.facebook.com/moderndegreeservices/reviews"
+                    aria-label="View our Facebook Reviews"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="/images/logos/facebook-reviews.svg"
+                      alt="Facebook Reviews Logo"
+                      class="logo-image"
+                      width="220"
+                    />
+                  </a>
+                </div>
+                <div class="wrapper-button">
+                  <a
+                    href="https://g.page/r/CSikKOTWbipQEBM/review"
+                    class="button-primary"
+                    aria-label="Leave a Review for Modern Degree HVAC Services"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Leave a Review
+                  </a>
+                </div>
+              </div>
+              <div class="wrapper small">
+                <p class="review-stars">★ ★ ★ ★ ★</p>
+                <p class="body-text white">
+                  This is the second time I've had Modern Degree out to fix my AC over the last 2 years. They fit me into their schedule quickly and from first call to onsite service they have been thoughtful, efficient, and reliable. Modern Degree is my "go to" AC company!
+                </p>
+                <p class="body-text white">
+                  <span class="bold-text">Carla Howard</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="target-bg">
+        <div class="padding-normal">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2 class="title-section">
+                Complete HVAC Services for the West Valley
+              </h2>
+              <img
+                src="/images/deco/dashes.svg"
+                alt=""
+                aria-hidden="true"
+                role="presentation"
+                class="deco-dashes"
+              />
+            </div>
+            <ServiceBento />
+            <ModCTA />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="padding-normal small-top">
+          <div class="container">
+            <ColumnRight
+              title="Why Arizona Chooses"
+              titleSpan="Modern Degree"
+              description="We know HVAC inside out. Our licensed team handles AC repair, installation, ductwork and insulation across Buckeye and beyond—always with clear pricing, fast response and real peace of mind."
+              primaryLink="/contact"
+              primaryText="Request a Free Quote"
+              secondaryLink="tel:+14807192917"
+              secondaryText="Call Us Today"
+              imageSource="/images/static/md-ac-repair.webp"
+              imageAlt="Modern Degree HVAC technician installing rooftop ductwork beside a Bryant outdoor air conditioning unit"
+              features={[
+                { title: "Local West Valley Experts", desc: "Born and raised here, we understand your climate and comfort needs inside out." },
+                { title: "Quality Craftsmanship", desc: "We use top tools, premium parts and proven techniques for real lasting performance." },
+                { title: "24/7 Emergency Service", desc: "Our team is on call 24/7 to rapidly resolve HVAC emergencies Valley wide." }
+              ]}
+            />
+          </div>
+        </div>
+      </section>
+
+      <ModFeature />
+
+      <section>
+        <div class="padding-normal">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2 class="title-section">Frequently Asked Questions</h2>
+              <img
+                src="/images/deco/dashes.svg"
+                alt=""
+                aria-hidden="true"
+                role="presentation"
+                class="deco-dashes"
+              />
+            </div>
+            <FAQ items={[
+              { question: "How often should I schedule HVAC maintenance?", answer: "We recommend twice-yearly check-ups—once before cooling season and once before heating season—to keep your system running efficiently and extend its lifespan." },
+              { question: "What are the signs my AC needs repair?", answer: "Look for uneven cooling, strange noises, reduced airflow or higher energy bills. These often signal worn parts, low refrigerant or duct leaks that need expert attention." },
+              { question: "Do you offer financing or payment plans?", answer: "Yes. We partner with trusted lenders to provide flexible financing options on installations and major repairs. Ask us for details when you request your free quote." },
+              { question: "Are your technicians licensed and insured?", answer: "Absolutely. All Modern Degree technicians are fully licensed, insured and trained on the latest HVAC techniques, tools and safety standards." },
+              { question: "What areas do you serve in the West Valley?", answer: "We cover Buckeye, Goodyear, Avondale, Surprise, Peoria, Sun City West, Litchfield Park and El Mirage." },
+              { question: "How do I join the Mod Squad subscription?", answer: "Click “Join Now” on our Mod Squad page, download the contract, or call us at (480) 719-2917. We’ll get you set up on the perks plan in minutes." }
+            ]} />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="padding-normal small-top large-bottom">
+          <div class="container">
+            <MainCTA />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
 </html>

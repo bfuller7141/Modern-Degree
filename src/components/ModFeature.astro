@@ -1,39 +1,53 @@
 ---
 import ModCard from "./ModCard.astro";
+
 const cards = [
   {
     title: "Regular Service Calls",
-    text: "Twice per year we come out for inside service, outside service and hard-to-reach vents. That means fewer breakdowns.",
+    text: "Two comprehensive HVAC maintenance visits per year, including ladder service.",
     icon: "/images/icons/service-calls.svg",
     iconAlt: "Priority Service Image",
   },
   {
     title: "Exclusive 10% Discounts",
-    text: "Save on every repair and new installation. Our members keep more cash in their pockets while enjoying top-tier HVAC care.",
+    text: "Save 10% on all repairs and new installations year-round as a Mod Squad member.",
     icon: "/images/icons/discounts.svg",
     iconAlt: "Discounts Image",
   },
   {
     title: "Priority VIP Status",
-    text: "You move to the front of our list when summer heat spikes hit, so you don’t swelter while you wait.",
+    text: "You move to the front of our list when summer heat spikes hit, so you don’t swelter.",
     icon: "/images/icons/vip.svg",
     iconAlt: "VIP Status Image",
   },
 ];
 ---
-<section class="section-dark" role="region">
+
+<section
+  class="section-dark"
+  role="region"
+  aria-labelledby="modfeature-title"
+>
   <div class="padding-dark">
     <div class="container">
       <div class="title-wrapper">
-        <h2 class="title-section white">Join The Mod Squad</h2>
-        <img src="/images/deco/dashes.svg" alt="" class="deco-dashes" />
+        <h2 id="modfeature-title" class="title-section white">
+          Unlock Premium HVAC Care
+        </h2>
+        <img
+          src="/images/deco/dashes.svg"
+          alt=""
+          aria-hidden="true"
+          role="presentation"
+          class="deco-dashes"
+        />
         <p class="body-text white">
-          Keep your system running peak-performance all year with our HVAC subscription plan in Arizona. As a Mod Squad member, you get two full service calls, VIP priority, and exclusive discounts.
+          Join Mod Squad for two annual HVAC check-ups, 10% off repairs and new installations, and VIP scheduling across the West Valley.
         </p>
       </div>
 
       <ul class="mod-grid">
-        {cards.map(card => (
+        {cards.map((card) => (
           <li>
             <ModCard
               title={card.title}
@@ -45,9 +59,12 @@ const cards = [
         ))}
       </ul>
 
-      <div class="mod-slider">
+      <div
+        class="mod-slider"
+        aria-label="Premium benefits carousel"
+      >
         <div class="mod-slider-wrapper">
-          {cards.map(card => (
+          {cards.map((card) => (
             <div class="mod-card-wrapper">
               <ModCard
                 title={card.title}
@@ -58,12 +75,16 @@ const cards = [
             </div>
           ))}
         </div>
-        <div class="mod-slider-dots" aria-label="Slide navigation">
+
+        <div class="mod-slider-dots" role="tablist" aria-label="Slide navigation">
           {cards.map((_, idx) => (
             <button
               type="button"
               class="mod-slider-dot"
               data-index={idx}
+              role="tab"
+              aria-selected={idx === 0}
+              aria-controls={`slide-${idx}`}
               aria-label={`Slide ${idx + 1}`}
             ></button>
           ))}
@@ -71,20 +92,23 @@ const cards = [
       </div>
 
       <div class="wrapper-center">
-        <p class="body-large orange">Ready to upgrade your HVAC service?</p>
+        <p class="body-large orange">
+          Ready to upgrade your HVAC service?
+        </p>
         <p class="body-text white">
-          Download the Mod Squad contract, call us at (123) 456-7890 or click below to join.
+          Download the Mod Squad contract, call us at
+          <a class="text-link" href="tel:+14807192917">(480) 719-2917</a>
+          or click below to join.
         </p>
       </div>
 
       <div class="wrapper-button center">
-        <a href="/get-started" class="button-primary" aria-label="Join the Mod Squad">
+        <a href="/contact" class="button-primary">
           Join the Mod Squad
         </a>
         <a
-          href="/mod-squad-contract.pdf"
+          href="/downloads/2025_Monthly_Service_Agreement_-_Residential_-_Modern_Degree-_LLC_(revised).pdf"
           class="button-secondary text-only"
-          aria-label="Download Mod Squad Contract"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -102,11 +126,13 @@ const cards = [
     gap: 2rem;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 2rem 0;
   }
+
   .mod-slider {
     display: none;
   }
+
   @media screen and (max-width: 1004px) {
     .mod-grid {
       display: none;
@@ -154,6 +180,7 @@ const cards = [
       background-color: var(--primary-500);
     }
   }
+
   @media screen and (min-width: 1005px) {
     .mod-slider {
       display: none;
@@ -161,9 +188,13 @@ const cards = [
   }
 </style>
 
-<script lang="ts"> 
-  const wrapper = document.querySelector<HTMLDivElement>(".mod-slider-wrapper");
-  const dots = Array.from(document.querySelectorAll<HTMLButtonElement>(".mod-slider-dot"));
+<script lang="ts">
+  const wrapper = document.querySelector<HTMLDivElement>(
+    ".mod-slider-wrapper"
+  );
+  const dots = Array.from(
+    document.querySelectorAll<HTMLButtonElement>(".mod-slider-dot")
+  );
   if (!wrapper || dots.length === 0) return;
 
   const slides = Array.from(wrapper.children);
@@ -171,8 +202,12 @@ const cards = [
   dots.forEach((dot, idx) => {
     dot.addEventListener("click", () => {
       const slide = slides[idx];
-      const left = slide.offsetLeft - (wrapper.clientWidth - slide.clientWidth) / 2;
+      const left =
+        slide.offsetLeft - (wrapper.clientWidth - slide.clientWidth) / 2;
       wrapper.scrollTo({ left, behavior: "smooth" });
+      dots.forEach((d, i) =>
+        d.setAttribute("aria-selected", String(i === idx))
+      );
     });
   });
 
@@ -189,7 +224,9 @@ const cards = [
           activeIndex = i;
         }
       });
-      dots.forEach((d, i) => d.classList.toggle("active", i === activeIndex));
+      dots.forEach((d, i) =>
+        d.setAttribute("aria-selected", String(i === activeIndex))
+      );
       ticking = false;
     });
   });

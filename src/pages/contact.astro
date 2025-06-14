@@ -1,0 +1,272 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import EmergencyCTA from "../components/EmergencyCTA.astro"
+import FooterMain from "../components/FooterMain.astro";
+import FormMain from "../components/FormMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title="Contact Us - Modern Degree HVAC Services | Request Free Quote"
+            description="Contact Modern Degree HVAC Services for a free quote. Professional HVAC services in the West Valley including AC repair, heating, ductwork, and insulation."
+            image="/images/static/contact-hero.webp"
+        />
+        <script src="/datedropper-javascript.js" is:inline></script>
+    </head>
+	<body>
+		<header>
+			<NavMain />
+		</header>
+		<main>
+			<!-- Hero Section -->
+			<section class="hero" role="banner">
+				<div class="padding-hero">
+					<div class="container">
+						<div class="wrapper-center">
+							<h1 class="title-page center">
+								Request Your <span class="title-page highlight">Free Quote</span>
+							</h1>
+							<img
+								src="/images/deco/dashes.svg"
+								alt=""
+								class="deco-dashes"
+							/>
+							<p class="body-text center short">
+								Ready to get started? Fill out the form below and we'll get back to you with a personalized quote for your HVAC needs. No obligation, just honest pricing and expert advice.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact Form Section -->
+			<section>
+				<div class="padding-normal">
+					<div class="container">
+						<div class="contact-wrapper">
+							<div class="form-section">
+								<FormMain />
+							</div>
+
+							<div class="info-section">
+								<div class="contact-info">
+									<h3 class="body-large">Get In Touch</h3>
+									<div class="contact-item">
+										<div class="contact-icon">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+												<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+											</svg>
+										</div>
+										<div class="contact-details">
+											<h4>Phone</h4>
+											<p>(623) 555-0123</p>
+										</div>
+									</div>
+
+									<div class="contact-item">
+										<div class="contact-icon">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+												<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+											</svg>
+										</div>
+										<div class="contact-details">
+											<h4>Email</h4>
+											<p>info@moderndegree.com</p>
+										</div>
+									</div>
+
+									<div class="contact-item">
+										<div class="contact-icon">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+												<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+											</svg>
+										</div>
+										<div class="contact-details">
+											<h4>Service Area</h4>
+											<p>West Valley, Arizona</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="response-info">
+									<h3 class="body-large">What Happens Next?</h3>
+									<div class="response-steps">
+										<div class="step">
+											<div class="step-number">1</div>
+											<div class="step-content">
+												<h4>We Review Your Request</h4>
+												<p>Our team reviews your information and service needs within 2 hours.</p>
+											</div>
+										</div>
+										<div class="step">
+											<div class="step-number">2</div>
+											<div class="step-content">
+												<h4>We Contact You</h4>
+												<p>We'll call or email to discuss your needs and schedule a convenient time.</p>
+											</div>
+										</div>
+										<div class="step">
+											<div class="step-number">3</div>
+											<div class="step-content">
+												<h4>Free Quote Provided</h4>
+												<p>You receive a detailed, no-obligation quote for your HVAC service.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Final CTA -->
+			<section>
+				<div class="padding-normal small-top large-bottom">
+					<div class="container">
+						<EmergencyCTA />
+					</div>
+				</div>
+			</section>
+		</main>
+		<FooterMain />
+	</body>
+</html>
+
+<style>
+	.contact-wrapper {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 4rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.info-section {
+		display: grid;
+		gap: 3rem;
+	}
+
+	.contact-info,
+	.response-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 2rem;
+		background: white;
+		padding: 2.5rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	.contact-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	.contact-item:last-child {
+		margin-bottom: 0;
+	}
+
+	.contact-icon {
+		width: 3rem;
+		height: 3rem;
+		background: var(--primary-500);
+		color: white;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.contact-icon svg {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+	.contact-details h4 {
+		color: var(--secondary-500);
+		font-weight: 700;
+		margin: 0 0 0.25rem 0;
+	}
+
+	.contact-details p {
+		color: var(--secondary-500);
+		margin: 0;
+	}
+
+	.response-steps {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.step {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	.step-number {
+		width: 2.5rem;
+		height: 2.5rem;
+		background: var(--primary-500);
+		color: white;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 600;
+		flex-shrink: 0;
+	}
+
+	.step-content h4 {
+		color: var(--secondary-500);
+		font-weight: 600;
+		margin: 0 0 0.5rem 0;
+	}
+
+	.step-content p {
+		color: var(--secondary-500);
+		margin: 0;
+		font-size: 0.875rem;
+		line-height: 1.5;
+	}
+
+	@media screen and (min-width: 768px) {
+		.contact-wrapper {
+			grid-template-columns: 2fr 1fr;
+		}
+
+		.form-row {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.areas-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media screen and (max-width: 1099px) {
+		.contact-form {
+			padding: 2rem;
+		}
+
+		.hero-contact {
+			min-height: 30vh;
+		}
+
+		.hero-description {
+			font-size: 1rem;
+		}
+
+		.areas-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+</style>

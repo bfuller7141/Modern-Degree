@@ -1,13 +1,62 @@
+backend:
+  name: git-gateway
+  branch: main
+  repo: bfuller7141/Modern-Degree
+  accept_roles:
+    - admin
+    - editor
+  api_root: https://gitlab.com/api/v4
+logo_url: /images/ModernDegree-Badge_Color.svg
+
+media_folder: "public/images/uploads"
+public_folder: "public/images/uploads"
+
 collections:
   - name: "services"
     label: "Services"
-    folder: "content/services"
+    folder: "src/content/services"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Order", name: "order", widget: "number" }
-      - { label: "Published", name: "published", widget: "boolean" }
+      - { label: "Service Title", name: "title", widget: "string" }
+      - { label: "Heading Title", name: "heading", widget: "string" }
+      - { label: "About Title", name: "about_title", widget: "string" }
+      - { label: "About Paragraph", name: "about_paragraph", widget: "text" }
+      - label: "Benefits"
+        name: "benefits"
+        widget: "list"
+        min: 3
+        max: 3
+        fields:
+          - { label: "Icon (path)", name: "icon", widget: "image" }
+          - { label: "Benefit Title", name: "title", widget: "string" }
+          - { label: "Benefit Description", name: "text", widget: "string" }
+      - label: "FAQs"
+        name: "faqs"
+        widget: "list"
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "text" }
+      - { label: "Slug", name: "slug", widget: "string", i18n: { structure: "single_file" } }
+      - { label: "Order", name: "order", widget: "number", default: 0 }
+      - { label: "Published", name: "published", widget: "boolean", default: false }
+  - name: "cities"
+    label: "Cities"
+    folder: "src/content/cities"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "City Name",        name: "name",          widget: "string" }
+      - { label: "Page Heading",     name: "heading",  widget: "string" }
+      - { label: "Content Title",    name: "content_title", widget: "string" }
+      - { label: "City Image",       name: "image",         widget: "image" }
+  - name: "reviews"
+    label: "Customer Reviews"
+    folder: "src/content/reviews"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Rating", name: "rating", widget: "number", min: 1, max: 5, step: 1 }
+      - { label: "Date",   name: "date",   widget: "datetime" }
+      - { label: "Text",   name: "text",   widget: "text" }

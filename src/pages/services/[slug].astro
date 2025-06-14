@@ -1,0 +1,294 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from "../../components/BaseHead.astro";
+import NavMain from "../../components/NavMain.astro";
+import ModCTA from "../../components/ModCTA.astro";
+import ColumnRight from "../../components/ColumnRight.astro";
+import MainCTA from "../../components/MainCTA.astro";
+import FooterMain from "../../components/FooterMain.astro";
+import ServiceFAQ from "../../components/ServiceFAQ.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection('services', (entry) => entry.data.published);
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { service: entry },
+  }));
+}
+
+const { service } = Astro.props;
+const { title, heading, about_title, about_paragraph, benefits, faqs } = service.data;
+
+// Get other services for related services section
+const allEntries = await getCollection('services', (entry) =>
+  entry.data.published && entry.slug !== service.slug
+);
+const otherServices = allEntries
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={`${title} - Modern Degree HVAC Services | West Valley HVAC Experts`}
+      description={`Professional ${title.toLowerCase()} services in the West Valley. ${about_paragraph.substring(0, 150)}...`}
+      image={`/images/services/${service.slug}-hero.webp`}
+    />
+    <link
+      rel="canonical"
+      href={`https://www.moderndegreeservices.com/services/${service.slug}`}
+    />
+  </head>
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section
+        class="hero"
+        role="banner"
+        aria-labelledby="service-hero-title"
+      >
+        <div class="padding-hero">
+          <div class="container">
+            <div class="title-wrapper">
+              <h1
+                id="service-hero-title"
+                class="title-page center"
+              >
+                {heading}
+              </h1>
+              <img
+                src="/images/deco/dashes.svg"
+                alt=""
+                aria-hidden="true"
+                role="presentation"
+                class="deco-dashes center"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Service Section -->
+      <section
+        role="region"
+        aria-labelledby="about-service-title"
+      >
+        <div class="padding-normal">
+          <div class="container">
+            <ColumnRight
+              title={about_title}
+              titleSpan=""
+              description={about_paragraph}
+              primaryLink="/contact"
+              primaryText="Request Free Quote"
+              secondaryLink="tel:+14807192917"
+              secondaryText="Call Us Today"
+              imageSource={`/images/services/${service.slug}-about.webp`}
+              imageAlt={`${title} Service`}
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits Section -->
+      <section
+        role="region"
+        aria-labelledby="benefits-title"
+      >
+        <div class="padding-normal large-bottom">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2 id="benefits-title" class="title-section">
+                Why Choose {title} Services
+              </h2>
+              <img
+                src="/images/deco/dashes.svg"
+                alt=""
+                aria-hidden="true"
+                role="presentation"
+                class="deco-dashes"
+              />
+            </div>
+            <div class="benefits-grid">
+              {benefits.map((b) => (
+                <div class="benefit-card" role="region" aria-labelledby={`benefit-${b.title}`}>
+                  <div class="benefit-icon">
+                    <img
+                      src={b.icon}
+                      alt={b.title}
+                      width="60"
+                      height="60"
+                    />
+                  </div>
+                  <h3
+                    id={`benefit-${b.title}`}
+                    class="benefit-title"
+                  >
+                    {b.title}
+                  </h3>
+                  <p class="body-text">{b.text}</p>
+                </div>
+              ))}
+            </div>
+            <ModCTA />
+          </div>
+        </div>
+      </section>
+
+      <!-- Service Areas Section -->
+      <section
+        role="region"
+        aria-labelledby="areas-title"
+      >
+        <div class="padding-normal small-top">
+          <div class="container">
+            <ColumnRight
+              title="Proudly Serving the"
+              titleSpan="Entire West Valley"
+              description="Modern Degree Services proudly serves Buckeye and communities across the West Valley—Surprise, Peoria, Goodyear, Avondale, Sun City West, Litchfield Park and El Mirage. Whether you need AC repair and installation, ductwork, insulation or 24/7 emergency service, our licensed technicians bring fast response, transparent pricing and quality workmanship right to your door."
+              primaryLink="/contact"
+              primaryText="Request A Quote"
+              secondaryLink="tel:+14807192917"
+              secondaryText="Call Us Today"
+              imageSource="/images/static/west-valley-map.webp"
+              imageAlt="Map of West Valley service area"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Other Services Section -->
+      <section
+        class="section-dark"
+        role="region"
+        aria-labelledby="other-services-title"
+      >
+        <div class="padding-normal">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2
+                id="other-services-title"
+                class="title-section white"
+              >
+                Explore Our Other HVAC Services
+              </h2>
+              <img
+                src="/images/deco/dashes.svg"
+                alt=""
+                aria-hidden="true"
+                role="presentation"
+                class="deco-dashes"
+              />
+            </div>
+            <div class="benefits-grid">
+              {otherServices.map((o) => (
+                <article class="benefit-card" role="region" aria-labelledby={`other-${o.slug}-title`}>
+                  <img
+                    src={`/images/services/${o.slug}-card.webp`}
+                    alt={o.data.title}
+                    class="benefit-icon"
+                    width="400"
+                    height="250"
+                  />
+                  <div class="service-content">
+                    <h3
+                      id={`other-${o.slug}-title`}
+                      class="service-card-title"
+                    >
+                      {o.data.title}
+                    </h3>
+                    <p class="body-text">
+                      {o.data.about_paragraph.substring(0, 120)}...
+                    </p>
+                    <a
+                      href={`/services/${o.slug}`}
+                      class="button-secondary margin-top"
+                    >
+                      Learn More
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section
+        class="target-bg"
+        role="region"
+        aria-labelledby="service-faq-title"
+      >
+        <div class="padding-normal">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2
+                id="service-faq-title"
+                class="title-section"
+              >
+                Frequently Asked Questions
+              </h2>
+              <img
+                src="/images/deco/dashes.svg"
+                alt=""
+                aria-hidden="true"
+                role="presentation"
+                class="deco-dashes"
+              />
+            </div>
+            <ServiceFAQ items={faqs} />
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section>
+        <div class="padding-normal small-top large-bottom">
+          <div class="container">
+            <MainCTA />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
+</html>
+
+<style>
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .benefit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .benefit-icon {
+    margin-bottom: 1.5rem;
+  }
+  .benefit-title {
+    margin: 0 0 0.5rem;
+  }
+  .margin-top {
+    margin-top: 2rem;
+  }
+  @media (max-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
