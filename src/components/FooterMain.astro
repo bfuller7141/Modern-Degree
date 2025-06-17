@@ -36,10 +36,10 @@ const cities = await getCollection('cities')
             </a>
             <div class="hours" role="region" aria-labelledby="hours-heading">
               <h3 id="hours-heading" class="sr-only">Business Hours</h3>
-              <p class="body-text white foot"><strong>7:00 – 17:30 M–F</strong></p>
+              <p class="body-text white foot"><strong>6:00a – 6:00p M–F</strong></p>
               <p class="body-text white foot"><strong>Closed Sat</strong></p>
               <p class="body-text white foot"><strong>Closed Sun</strong></p>
-              <p class="body-text orange foot"><strong>24/7 Emergency Service</strong></p>
+              <p class="body-text orange foot"><strong>Emergency Service</strong></p>
             </div>
           </div>
 
@@ -154,8 +154,8 @@ const cities = await getCollection('cities')
             </ul>
 
             <p class="body-text small white">
-              © 2025 Modern Degree Services, LLC. AC ROC Residential – #000000 |
-              AC ROC Commercial – #000000
+              &copy; <span id="year"></span> Modern Degree Services, LLC. AC ROC Residential – #336452 |
+              AC ROC Commercial – #336452
             </p>
           </div>
         </div>
@@ -296,3 +296,7 @@ const cities = await getCollection('cities')
     border: 0;
   }
 </style>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>

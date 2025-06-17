@@ -122,8 +122,8 @@ const otherServices = allEntries
                     <img
                       src={b.icon}
                       alt={b.title}
-                      width="60"
-                      height="60"
+                      width="160"
+                      height="160"
                     />
                   </div>
                   <h3
@@ -156,7 +156,7 @@ const otherServices = allEntries
               primaryText="Request A Quote"
               secondaryLink="tel:+14807192917"
               secondaryText="Call Us Today"
-              imageSource="/images/static/west-valley-map.webp"
+              imageSource="/images/static/west-valley.webp"
               imageAlt="Map of West Valley service area"
             />
           </div>
@@ -189,17 +189,10 @@ const otherServices = allEntries
             <div class="benefits-grid">
               {otherServices.map((o) => (
                 <article class="benefit-card" role="region" aria-labelledby={`other-${o.slug}-title`}>
-                  <img
-                    src={`/images/services/${o.slug}-card.webp`}
-                    alt={o.data.title}
-                    class="benefit-icon"
-                    width="400"
-                    height="250"
-                  />
                   <div class="service-content">
                     <h3
                       id={`other-${o.slug}-title`}
-                      class="service-card-title"
+                      class="service-card-title orange"
                     >
                       {o.data.title}
                     </h3>
