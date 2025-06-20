@@ -5,10 +5,8 @@ export interface Props {
   titleSpan: string;
   description: string;
   primaryLink: string;
-  primaryAria: string;
   primaryText: string;
   secondaryLink?: string;
-  secondaryAria?: string;
   secondaryText?: string;
   imageSource: string;
   imageAlt: string;
@@ -18,11 +16,9 @@ const {
   title,
   titleSpan,
   description,
-  primaryAria,
   primaryLink,
   primaryText,
   secondaryLink,
-  secondaryAria,
   secondaryText,
   imageSource,
   imageAlt,
@@ -65,7 +61,6 @@ const {
       <a
         href={primaryLink}
         class="button-primary"
-        aria-label={primaryAria}
       >
         {primaryText}
       </a>
@@ -73,7 +68,6 @@ const {
         <a
           href={secondaryLink}
           class="button-secondary"
-          aria-label={secondaryAria}
         >
           {secondaryText}
         </a>

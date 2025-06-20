@@ -280,6 +280,10 @@ body {
 }
 
 /* Logo Links */
+
+.logo-wrapper li {
+  list-style: none;
+}
 .logo-link {
   display: flex;
   align-items: center;

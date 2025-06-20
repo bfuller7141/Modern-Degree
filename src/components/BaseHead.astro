@@ -32,6 +32,10 @@ const canonicalUrl = base
   {image && <meta property="og:image" content={image} />}
   <meta property="og:type" content="website" />
 
+    <!-- Security Headers -->
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
 <!-- Fonts -->
   <link
     rel="preload"
