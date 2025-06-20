@@ -35,8 +35,19 @@ const canonicalUrl = base
     <!-- Security Headers -->
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
-<!-- Fonts -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self' https://calendar.google.com;
+        connect-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data:;
+        frame-src 'self' https://calendar.google.com;
+      "
+    />
+  
+  <!-- Fonts -->
   <link
     rel="preload"
     href="https://use.typekit.net/tlu2buf.css"

@@ -1,0 +1,65 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+import TestimoniaGridLg from "../components/TestimoniaGridLg.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Reviews | Modern Degree Services"
+      description="See why West Valley homeowners trust Modern Degree for all their HVAC needs—read real reviews from our satisfied clients."
+      image=""
+    />
+    <link
+      rel="canonical"
+      href="https://www.moderndegreeservices.com/reviews"
+    />
+  </head>
+
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero" role="banner" aria-labelledby="reviews-hero-title">
+        <div class="padding-hero">
+          <div class="container">
+            <div class="wrapper-center">
+              <h1 id="reviews-hero-title" class="title-page center">
+                What Our
+                <span class="title-page highlight">Clients Say</span>
+              </h1>
+              <p class="body-text center ">
+                Read genuine feedback from homeowners across Buckeye and the West Valley who have experienced our reliable HVAC service.
+              </p>
+              <div class="wrapper-button">
+                <a href="/contact" class="button-primary" aria-label="Get a Free Quote">
+                  Get a Free Quote
+                </a>
+                <a href="tel:+14807192917" class="button-secondary" aria-label="Call Us Today">
+                  Call Us Today
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials & CTA -->
+      <section role="region" aria-labelledby="testimonials-title">
+        <div class="padding-normal">
+          <div class="container">
+            <TestimoniaGridLg />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
+</html>

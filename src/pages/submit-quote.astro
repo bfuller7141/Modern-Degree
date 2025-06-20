@@ -1,0 +1,63 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Thank You | Modern Degree Services"
+      description="Thank you for reaching out. We’ve received your message. A team member will be in touch soon."
+      image=""
+    />
+    <link
+      rel="canonical"
+      href="https://www.moderndegreeservices.com/thank-you"
+    />
+  </head>
+
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <section class="hero" role="banner">
+        <div class="padding-normal large-top">
+          <div class="container wrapper-center">
+            <div class="title-wrapper">
+              <h1 class="title-page highlight center">
+                Thank You!
+              </h1>
+              <p class="body-large short center">
+                We’ve received your message.  
+                A team member will be in touch soon.
+              </p>
+            </div>
+
+            <div class="wrapper-button center">
+              <a
+                href="/"
+                class="button-secondary"
+                aria-label="Back to Home"
+              >
+                Back to Home
+              </a>
+              <a
+                href="/schedule"
+                class="button-primary"
+                aria-label="Schedule a Call"
+              >
+                Schedule a Call
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
+</html>

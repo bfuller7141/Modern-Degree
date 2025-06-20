@@ -1,0 +1,216 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+import FAQ from "../components/FAQ.astro";
+import ColumnRight from "../components/ColumnRight.astro";
+import MainCTA from "../components/MainCTA.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Short-Term Rental HVAC Services | Modern Degree"
+      description="Keep your Airbnb or vacation rental guest-ready with fast HVAC repairs, preventative maintenance, and 24/7 support—tailored just for rental property owners."
+      image=""
+    />
+    <link
+      rel="canonical"
+      href="https://www.moderndegreeservices.com/short-term-rental-services"
+    />
+  </head>
+
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <section class="hero" role="banner">
+        <div class="padding-hero">
+          <div class="container wrapper-column">
+            <div class="wrapper large">
+              <h1 class="title-page">
+                HVAC Services for<br />
+                <span class="title-page highlight">Arizona Rentals</span>
+              </h1>
+              <p class="body-text">
+                Ensure every guest steps into comfort. From preventive tune-ups to emergency repairs, we keep your property’s heating and cooling in perfect shape.
+              </p>
+              <div class="wrapper-button">
+                <a
+                  href="/contact"
+                  class="button-primary"
+                  aria-label="Get a Free Quote"
+                >
+                  Get a Free Quote
+                </a>
+                <a
+                  href="/schedule"
+                  class="button-secondary"
+                  aria-label="Schedule a Call"
+                >
+                  Schedule a Call
+                </a>
+              </div>
+            </div>
+            <div class="wrapper small">
+              <img
+                src="/images/static/vacation-rental-hvac.webp"
+                alt="Technician servicing HVAC unit at a vacation rental home"
+                class="image-hero"
+                width="693"
+                height="550"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="reviews"
+        role="region"
+        aria-labelledby="reviews-title"
+      >
+        <div class="padding-dark">
+            <div class="container">
+            <div class="wrapper-column">
+                <div class="wrapper large">
+                <h2
+                    id="reviews-title"
+                    class="title-section white"
+                >
+                    Top-Rated HVAC <span class="title-section highlight">Services</span>
+                </h2>
+                <ul class="logo-wrapper" role="list">
+                    <li class="logo-item">
+                    <a
+                        class="logo-link"
+                        href="https://www.google.com/search?client=opera&sca_esv=3035149b170ff626&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7K60HFNYBVW8GSbgPCKBna-_x6DDK7U7NuBZ5T7bgh469nl_p83ust-L116N9BU_66i0tS3f0xZIfqqzwT-dFAhyA7lRlBGWqz0vTVjLN-nRnMrTw%3D%3D&q=Modern+Degree+Services+llc+Reviews&sa=X&ved=2ahUKEwjJo5e0yu-NAxULOkQIHet0GmsQ0bkNegQIPRAD&biw=1881&bih=904&dpr=1"
+                        aria-label="View our Google Reviews"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                        src="/images/logos/google-reviews.svg"
+                        alt="Google Reviews Logo"
+                        class="logo-image"
+                        width="170"
+                        />
+                    </a>
+                    </li>
+                    <li class="logo-item">
+                    <a
+                        class="logo-link"
+                        href="https://nextdoor.com/pages/modern-degree-llc-buckeye-az/"
+                        aria-label="View our Nextdoor Reviews"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                        src="/images/logos/nextdoor-reviews.svg"
+                        alt="Nextdoor Reviews Logo"
+                        class="logo-image"
+                        width="228"
+                        />
+                    </a>
+                    </li>
+                    <li class="logo-item">
+                    <a
+                        class="logo-link"
+                        href="https://www.facebook.com/moderndegreeservices/reviews"
+                        aria-label="View our Facebook Reviews"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                        src="/images/logos/facebook-reviews.svg"
+                        alt="Facebook Reviews Logo"
+                        class="logo-image"
+                        width="220"
+                        />
+                    </a>
+                    </li>
+                </ul>
+                <div class="wrapper-button">
+                    <a
+                    href="https://g.page/r/CSikKOTWbipQEBM/review"
+                    class="button-primary"
+                    aria-label="Leave a Review for Modern Degree HVAC Services"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >
+                    Leave a Review
+                    </a>
+                </div>
+                </div>
+                <div class="wrapper small">
+                <p class="review-stars">★ ★ ★ ★ ★</p>
+                <p class="body-text white">
+                    This is the second time I've had Modern Degree out to fix my AC over the last 2 years. They fit me into their schedule quickly and from first call to onsite service they have been thoughtful, efficient, and reliable. Modern Degree is my "go to" AC company!
+                </p>
+                <p class="body-text white">
+                    <span class="bold-text">Carla Howard</span>
+                </p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+      <section>
+        <div class="padding-normal small-top">
+          <div class="container">
+            <ColumnRight
+              title="Why Arizona Chooses"
+              titleSpan="Modern Degree"
+              description="We know HVAC inside out. Our licensed team handles AC repair, installation, ductwork and insulation across Buckeye and beyond—always with clear pricing, fast response and real peace of mind."
+              primaryLink="/contact"
+              primaryText="Request a Free Quote"
+              secondaryLink="tel:+14807192917"
+              secondaryText="Call Us Today"
+              imageSource="/images/static/md-ac-repair.webp"
+              imageAlt="Modern Degree HVAC technician installing rooftop ductwork beside a Bryant outdoor air conditioning unit"
+              features={[
+                { title: "Local West Valley Experts", desc: "Born and raised here, we understand your climate and comfort needs inside out." },
+                { title: "Quality Craftsmanship", desc: "We use top tools, premium parts and proven techniques for real lasting performance." },
+                { title: "24/7 Emergency Service", desc: "Our team is on call 24/7 to rapidly resolve HVAC emergencies Valley wide." }
+              ]}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="padding-normal small-top">
+        <div class="container">
+          <div class="title-wrapper">
+            <h2 class="title-section">Frequently Asked Questions</h2>
+            <img
+              src="/images/deco/dashes.svg"
+              alt=""
+              aria-hidden="true"
+              class="deco-dashes"
+            />
+          </div>
+          <FAQ items={[
+            { question: "Can you work between guest stays?", answer: "Yes. We’ll schedule service windows to fit your check-in/check-out times and minimize downtime." },
+            { question: "Do you offer seasonal plans?", answer: "We have flexible maintenance plans—monthly, quarterly, or custom—to match your occupancy schedule." },
+            { question: "How fast is your emergency service?", answer: "Most calls get same-day response. In urgent cases, we aim for under 2 hours." },
+            { question: "Can you install smart thermostats?", answer: "Absolutely. We install and configure smart controls for remote temperature management and energy savings." }
+          ]} />
+        </div>
+      </section>
+      <section>
+        <div class="padding-normal small-top large-bottom">
+          <div class="container">
+            <MainCTA />
+          </div>
+        </div>
+      </section>
+    
+    </main>
+
+    <FooterMain />
+  </body>
+</html>

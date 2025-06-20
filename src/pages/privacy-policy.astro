@@ -1,0 +1,115 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Privacy Policy | Modern Degree Services"
+      description="Learn how Modern Degree Services collects, uses, and protects your personal information when you visit our site or request HVAC services."
+      image=""
+    />
+    <link
+      rel="canonical"
+      href="https://www.moderndegreeservices.com/privacy-policy"
+    />
+  </head>
+
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <!-- Privacy Policy Hero -->
+      <section class="hero" role="banner" aria-labelledby="privacy-hero-title">
+        <div class="padding-hero">
+          <div class="container wrapper-center">
+            <h1 id="privacy-hero-title" class="title-page center">
+              Privacy<span class="title-page highlight"> Policy</span>
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      <!-- Policy Content -->
+      <section class="padding-normal">
+        <div class="container">
+          <article class="wrapper-column">
+            <div class="wrapper large">
+
+              <h2 class="title-section">1. Information We Collect</h2>
+              <p class="body-text">
+                We collect information you provide directly (name, email, phone, property details) when you request a quote or contact us. We also gather analytics data (IP address, browser type, pages visited) to improve our site.
+              </p>
+
+              <h2 class="title-section">2. How We Use Your Information</h2>
+              <p class="body-text">
+                Your data helps us respond to inquiries, schedule service calls, send updates or promotions, and enhance user experience. We do not sell your information to third parties.
+              </p>
+
+              <h2 class="title-section">3. Cookies &amp; Tracking</h2>
+              <p class="body-text">
+                We use cookies and similar technologies (Google Analytics) to understand site traffic, remember preferences, and show relevant content. You can disable cookies in your browser settings, but some features may not work.
+              </p>
+
+              <h2 class="title-section">4. Third-Party Services</h2>
+              <p class="body-text">
+                We may share data with trusted providers (email platforms, analytics services) to operate our business. These partners are bound by confidentiality obligations and cannot use your data for other purposes.
+              </p>
+
+              <h2 class="title-section">5. Data Retention &amp; Security</h2>
+              <p class="body-text">
+                We retain personal data as long as necessary to provide services and comply with legal obligations. We implement reasonable measures (encryption, access controls) to protect your information.
+              </p>
+
+              <h2 class="title-section">6. Your Rights</h2>
+              <p class="body-text">
+                You can request access to, correction of, or deletion of your personal information. Email your request to privacy@moderndegreeservices.com and we’ll respond within 30 days.
+              </p>
+
+              <h2 class="title-section">7. Children’s Privacy</h2>
+              <p class="body-text">
+                Our site is not directed at children under 16. We do not knowingly collect data from minors. If you believe we have, please contact us to remove that information.
+              </p>
+
+              <h2 class="title-section">8. Changes to This Policy</h2>
+              <p class="body-text">
+                We may update this policy for legal or operational reasons. The “Last Updated” date at the top reflects the most recent changes.
+              </p>
+
+              <h2 class="title-section">9. Contact Us</h2>
+              <p class="body-text">
+                If you have questions about this policy, email us at 
+                <a href="mailto:info@moderndegreeservices.com" class="text-link dark">
+                  info@moderndegreeservices.com
+                </a>.
+              </p>
+
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
+</html>
+
+<style>
+    h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .text-link.dark {
+      color: var(--primary-500);
+    }
+    .text-link.dark:hover {
+      color: var(--secondary-500);
+    }
+</style>

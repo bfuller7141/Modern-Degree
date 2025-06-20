@@ -1,0 +1,120 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Terms of Service | Modern Degree Services"
+      description="Review the terms and conditions governing your use of Modern Degree Services’ website and HVAC service offerings."
+      image=""
+    />
+    <link
+      rel="canonical"
+      href="https://www.moderndegreeservices.com/terms-of-service"
+    />
+  </head>
+
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <!-- Terms Hero -->
+      <section class="hero" role="banner" aria-labelledby="terms-hero-title">
+        <div class="padding-hero">
+          <div class="container wrapper-center">
+            <h1 id="terms-hero-title" class="title-page center">
+              Terms of<span class="title-page highlight"> Service</span>
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      <!-- Terms Content -->
+      <section class="padding-normal">
+        <div class="container">
+          <article class="wrapper-column">
+            <div class="wrapper large">
+
+              <h2 class="title-section">1. Acceptance of Terms</h2>
+              <p class="body-text">
+                By accessing or using moderndegreeservices.com (the “Site”) and/or our HVAC services, you agree to be bound by these Terms of Service. If you do not agree, please do not use our Site or services.
+              </p>
+
+              <h2 class="title-section">2. Services</h2>
+              <p class="body-text">
+                Modern Degree Services provides HVAC repair, installation, maintenance, and related services as described on our Site. All service quotes are estimates and subject to change based on site inspection.
+              </p>
+
+              <h2 class="title-section">3. User Obligations</h2>
+              <p class="body-text">
+                You agree to provide accurate information when requesting quotes or scheduling service. You are responsible for granting access to your property and ensuring a safe work environment for our technicians.
+              </p>
+
+              <h2 class="title-section">4. Pricing & Payment</h2>
+              <p class="body-text">
+                All prices are quoted in USD. Payment is due upon completion of service unless otherwise agreed in writing. We accept major credit cards, checks, and approved financing plans.
+              </p>
+
+              <h2 class="title-section">5. Cancellations & Rescheduling</h2>
+              <p class="body-text">
+                To cancel or reschedule, please notify us at least 24 hours before your appointment. Late cancellations may incur a fee.
+              </p>
+
+              <h2 class="title-section">6. Disclaimers</h2>
+              <p class="body-text">
+                THE SITE AND SERVICES ARE PROVIDED “AS IS” WITHOUT WARRANTIES OF ANY KIND. TO THE FULLEST EXTENT PERMITTED BY LAW, MODERN DEGREE SERVICES DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED.
+              </p>
+
+              <h2 class="title-section">7. Limitation of Liability</h2>
+              <p class="body-text">
+                MODERN DEGREE SERVICES SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF OR IN CONNECTION WITH OUR SITE OR SERVICES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+              </p>
+
+              <h2 class="title-section">8. Governing Law</h2>
+              <p class="body-text">
+                These Terms are governed by the laws of the State of Arizona, without regard to its conflict of law principles.
+              </p>
+
+              <h2 class="title-section">9. Changes to Terms</h2>
+              <p class="body-text">
+                We may update these Terms at any time. The date at the top reflects the most recent revision. Continued use of our Site or services constitutes acceptance of the updated Terms.
+              </p>
+
+              <h2 class="title-section">10. Contact Us</h2>
+              <p class="body-text">
+                For questions about these Terms, email us at  
+                <a href="mailto:info@moderndegreeservices.com" class="text-link dark">
+                  info@moderndegreeservices.com
+                </a>.
+              </p>
+
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
+</html>
+
+<style>
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .text-link.dark {
+    color: var(--primary-500);
+  }
+  .text-link.dark:hover {
+    color: var(--secondary-500);
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+import FormModSquad from "../components/FormModSquad.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<BaseHead
+		title="Join the Mod Squad - Modern Degree HVAC Services | Premium Service Plan"
+		description="Join the Mod Squad service plan for priority HVAC service, regular maintenance, exclusive discounts, and repair credits. Premium HVAC care for West Valley homeowners."
+		image="/images/static/mod-squad-contact.webp"
+	/>
+	<body>
+		<header>
+			<NavMain />
+		</header>
+		<main>
+			<!-- Hero Section -->
+			<section class="hero-contact" role="banner">
+				<div class="padding-hero">
+					<div class="container">
+						<div class="wrapper-center">
+							<h1 class="title-page center">
+								Join the <span class="title-page highlight">Mod Squad</span>
+							</h1>
+							<img
+								src="/images/deco/dashes.svg"
+								alt=""
+								class="deco-dashes center"
+							/>
+							<p class="body-text center hero-description">
+								Ready to experience premium HVAC care? Fill out the form below to join the Mod Squad service plan and start enjoying priority service, regular maintenance, and exclusive member benefits.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact Form Section -->
+			<section>
+				<div class="padding-normal">
+					<div class="container">
+						<div class="contact-wrapper">
+							<div class="form-section">
+								<FormModSquad />
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<FooterMain />
+	</body>
+</html>

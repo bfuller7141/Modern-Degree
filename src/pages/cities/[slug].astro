@@ -85,27 +85,79 @@ const { name, page_heading, content_title, image } = city.data;
       </section>
 
       <!-- Reviews CTA -->
-      <section class="reviews" role="region">
+      <section
+        class="reviews"
+        role="region"
+        aria-labelledby="reviews-title"
+      >
         <div class="padding-dark">
           <div class="container">
-            <div class="wrapper-column center">
+            <div class="wrapper-column">
               <div class="wrapper large">
-                <h2 class="title-section white">
+                <h2
+                  id="reviews-title"
+                  class="title-section white"
+                >
                   Top-Rated HVAC <span class="title-section highlight">Services</span>
                 </h2>
-                <div class="logo-wrapper">
-                  <a class="logo-link" href="#" aria-label="Google Reviews" target="_blank" rel="noopener noreferrer">
-                    <img src="/images/logos/google-reviews.svg" alt="Google Reviews" width="170" />
-                  </a>
-                  <a class="logo-link" href="#" aria-label="Nextdoor Reviews" target="_blank" rel="noopener noreferrer">
-                    <img src="/images/logos/nextdoor-reviews.svg" alt="Nextdoor Reviews" width="228" />
-                  </a>
-                  <a class="logo-link" href="#" aria-label="Facebook Reviews" target="_blank" rel="noopener noreferrer">
-                    <img src="/images/logos/facebook-reviews.svg" alt="Facebook Reviews" width="220" />
-                  </a>
-                </div>
+                <ul class="logo-wrapper" role="list">
+                  <li class="logo-item">
+                    <a
+                      class="logo-link"
+                      href="https://www.google.com/search?client=opera&sca_esv=3035149b170ff626&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7K60HFNYBVW8GSbgPCKBna-_x6DDK7U7NuBZ5T7bgh469nl_p83ust-L116N9BU_66i0tS3f0xZIfqqzwT-dFAhyA7lRlBGWqz0vTVjLN-nRnMrTw%3D%3D&q=Modern+Degree+Services+llc+Reviews&sa=X&ved=2ahUKEwjJo5e0yu-NAxULOkQIHet0GmsQ0bkNegQIPRAD&biw=1881&bih=904&dpr=1"
+                      aria-label="View our Google Reviews"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/images/logos/google-reviews.svg"
+                        alt="Google Reviews Logo"
+                        class="logo-image"
+                        width="170"
+                      />
+                    </a>
+                  </li>
+                  <li class="logo-item">
+                    <a
+                      class="logo-link"
+                      href="https://nextdoor.com/pages/modern-degree-llc-buckeye-az/"
+                      aria-label="View our Nextdoor Reviews"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/images/logos/nextdoor-reviews.svg"
+                        alt="Nextdoor Reviews Logo"
+                        class="logo-image"
+                        width="228"
+                      />
+                    </a>
+                  </li>
+                  <li class="logo-item">
+                    <a
+                      class="logo-link"
+                      href="https://www.facebook.com/moderndegreeservices/reviews"
+                      aria-label="View our Facebook Reviews"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/images/logos/facebook-reviews.svg"
+                        alt="Facebook Reviews Logo"
+                        class="logo-image"
+                        width="220"
+                      />
+                    </a>
+                  </li>
+                </ul>
                 <div class="wrapper-button">
-                  <a href="#" class="button-primary" aria-label="Leave a Review" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://g.page/r/CSikKOTWbipQEBM/review"
+                    class="button-primary"
+                    aria-label="Leave a Review for Modern Degree HVAC Services"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Leave a Review
                   </a>
                 </div>
@@ -115,7 +167,9 @@ const { name, page_heading, content_title, image } = city.data;
                 <p class="body-text white">
                   This is the second time I've had Modern Degree out to fix my AC over the last 2 years. They fit me into their schedule quickly and from first call to onsite service they have been thoughtful, efficient, and reliable. Modern Degree is my "go to" AC company!
                 </p>
-                <p class="body-text white"><span class="bold-text">Carla Howard</span></p>
+                <p class="body-text white">
+                  <span class="bold-text">Carla Howard</span>
+                </p>
               </div>
             </div>
           </div>

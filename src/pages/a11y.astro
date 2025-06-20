@@ -1,0 +1,109 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Accessibility | Modern Degree Services"
+      description="Learn about our commitment to accessibility and how Modern Degree Services ensures our website meets WCAG 2.1 AA standards for all users."
+      image=""
+    />
+    <link
+      rel="canonical"
+      href="https://www.moderndegreeservices.com/a11y"
+    />
+  </head>
+
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <!-- Accessibility Hero -->
+      <section class="hero" role="banner" aria-labelledby="a11y-hero-title">
+        <div class="padding-hero">
+          <div class="container wrapper-center">
+            <h1 id="a11y-hero-title" class="title-page center">
+              Web<span class="title-page highlight"> Accessibility</span>
+            </h1>
+            <p class="body-text center short">
+              We’re committed to making our site usable and accessible for everyone.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accessibility Content -->
+      <section class="padding-normal">
+        <div class="container wrapper-column">
+          <div class="wrapper large">
+
+            <h2 class="title-section">Our Commitment</h2>
+            <p class="body-text">
+              Modern Degree Services strives to ensure that our website is accessible to people with disabilities. We follow best practices and WCAG 2.1 AA guidelines to provide an inclusive online experience.
+            </p>
+
+            <h2 class="title-section">Standards &amp; Testing</h2>
+            <p class="body-text">
+              We regularly audit our site using automated tools and manual testing. We test for:
+            </p>
+            <ul class="body-text">
+              <li>Proper use of semantic HTML and ARIA roles</li>
+              <li>Sufficient color contrast for text and interactive elements</li>
+              <li>Keyboard navigability and focus indicators</li>
+              <li>Descriptive alt text for images</li>
+              <li>Logical heading structure</li>
+            </ul>
+
+            <h2 class="title-section">Site Features</h2>
+            <p class="body-text">
+              To enhance accessibility, our site includes:
+            </p>
+            <ul class="body-text">
+              <li><strong>Focus Styles:</strong> Visible outlines on interactive elements for keyboard users.</li>
+              <li><strong>Skip Links:</strong> “Skip to content” link for quick navigation.</li>
+              <li><strong>Responsive Design:</strong> Fully usable on all screen sizes and orientations.</li>
+              <li><strong>ARIA Attributes:</strong> Landmarks and labels for assistive technologies.</li>
+            </ul>
+
+            <h2 class="title-section">Feedback</h2>
+            <p class="body-text">
+              If you encounter any barriers or have suggestions for improving accessibility, please contact us:
+              <a href="mailto:info@moderndegreeservices.com" class="text-link dark">
+                info@moderndegreeservices.com
+              </a>.
+            </p>
+
+            <h2 class="title-section">Ongoing Improvements</h2>
+            <p class="body-text">
+              Accessibility is an ongoing effort. We review and update our site quarterly and welcome your input to help us make continuous enhancements.
+            </p>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
+</html>
+
+<style>
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .text-link.dark {
+    color: var(--primary-500);
+  }
+  .text-link.dark:hover {
+    color: var(--secondary-500);
+  }
+</style>

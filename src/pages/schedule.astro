@@ -1,0 +1,59 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Schedule a Call | Modern Degree Services"
+      description="Book a time to speak with our HVAC experts. Choose a slot that works for you and we'll take care of the rest."
+      image=""
+    />
+    <link
+      rel="canonical"
+      href="https://www.moderndegreeservices.com/schedule"
+    />
+  </head>
+
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <!-- Hero -->
+      <section class="hero" role="banner" aria-labelledby="schedule-hero-title">
+        <div class="padding-hero">
+          <div class="container wrapper-center">
+            <h1 id="schedule-hero-title" class="title-page center">
+              Schedule a<span class="title-page highlight"> Call</span>
+            </h1>
+            <p class="body-text center short">
+              Select a convenient time below and book your call with our HVAC experts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Google Calendar Scheduling Embed -->
+      <section class="padding-normal">
+        <div class="container">
+          <!-- Google Calendar Appointment Scheduling begin -->
+          <iframe
+            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2N8F-Za6qH2hLcIN9jmCdjK7ouJcX_hGT_huNz1MySKazhjlNXPM9MOaTAS1VF9nlyXyHplP0v?gv=true"
+            style="border: 0;"
+            width="100%"
+            height="600"
+            title="Schedule a Call"
+          ></iframe>
+          <!-- end Google Calendar Appointment Scheduling -->
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
+</html>
