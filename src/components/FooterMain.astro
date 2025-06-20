@@ -7,8 +7,6 @@ const services = await getCollection('services')
 
 const cities = await getCollection('cities')
   .then(all => all.sort((a, b) => a.data.name.localeCompare(b.data.name)));
-
-const currentPath = Astro.url.pathname;
 ---
 
 <footer
@@ -21,108 +19,145 @@ const currentPath = Astro.url.pathname;
   <div class="padding-normal">
     <div class="container">
       <div class="footer-grid">
-        <!-- Left column omitted for brevity -->
+        <!-- Left column -->
+        <div class="footer-left">
+          <div class="logo-hours">
+            <a
+              href="/"
+              class="footer-logo"
+              aria-label="Modern Degree HVAC Services home"
+            >
+              <img
+                src="/images/ModernDegree-Badge_Color.svg"
+                alt="Modern Degree HVAC Services logo"
+                width="150"
+                height="auto"
+              />
+            </a>
+            <div class="hours" role="region" aria-labelledby="hours-heading">
+              <h3 id="hours-heading" class="sr-only">Business Hours</h3>
+              <p class="body-text white foot"><strong>6:00a – 6:00p M–F</strong></p>
+              <p class="body-text white foot"><strong>Closed Sat</strong></p>
+              <p class="body-text white foot"><strong>Closed Sun</strong></p>
+              <p class="body-text orange foot"><strong>Emergency Service</strong></p>
+            </div>
+          </div>
+
+          <p class="body-text small white">
+            Modern Degree brings expert HVAC care to West Valley homes. Our
+            licensed team installs, repairs and maintains cooling, heating,
+            ductwork and insulation with care.
+          </p>
+
+          <p class="body-text orange">
+            <strong>Cooling | Heating | Ductwork | Insulation</strong>
+          </p>
+
+          <p class="body-text orange">
+            <a href="tel:+14807192917" class="link">480 719 2917</a>
+            <span aria-hidden="true"> | </span>
+            <a href="mailto:info@moderndegreeservices.com" class="link">
+              info@moderndegreeservices.com
+            </a>
+          </p>
+        </div>
 
         <!-- Right column -->
         <div class="footer-right">
           <div class="links-wrapper">
-            <!-- Services -->
             <nav aria-labelledby="services-heading" class="links-column">
               <h3 id="services-heading" class="title-footer">Our Services</h3>
               <ul class="list-links">
-                {services.map(svc => {
-                  const href = `/services/${svc.slug}`;
-                  return (
-                    <li>
-                      <a
-                        href={href}
-                        class="link"
-                        aria-current={currentPath === href ? 'page' : undefined}
-                      >
-                        {svc.data.title}
-                      </a>
-                    </li>
-                  );
-                })}
+                {services.map(svc => (
+                  <li>
+                    <a href={`/services/${svc.slug}`} class="link">
+                      {svc.data.title}
+                    </a>
+                  </li>
+                ))}
                 <li>
-                  <a
-                    href="/get-started"
-                    class="link orange"
-                    aria-current={currentPath === '/get-started' ? 'page' : undefined}
-                  >
+                  <a href="/get-started" class="link orange">
                     <strong>Join Mod Squad</strong>
                   </a>
                 </li>
               </ul>
             </nav>
 
-            <!-- Service Areas -->
             <nav aria-labelledby="areas-heading" class="links-column">
               <h3 id="areas-heading" class="title-footer">Service Areas</h3>
               <ul class="list-links">
-                {cities.map(city => {
-                  const href = `/cities/${city.slug}`;
-                  return (
-                    <li>
-                      <a
-                        href={href}
-                        class="link"
-                        aria-current={currentPath === href ? 'page' : undefined}
-                      >
-                        {city.data.name}
-                      </a>
-                    </li>
-                  );
-                })}
+                {cities.map(city => (
+                  <li>
+                    <a href={`/cities/${city.slug}`} class="link">
+                      {city.data.name}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </nav>
 
-            <!-- Resources -->
             <nav aria-labelledby="resources-heading" class="links-column">
               <h3 id="resources-heading" class="title-footer">Resources</h3>
               <ul class="list-links">
-                {[
-                  { href: '/about', label: 'About Us' },
-                  { href: '/reviews', label: 'Reviews' },
-                  { href: '/contact', label: 'Contact Us' },
-                ].map(item => (
-                  <li>
-                    <a
-                      href={item.href}
-                      class="link"
-                      aria-current={currentPath === item.href ? 'page' : undefined}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
+                <li><a href="/about" class="link">About Us</a></li>
+                <li><a href="/reviews" class="link">Reviews</a></li>
+                <li><a href="/contact" class="link">Contact Us</a></li>
               </ul>
             </nav>
 
-            <!-- Legal -->
             <nav aria-labelledby="legal-heading" class="links-column">
               <h3 id="legal-heading" class="title-footer">Legal</h3>
               <ul class="list-links">
-                {[
-                  { href: '/privacy-policy', label: 'Privacy Policy' },
-                  { href: '/terms-of-service', label: 'Terms of Service' },
-                  { href: '/a11y', label: 'Accessibility' },
-                ].map(item => (
-                  <li>
-                    <a
-                      href={item.href}
-                      class="link"
-                      aria-current={currentPath === item.href ? 'page' : undefined}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
+                <li><a href="/privacy-policy" class="link">Privacy Policy</a></li>
+                <li><a href="/terms-of-service" class="link">Terms of Service</a></li>
+                <li><a href="/a11y" class="link">Accessibility</a></li>
               </ul>
             </nav>
           </div>
 
-          <!-- Social & small print omitted for brevity -->
+          <div class="social-wrapper">
+            <ul class="social-list">
+              <li>
+                <a
+                  href="https://www.facebook.com/moderndegreeservices"
+                  class="social-link"
+                  aria-label="Modern Degree Services on Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="/images/icons/fb-icon.svg"
+                    alt=""
+                    aria-hidden="true"
+                    width="32"
+                    height="32"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/moderndegreeservices"
+                  class="social-link"
+                  aria-label="Modern Degree Services on Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="/images/icons/ig-icon.svg"
+                    alt=""
+                    aria-hidden="true"
+                    width="32"
+                    height="32"
+                  />
+                </a>
+              </li>
+            </ul>
+
+            <p class="body-text small white">
+              &copy; <span id="year"></span> Modern Degree Services, LLC. AC ROC Residential – #336452 |
+              AC ROC Commercial – #336452
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -130,9 +165,6 @@ const currentPath = Astro.url.pathname;
 </footer>
 
 <style>
-  .link[aria-current="page"] {
-    color: var(--primary-500);
-  }
   .footer {
     background: linear-gradient(
       to top,
