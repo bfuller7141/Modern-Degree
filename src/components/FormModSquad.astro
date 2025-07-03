@@ -1,80 +1,72 @@
-<form class="contact-form" action="/submit-quote" method="POST">
-    <div class="form-row">
-        <div class="form-group">
-            <label for="name" class="form-label">Full Name *</label>
-            <input
-                type="text"
-                id="name"
-                name="name"
-                class="form-input"
-                required
-                placeholder="Enter your full name"
-            />
-        </div>
-        <div class="form-group">
-            <label for="email" class="form-label">Email Address *</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                class="form-input"
-                required
-                placeholder="your.email@example.com"
-            />
-        </div>
-        <div class="form-row">
-        <div class="form-group">
-            <label for="phone" class="form-label">Phone Number *</label>
-            <input
-                type="tel"
-                id="phone"
-                name="phone"
-                class="form-input"
-                required
-                placeholder="(623) 555-0123"
-            />
-        </div>
-        <div class="form-group">
-            <label for="preferred-date" class="form-label">When would you like to start? *</label>
-            <input
-                type="date"
-                class="datedropper-default form-input"
-                data-dd-opt-min-date="2025/01/01"
-                data-dd-opt-format="mm-dd-y"
-                data-dd-opt-max-year="2030"
-                data-dd-opt-expanded-only="true"
-                id="preferred-date"
-                name="preferred-date"
-                required
-                placeholder="01-01-2025"
-            />
-        </div>
+---
+const formName = "mod-squad-join";
+---
+<form
+  class="contact-form"
+  name={formName}
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  action="/submit-quote"
+>
+  <!-- Netlify hidden fields -->
+  <input type="hidden" name="form-name" value={formName} />
+  <p class="hidden">
+    <label>
+      Don’t fill this out if you’re human: <input name="bot-field" />
+    </label>
+  </p>
+
+  <div class="form-row">
+    <!-- Name, Email, Phone, Start Date -->
+    <div class="form-group">
+      <label for="name" class="form-label">Full Name *</label>
+      <input type="text" id="name" name="name" class="form-input" required placeholder="Enter your full name" />
     </div>
     <div class="form-group">
-        <label for="referral" class="form-label">How did you hear about us?</label>
-        <select
-            id="referral"
-            name="referral"
-            class="form-select"
-        >
-            <option value="">Select an option...</option>
-            <option value="google-search">Google Search</option>
-            <option value="social-media">Social Media</option>
-            <option value="friend-family">Friend or Family</option>
-            <option value="neighbor">Neighbor</option>
-            <option value="nextdoor">Nextdoor</option>
-            <option value="facebook">Facebook</option>
-            <option value="existing-customer">Existing Customer</option>
-            <option value="advertisement">Advertisement</option>
-            <option value="other">Other</option>
-        </select>
+      <label for="email" class="form-label">Email Address *</label>
+      <input type="email" id="email" name="email" class="form-input" required placeholder="your.email@example.com" />
     </div>
+    <div class="form-group">
+      <label for="phone" class="form-label">Phone Number *</label>
+      <input type="tel" id="phone" name="phone" class="form-input" required placeholder="(623) 555-0123" />
+    </div>
+    <div class="form-group">
+      <label for="preferred-date" class="form-label">When would you like to start? *</label>
+      <input
+        type="date"
+        class="datedropper-default form-input"
+        data-dd-opt-min-date="2025/01/01"
+        data-dd-opt-format="mm-dd-y"
+        data-dd-opt-max-year="2030"
+        data-dd-opt-expanded-only="true"
+        id="preferred-date"
+        name="preferred-date"
+        required
+        placeholder="01-01-2025"
+      />
+    </div>
+  </div>
 
-    <div class="form-group full-width">
-        <button type="submit" class="button-primary form-submit">
-            Join the Mod Squad
-        </button>
-    </div>
+  <div class="form-group">
+    <label for="referral" class="form-label">How did you hear about us?</label>
+    <select id="referral" name="referral" class="form-select">
+      <option value="">Select an option...</option>
+      <option value="google-search">Google Search</option>
+      <option value="social-media">Social Media</option>
+      <option value="friend-family">Friend or Family</option>
+      <option value="neighbor">Neighbor</option>
+      <option value="nextdoor">Nextdoor</option>
+      <option value="facebook">Facebook</option>
+      <option value="existing-customer">Existing Customer</option>
+      <option value="advertisement">Advertisement</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div class="form-group full-width">
+    <button type="submit" class="button-primary form-submit">Join the Mod Squad</button>
+  </div>
 </form>
 
 <style>

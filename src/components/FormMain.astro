@@ -1,106 +1,87 @@
-<form class="contact-form" action="/submit-quote" method="POST">
-    <div class="form-row">
-        <div class="form-group">
-            <label for="name" class="form-label">Full Name *</label>
-            <input
-                type="text"
-                id="name"
-                name="name"
-                class="form-input"
-                required
-                placeholder="Enter your full name"
-            />
-        </div>
-        <div class="form-group">
-            <label for="email" class="form-label">Email Address *</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                class="form-input"
-                required
-                placeholder="your.email@example.com"
-            />
-        </div>
-    </div>
+---
+const formName = "contact-quote";
+---
+<form
+  class="contact-form"
+  name={formName}
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  action="/submit-quote"
+>
+  <!-- Netlify hidden fields -->
+  <input type="hidden" name="form-name" value={formName} />
+  <p class="hidden">
+    <label>
+      Don’t fill this out if you’re human: <input name="bot-field" />
+    </label>
+  </p>
 
-    <div class="form-row">
-        <div class="form-group">
-            <label for="city" class="form-label">City *</label>
-            <input
-                type="text"
-                id="city"
-                name="city"
-                class="form-input"
-                required
-                placeholder="Enter your city"
-            />
-        </div>
-        <div class="form-group">
-            <label for="state" class="form-label">State</label>
-            <input
-                type="text"
-                id="state"
-                name="state"
-                class="form-input"
-                value="Arizona"
-                readonly
-            />
-        </div>
+  <div class="form-row">
+    <!-- Full Name & Email -->
+    <div class="form-group">
+      <label for="name" class="form-label">Full Name *</label>
+      <input type="text" id="name" name="name" class="form-input" required placeholder="Enter your full name" />
     </div>
+    <div class="form-group">
+      <label for="email" class="form-label">Email Address *</label>
+      <input type="email" id="email" name="email" class="form-input" required placeholder="your.email@example.com" />
+    </div>
+  </div>
 
-    <div class="form-row">
-        <div class="form-group">
-            <label for="service" class="form-label">Service Needed *</label>
-            <select
-                id="service"
-                name="service"
-                class="form-select"
-                required
-            >
-                <option value="">Select a service...</option>
-                <option value="ac-service-repair">AC Service & Repair</option>
-                <option value="heating-service-repair">Heating Service & Repair</option>
-                <option value="ductwork">Ductwork</option>
-                <option value="insulation">Insulation</option>
-                <option value="hot-water-heaters">Hot Water Heaters</option>
-                <option value="other">Other (Please Explain)</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="preferred-date" class="form-label">Preferred Service Date *</label>
-            <input
-                type="date"
-                class="datedropper-default form-input"
-                data-dd-opt-min-date="2025/01/01"
-                data-dd-opt-format="mm-dd-y"
-                data-dd-opt-max-year="2030"
-                data-dd-opt-expanded-only="true"
-                id="preferred-date"
-                name="preferred-date"
-                required
-                placeholder="01-01-2025"
-            />
-        </div>
+  <div class="form-row">
+    <!-- City & State -->
+    <div class="form-group">
+      <label for="city" class="form-label">City *</label>
+      <input type="text" id="city" name="city" class="form-input" required placeholder="Enter your city" />
     </div>
+    <div class="form-group">
+      <label for="state" class="form-label">State</label>
+      <input type="text" id="state" name="state" class="form-input" value="Arizona" readonly />
+    </div>
+  </div>
 
-    <div class="form-group full-width">
-        <label for="details" class="form-label">Additional Details</label>
-        <textarea
-            id="details"
-            name="details"
-            class="form-textarea"
-            rows="5"
-            placeholder="Please provide any additional details about your HVAC needs, current issues, or specific requirements..."
-        ></textarea>
+  <div class="form-row">
+    <!-- Service & Date -->
+    <div class="form-group">
+      <label for="service" class="form-label">Service Needed *</label>
+      <select id="service" name="service" class="form-select" required>
+        <option value="">Select a service...</option>
+        <option value="ac-service-repair">AC Service & Repair</option>
+        <option value="heating-service-repair">Heating Service & Repair</option>
+        <option value="ductwork">Ductwork</option>
+        <option value="insulation">Insulation</option>
+        <option value="hot-water-heaters">Hot Water Heaters</option>
+        <option value="other">Other (Please Explain)</option>
+      </select>
     </div>
+    <div class="form-group">
+      <label for="preferred-date" class="form-label">Preferred Service Date *</label>
+      <input
+        type="date"
+        class="datedropper-default form-input"
+        data-dd-opt-min-date="2025/01/01"
+        data-dd-opt-format="mm-dd-y"
+        data-dd-opt-max-year="2030"
+        data-dd-opt-expanded-only="true"
+        id="preferred-date"
+        name="preferred-date"
+        required
+        placeholder="01-01-2025"
+      />
+    </div>
+  </div>
 
-    <div class="form-group full-width">
-        <button type="submit" class="button-primary form-submit">
-            Request Free Quote
-        </button>
-    </div>
+  <div class="form-group full-width">
+    <label for="details" class="form-label">Additional Details</label>
+    <textarea id="details" name="details" class="form-textarea" rows="5" placeholder="Please provide any additional details..."></textarea>
+  </div>
+
+  <div class="form-group full-width">
+    <button type="submit" class="button-primary form-submit">Request Free Quote</button>
+  </div>
 </form>
+
 
 <style>
 
