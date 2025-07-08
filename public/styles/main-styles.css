@@ -150,6 +150,7 @@ body {
 }
 
 .title-wrapper {
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -530,5 +531,6 @@ body {
     height: 4rem;
   }
   .logo-link img { max-width: 150px; }
+  .logo-item { width: 100%; }
   .cta-card.mod-card { background-position: center left; }
 }

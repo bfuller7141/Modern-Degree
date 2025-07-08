@@ -42,6 +42,10 @@ const cities = await getCollection('cities')
               <p class="body-text orange foot"><strong>Emergency Service</strong></p>
             </div>
           </div>
+          
+          <p class="body-text small white">
+            Phone lines are closed on weekends and some holidays, but please leave a voicemail or text us, and we will let you know if we are available during these times, as we do have techs on call. A $100 weekend/holiday fee will be added to the standard pricing if we are available.
+          </p>
 
           <p class="body-text small white">
             Modern Degree brings expert HVAC care to West Valley homes. Our
@@ -77,7 +81,7 @@ const cities = await getCollection('cities')
                 ))}
                 <li>
                   <a href="/get-started" class="link orange">
-                    <strong>Join Mod Squad</strong>
+                    <strong>Join the ModSquad</strong>
                   </a>
                 </li>
               </ul>
@@ -245,7 +249,7 @@ const cities = await getCollection('cities')
   }
   .body-text.small {
     font-size: 0.875rem;
-    margin: 0;
+    margin: 1rem 0 0 0;
   }
   .body-text.foot {
     margin: 0;
@@ -268,8 +272,6 @@ const cities = await getCollection('cities')
       justify-self: stretch;
     }
     .links-wrapper {
-      grid-auto-flow: row;
-      grid-auto-columns: 1fr;
       justify-content: start;
     }
     .logo-hours,
@@ -280,6 +282,18 @@ const cities = await getCollection('cities')
     .social-wrapper {
       align-items: flex-start;
       text-align: left;
+    }
+  }
+  @media (max-width:658px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .links-wrapper {
+      grid-auto-flow: row;
+      grid-auto-columns: 100%;
+      justify-content: center;
+      gap: 1rem;
     }
   }
 

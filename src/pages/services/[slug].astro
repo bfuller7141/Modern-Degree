@@ -49,7 +49,7 @@ const otherServices = allEntries
     <main id="main-content">
       <!-- Hero Section -->
       <section
-        class="hero"
+        class="hero service"
         role="banner"
         aria-labelledby="service-hero-title"
       >
@@ -101,7 +101,7 @@ const otherServices = allEntries
         role="region"
         aria-labelledby="benefits-title"
       >
-        <div class="padding-normal large-bottom">
+        <div class="padding-normal small-top">
           <div class="container">
             <div class="title-wrapper">
               <h2 id="benefits-title" class="title-section">
@@ -279,7 +279,11 @@ const otherServices = allEntries
   .margin-top {
     margin-top: 2rem;
   }
-  @media (max-width: 768px) {
+  .hero.service {
+    max-height: fit-content;
+  }
+
+  @media (max-width: 1004px) {
     .benefits-grid {
       grid-template-columns: 1fr;
     }
