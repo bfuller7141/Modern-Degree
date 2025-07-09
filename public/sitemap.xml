@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<!-- cSpell:ignore urlset loc -->
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
     <loc>https://www.moderndegreeservices.com/</loc>
@@ -8,23 +10,23 @@
     <loc>https://www.moderndegreeservices.com/about</loc>
   </url>
 
-  <!-- Services pages -->
+  <!-- Services -->
   <url><loc>https://www.moderndegreeservices.com/services/ac-repair</loc></url>
   <url><loc>https://www.moderndegreeservices.com/services/ductwork</loc></url>
   <url><loc>https://www.moderndegreeservices.com/services/insulation</loc></url>
   <url><loc>https://www.moderndegreeservices.com/services/hot-water-heaters</loc></url>
 
-  <!-- Contact / CTAs -->
+  <!-- Contact & CTAs -->
   <url><loc>https://www.moderndegreeservices.com/contact</loc></url>
   <url><loc>https://www.moderndegreeservices.com/get-started</loc></url>
   <url><loc>https://www.moderndegreeservices.com/mod-squad</loc></url>
 
-  <!-- Downloads -->
+  <!-- Download -->
   <url>
     <loc>https://www.moderndegreeservices.com/downloads/2025_Monthly_Service_Agreement_-_Residential_-_Modern_Degree-_LLC_(revised).pdf</loc>
   </url>
 
-  <!-- City landing pages -->
+  <!-- Cities -->
   <url><loc>https://www.moderndegreeservices.com/cities/buckeye</loc></url>
   <url><loc>https://www.moderndegreeservices.com/cities/glendale</loc></url>
   <url><loc>https://www.moderndegreeservices.com/cities/goodyear</loc></url>
@@ -33,8 +35,10 @@
   <url><loc>https://www.moderndegreeservices.com/cities/sun-city-west</loc></url>
   <url><loc>https://www.moderndegreeservices.com/cities/surprise</loc></url>
 
-  <!-- Utility pages -->
+  <!-- Utility -->
   <url><loc>https://www.moderndegreeservices.com/reviews</loc></url>
   <url><loc>https://www.moderndegreeservices.com/privacy-policy</loc></url>
   <url><loc>https://www.moderndegreeservices.com/terms-of-service</loc></url>
   <url><loc>https://www.moderndegreeservices.com/a11y</loc></url>
+
+</urlset>
