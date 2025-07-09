@@ -27,12 +27,8 @@ const canonicalUrl = base ? new URL(Astro.url.pathname, base).href : "";
 <!-- Open Graph / Social Tags -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-{canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
 {image && <meta property="og:image" content={image} />}
 <meta property="og:type" content="website" />
-
-<!-- Canonical URL -->
-{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
 <!-- Security Headers via <meta> (you can also move these to Netlify headers) -->
 <meta http-equiv="X-Frame-Options" content="DENY" />
