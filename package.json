@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "astro": "^5.8.1",
-    "decap-cms-app": "^3.6.3"
+    "decap-cms-app": "^3.6.3",
+    "xml-sitemap": "^0.3.2"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.4.1",

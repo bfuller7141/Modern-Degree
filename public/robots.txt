@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /submit-quote
+Disallow: /terms-of-service
+Disallow: /schedule
+Disallow: /privacy-policy
+Disallow: /a11y
+
+Sitemap: https://www.moderndegreeservices.com/sitemap.xml
