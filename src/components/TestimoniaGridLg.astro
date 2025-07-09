@@ -1,6 +1,6 @@
 ---
 
-import { shuffle } from 'lodash-es'; // or implement your own shuffle
+import { shuffle } from 'lodash-es';
 
 // Load all review markdown files
 const reviewModules = import.meta.glob('../content/reviews/*.md', { eager: true }) as Record<

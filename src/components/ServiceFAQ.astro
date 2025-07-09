@@ -64,39 +64,4 @@ const { items } = Astro.props;
   }
 </style>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.faq-item').forEach((faqItem, _, allFaqItems) => {
-      const questionWrapper = faqItem.querySelector('.question-wrapper');
-      const answerWrapper = faqItem.querySelector('.answer-wrapper');
-      const icon = faqItem.querySelector('.faq-icon');
-      
-      if (!questionWrapper || !answerWrapper || !icon) return;
-      
-      answerWrapper.style.height = '0px';
-      
-      questionWrapper.addEventListener('click', () => {
-        const isOpen = answerWrapper.style.height !== '0px';
-        
-        // Close all other FAQ items
-        allFaqItems.forEach(other => {
-          const otherAnswer = other.querySelector('.answer-wrapper');
-          const otherIcon = other.querySelector('.faq-icon');
-          if (other !== faqItem && otherAnswer && otherIcon) {
-            otherAnswer.style.height = '0px';
-            otherIcon.style.transform = 'rotate(0deg)';
-          }
-        });
-        
-        // Toggle current item
-        if (isOpen) {
-          answerWrapper.style.height = '0px';
-          icon.style.transform = 'rotate(0deg)';
-        } else {
-          answerWrapper.style.height = answerWrapper.scrollHeight + 'px';
-          icon.style.transform = 'rotate(45deg)';
-        }
-      });
-    });
-  });
-</script>
+<script src="/src/js/ServiceFAQ.js" type="module" defer></script>

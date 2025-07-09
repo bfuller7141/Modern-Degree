@@ -17,15 +17,33 @@ export async function getStaticPaths() {
 
 const { city } = Astro.props;
 const { name, page_heading, content_title, image } = city.data;
+
+const templates = [
+  `In ${name}, discover our expert HVAC installations, fast emergency repairs, and seasonal tune-ups—reliable climate control with transparent pricing.`,
+  `Looking for top HVAC service in ${name}? We deliver precision installations, 24/7 repairs, and bi-annual maintenance to keep you comfortable year-round.`,
+  `Experience top-rated HVAC support in ${name}. From new system installs to urgent fixes, our certified techs promise quick response times and honest quotes.`,
+  `Modern Degree HVAC in ${name} specializes in installations, emergency repairs, and energy-saving tune-ups—backed by clear pricing and fast local dispatch.`,
+  `Get peace of mind in ${name} with preventive maintenance, rapid emergency response, and member-only discounts—friendly service, no hidden fees, every day.`,
+  `Your ${name} HVAC experts are here for installations, diagnostics, and seasonal servicing. Count on Modern Degree for upfront pricing and local reliability.`,
+  `For reliable HVAC care in ${name}, trust Modern Degree. We offer swift repairs, scheduled tune-ups, and straightforward estimates so your home stays cozy.`
+];
+
+const index = city.slug
+  ? Array.from(city.slug).reduce((acc, char) => acc + char.charCodeAt(0), 0) % templates.length
+  : 0;
+
+const description = templates[index % templates.length];
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-  <BaseHead
-    title={`${page_heading} — Modern Degree HVAC Services`}
-    description={`Learn about our HVAC offerings in ${name}. ${content_title}`}
-    image={image}
-  />
+  <head>
+    <BaseHead
+      title={`${page_heading} — Modern Degree HVAC Services`}
+      description={description}
+    />
+    <link rel="canonical" href={`https://www.moderndegreeservices.com/cities/${city.slug}`} />
+  </head>
   <body>
     <header><NavMain/></header>
     <main>
@@ -58,7 +76,7 @@ const { name, page_heading, content_title, image } = city.data;
                   <a href="/get-started" class="button-primary" aria-label="Request a Free Quote">
                     Request a Free Quote
                   </a>
-                  <a href="/services" class="button-secondary" aria-label="Call Us Today">
+                  <a href="/contact" class="button-secondary" aria-label="Call Us Today">
                     Call Us Today
                   </a>
                 </div>
@@ -186,7 +204,7 @@ const { name, page_heading, content_title, image } = city.data;
               description="We know HVAC inside out. Our licensed team handles cooling, heating, ductwork and insulation with care. You get clear pricing, fast response and real peace of mind."
               primaryLink="/get-started"
               primaryText="Request a Free Quote"
-              secondaryLink="/services"
+              secondaryLink="/contact"
               secondaryText="Call Us Today"
               imageSource="/images/static/md-ac-repair.webp"
               imageAlt="Modern Degree HVAC Services"

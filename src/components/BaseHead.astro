@@ -1,4 +1,6 @@
 ---
+// src/components/BaseHead.astro
+
 interface Props {
   title?: string;
   description?: string;
@@ -11,61 +13,53 @@ const {
   image = ""
 } = Astro.props as Props;
 
-// Use import.meta.env.SITE (populated from astro.config.mjs’s `site` field)
 const base = import.meta.env.SITE || "";
-const canonicalUrl = base
-  ? new URL(Astro.url.pathname, base).href
-  : "";
+const canonicalUrl = base ? new URL(Astro.url.pathname, base).href : "";
 ---
 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Primary Meta Tags -->
-  <title>{title}</title>
-  <meta name="description" content={description} />
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="description" content={description} />
 
-  <!-- Open Graph / Social Tags -->
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
-  {image && <meta property="og:image" content={image} />}
-  <meta property="og:type" content="website" />
+<!-- Open Graph / Social Tags -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+{canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+{image && <meta property="og:image" content={image} />}
+<meta property="og:type" content="website" />
 
-    <!-- Security Headers -->
-    <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="
-        default-src 'self';
-        script-src 'self' https://calendar.google.com;
-        connect-src 'self';
-        style-src 'self' 'unsafe-inline';
-        img-src 'self' data:;
-        frame-src 'self' https://calendar.google.com;
-      "
-    />
-  
-  <!-- Fonts -->
-  <link
-    rel="preload"
-    href="https://use.typekit.net/tlu2buf.css"
-    as="style"
-    onload="this.onload=null;this.rel='stylesheet'"
-  />
-  <noscript>
-    <link rel="stylesheet" href="https://use.typekit.net/tlu2buf.css" />
-  </noscript>
-  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
-  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+<!-- Canonical URL -->
+{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
-<!-- Styles -->
-  <link rel="stylesheet" href="/styles/root.css" />
-  <link rel="stylesheet" href="/styles/main-styles.css" />
+<!-- Security Headers via <meta> (you can also move these to Netlify headers) -->
+<meta http-equiv="X-Frame-Options" content="DENY" />
+<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; script-src 'self' https://calendar.google.com; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src 'self' https://calendar.google.com;"
+/>
+
+<!-- Fonts -->
+<link
+  rel="preload"
+  href="https://use.typekit.net/tlu2buf.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet';"
+/>
+<noscript>
+  <link rel="stylesheet" href="https://use.typekit.net/tlu2buf.css" />
+</noscript>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin />
+<link rel="preconnect" href="https://p.typekit.net" crossorigin />
+
+<link rel="stylesheet" href="/src/styles/root.css" />
+<link rel="stylesheet" href="/src/styles/main-styles.css" />
 
 <!-- Favicon -->
-   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-   <link rel="manifest" href="/site.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
