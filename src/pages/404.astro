@@ -1,0 +1,53 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain   from "../components/NavMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="404 - Page Not Found"
+      description="We couldn’t find that page. Let’s get you back to reliable HVAC comfort."
+    />
+    <link rel="canonical" href="https://www.moderndegreeservices.com/404" />
+  </head>
+
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      <section class="hero" role="banner" style="padding:4rem 1rem; text-align:center;">
+        <div class="padding-hero">
+            <img
+                src="/images/404-illustration.svg"
+                alt="Line-art illustration of the number 404 with a melting thermometer and broken air conditioner"
+                style="max-width:500px; margin-bottom:2rem;"
+            />
+
+            <div class="container wrapper-center">
+                <h1 class="title-page highlight center">Oops We Lost the Cool!</h1>
+                <p class="body-large short center" style="margin-bottom:2rem;">
+                    Sorry, we can’t find the page you’re looking for. (404 Error)
+                </p>
+            </div>
+
+            <div class="wrapper-button center">
+                <a href="/" class="button-secondary" aria-label="Back to Home">
+                Back to Home
+                </a>
+                <a href="/contact" class="button-primary" aria-label="Get a free quote" style="margin-left:1rem;">
+                Get a Free Quote
+                </a>
+            </div>
+            </div>
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
+</html>
