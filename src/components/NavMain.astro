@@ -20,7 +20,7 @@ const servicesDropdown = services.map(svc => ({
 }));
 ---
 
-<nav class="navbar" role="navigation" aria-label="Main navigation">
+<nav class="navbar" aria-label="Main navigation">
   <div class="navbar-container">
     <a href="/" class="navbar-logo-link" aria-label="Home">
       <img src="/images/nav-logo.svg" alt="Site Logo" class="navbar-logo" width="7.5rem" />
@@ -29,7 +29,7 @@ const servicesDropdown = services.map(svc => ({
     <ul class="navbar-menu">
       {navLinks.map(link => (
         <li class={`navbar-item ${link.hasDropdown ? 'has-dropdown' : ''}`} role="none">
-          <a href={link.href} class="navbar-link" role="menuitem">
+          <a href={link.href} class="navbar-link">
             {link.label}
             {link.hasDropdown && (
               <svg
@@ -61,7 +61,7 @@ const servicesDropdown = services.map(svc => ({
       ))}
 
       <li class="navbar-item" role="none">
-        <a href="/get-started" class="navbar-cta-button" role="menuitem">
+        <a href="/get-started" class="navbar-cta-button">
           Join the ModSquad
         </a>
       </li>
@@ -127,8 +127,6 @@ const servicesDropdown = services.map(svc => ({
       </li>
     </ul>
   </div>
-
-<script src="/js/NavHamburger.js" type="module" defer></script>
 
   <style>
     :root {
