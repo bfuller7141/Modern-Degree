@@ -4,12 +4,6 @@
   status = 301
   force  = false
 
-[[redirects]]
-  from   = "/*"
-  to     = "/404.html"
-  status = 404
-  force  = false
-
 [build]
   publish = "dist"
   command = "npm run build"
