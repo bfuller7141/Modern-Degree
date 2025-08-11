@@ -5,8 +5,21 @@ const services = await getCollection('services')
   .then(all => all.filter(s => s.data.published))
   .then(all => all.sort((a, b) => a.data.order - b.data.order));
 
-const cities = await getCollection('cities')
-  .then(all => all.sort((a, b) => a.data.name.localeCompare(b.data.name)));
+const citiesAll = await getCollection('cities');
+
+function shuffle(array: any[]) {
+  let currentIndex = array.length, randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
+
+const citiesShuffled = shuffle([...citiesAll]);
+const cities = citiesShuffled.slice(0, 6);
 ---
 
 <footer
@@ -90,7 +103,7 @@ const cities = await getCollection('cities')
             <nav aria-labelledby="areas-heading" class="links-column">
               <h3 id="areas-heading" class="title-footer">Service Areas</h3>
               <ul class="list-links">
-                {cities.map(city => (
+                {cities.map((city: { slug: any; data: { name: unknown; }; }) => (
                   <li>
                     <a href={`/cities/${city.slug}`} class="link">
                       {city.data.name}

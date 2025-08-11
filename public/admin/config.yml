@@ -40,16 +40,19 @@ collections:
       - { label: "Slug", name: "slug", widget: "string", i18n: { structure: "single_file" } }
       - { label: "Order", name: "order", widget: "number", default: 0 }
       - { label: "Published", name: "published", widget: "boolean", default: false }
-  - name: "cities"
+    - name: "cities"
     label: "Cities"
     folder: "src/content/cities"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "City Name",        name: "name",          widget: "string" }
-      - { label: "Page Heading",     name: "heading",  widget: "string" }
+      - { label: "Page Heading",     name: "page_heading",  widget: "string" }     # fix field name to match your schema (was 'heading')
       - { label: "Content Title",    name: "content_title", widget: "string" }
       - { label: "City Image",       name: "image",         widget: "image" }
+      - label: "Description"
+        name: "description"
+        widget: "text"   # or 'textarea' depending on your CMS version and preference
   - name: "reviews"
     label: "Customer Reviews"
     folder: "src/content/reviews"

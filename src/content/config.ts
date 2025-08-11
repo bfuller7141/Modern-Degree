@@ -41,8 +41,10 @@ const cities = defineCollection({
     page_heading:  z.string(),
     content_title: z.string(),
     image:         z.string(),
+    description:   z.string().optional(), 
   }),
 });
+
 
 export const collections = {
   services,
