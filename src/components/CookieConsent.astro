@@ -1,0 +1,128 @@
+---
+export interface Props {
+  pixelId: string;
+  policyUrl?: string;
+  storageKey?: string;
+  respectDNT?: boolean;
+}
+const {
+  pixelId,
+  policyUrl = "/privacy",
+  storageKey = "cookie-consent-v1",
+  respectDNT = true,
+} = Astro.props;
+---
+
+<div id="cookie-consent" class="cookie-consent" data-nosnippet hidden inert>
+  <div class="cookie-consent__inner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <div class="cookie-consent__text">
+      <p class="cookie-consent__title title-section">Cookies and Meta Pixel</p>
+      <p class="cookie-consent__body body-text">
+        We use cookies to improve your experience and measure ads with the Meta Pixel.
+        You can accept or decline. <a class="text-link" href={policyUrl}>Learn more</a>.
+      </p>
+    </div>
+    <div class="cookie-consent__actions wrapper-button">
+      <button id="cc-accept" class="button-primary" type="button">Accept</button>
+      <button id="cc-decline" class="button-secondary" type="button">Decline</button>
+      <button id="cc-close" class="text-only" type="button" aria-label="Close notice">Close</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-consent {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 9999;
+    background: var(--secondary-500);
+    color: var(--accent-500);
+    border-top: 4px solid var(--primary-500);
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
+  }
+  .cookie-consent__inner {
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: var(--section-spacing-vertical-sm) var(--section-spacing-horizontal);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .cookie-consent__title { margin: 0 0 .25rem; color: var(--accent-500); }
+  .cookie-consent__body { margin: 0; color: var(--accent-500); }
+  .cookie-consent .wrapper-button { margin-top: 0; gap: 1rem; }
+  .cookie-consent .button-primary,
+  .cookie-consent .button-secondary,
+  .cookie-consent .text-only {
+    font-size: 1rem;
+    padding: .6rem 1.2rem;
+  }
+  @media (max-width: 799px) {
+    .cookie-consent__inner { grid-template-columns: 1fr; }
+    .cookie-consent .wrapper-button { flex-wrap: wrap; }
+  }
+</style>
+
+<script is:raw>
+  (() => {
+    const PIXEL_ID = ${JSON.stringify(pixelId)};
+    const STORAGE_KEY = ${JSON.stringify(storageKey)};
+    const RESPECT_DNT = ${JSON.stringify(respectDNT)};
+
+    const $banner = document.getElementById('cookie-consent');
+    const $accept = document.getElementById('cc-accept');
+    const $decline = document.getElementById('cc-decline');
+    const $close = document.getElementById('cc-close');
+
+    const getConsent = () => {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "null"); }
+      catch { return null; }
+    };
+    const setConsent = (value) => {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(value)); } catch {}
+      document.documentElement.toggleAttribute('data-consented', value === 'accepted');
+      // Also set cookie for server access
+      document.cookie = "cookie-consent=" + value + "; path=/; max-age=31536000; SameSite=Lax";
+    };
+
+    const dntEnabled = () => {
+      const dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack || "0");
+      return dnt === "1" || dnt === "yes";
+    };
+
+    const show = () => { $banner.hidden = false; $banner.removeAttribute('inert'); $accept?.focus(); };
+    const hide = () => { $banner.hidden = true; $banner.setAttribute('inert',''); };
+
+    const loadMetaPixel = (id) => {
+      if (!id || document.getElementById('meta-pixel-script')) return;
+      !(function(f,b,e,v,n,t,s){
+        if(f.fbq) return; n=f.fbq=function(){ n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq) f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[];
+        t=b.createElement(e); t.async=!0; t.id='meta-pixel-script'; t.src=v;
+        s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
+      })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+      window.fbq('init', id);
+      window.fbq('consent', 'grant');
+      window.fbq('track', 'PageView');
+    };
+
+    const init = () => {
+      if (RESPECT_DNT && dntEnabled()) { setConsent('rejected'); hide(); return; }
+      const saved = getConsent();
+      if (saved === 'accepted') { setConsent('accepted'); loadMetaPixel(PIXEL_ID); hide(); return; }
+      if (saved === 'rejected') { setConsent('rejected'); hide(); return; }
+      show();
+    };
+
+    $accept?.addEventListener('click', () => { setConsent('accepted'); loadMetaPixel(PIXEL_ID); hide(); });
+    $decline?.addEventListener('click', () => { setConsent('rejected'); hide(); });
+    $close?.addEventListener('click', hide);
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else { init(); }
+  })();
+</script>
