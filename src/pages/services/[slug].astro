@@ -7,6 +7,7 @@ import ColumnRight from "../../components/ColumnRight.astro";
 import MainCTA from "../../components/MainCTA.astro";
 import FooterMain from "../../components/FooterMain.astro";
 import ServiceFAQ from "../../components/ServiceFAQ.astro";
+import FacebookPixel from '../../components/FacebookPixel.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('services', (entry) => entry.data.published);

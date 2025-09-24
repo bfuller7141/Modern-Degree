@@ -6,6 +6,7 @@ import ColumnRight  from '../../components/ColumnRight.astro';
 import MainCTA      from '../../components/MainCTA.astro';
 import FooterMain   from '../../components/FooterMain.astro';
 import ServiceBento from '../../components/ServiceBento.astro';
+import FacebookPixel from '../../components/FacebookPixel.astro';
 
 export async function getStaticPaths() {
   const cities = await getCollection('cities');
@@ -46,7 +47,9 @@ const pageDescription = city.data.description || descriptionFallback;
     <link rel="canonical" href={`https://www.moderndegreeservices.com/cities/${city.slug}`} />
   </head>
   <body>
-    <header><NavMain/></header>
+    <header>
+      <NavMain/>
+    </header>
     <main>
       <!-- Hero -->
       <section class="hero" role="banner">
