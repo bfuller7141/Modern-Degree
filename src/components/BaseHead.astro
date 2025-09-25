@@ -69,7 +69,7 @@ const canonicalUrl = base ? new URL(Astro.url.pathname, base).href : "";
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="manifest" href="/site.webmanifest" />
 
-<script is:raw>
+<script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -82,7 +82,6 @@ s.parentNode.insertBefore(t,s)}(window,document,'script',
 fbq('init', '1178383969914517');
 fbq('track', 'PageView');
 
-// Re-fire PageView on Astro client-side navigations (view transitions, etc.)
 document.addEventListener('astro:page-load', function () {
   try { fbq('track', 'PageView'); } catch (e) {}
 });
