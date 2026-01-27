@@ -1,0 +1,146 @@
+---
+interface Props {
+  title?: string;
+  terms: string;
+  id?: string;
+}
+
+const { 
+  title = "Terms & Conditions", 
+  terms,
+  id = "terms-section"
+} = Astro.props;
+---
+
+<section {id} class="terms-section padding-normal small-top">
+  <div class="container">
+    <div class="terms-container">
+      <h3 class="terms-title">{title}</h3>
+      <details class="terms-details">
+        <summary class="terms-summary">
+          <span class="summary-icon">+</span>
+          <span class="summary-text">Fine Print - Click to expand</span>
+        </summary>
+        <div class="terms-content">
+          <p class="terms-text">{terms}</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<style>
+  .terms-section {
+    background: var(--accent-500);
+    border-top: 1px solid var(--gray-300);
+  }
+
+  .terms-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .terms-title {
+    font-size: var(--title-sm);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xl);
+    color: var(--secondary-500);
+    font-family: var(--font-heading);
+  }
+
+  .terms-details {
+    border: 1px solid var(--gray-400);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .terms-summary {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    background: var(--accent-500);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid var(--gray-300);
+  }
+
+  .terms-summary:hover {
+    background: var(--gray-100);
+  }
+
+  .summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--primary-500);
+    color: var(--white);
+    border-radius: 50%;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    font-family: var(--font-heading);
+  }
+
+  .terms-details[open] .summary-icon {
+    transform: rotate(45deg);
+  }
+
+  .summary-text {
+    font-weight: 600;
+    color: var(--secondary-500);
+    font-family: var(--font-heading);
+    font-size: var(--fs-body);
+  }
+
+  .terms-content {
+    padding: var(--spacing-xl);
+    background: var(--white);
+  }
+
+  .terms-text {
+    margin: 0;
+    font-size: var(--fs-bodysm);
+    line-height: 1.6;
+    color: var(--secondary-500);
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: var(--font-body);
+  }
+
+  /* Remove default details styling */
+  .terms-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .terms-summary {
+      padding: var(--spacing-md) var(--spacing-lg);
+      gap: var(--spacing-md);
+    }
+
+    .terms-content {
+      padding: var(--spacing-lg);
+    }
+
+    .terms-text {
+      font-size: var(--fs-bodyxs);
+    }
+  }
+</style>
+
+<script>
+  // Optional: Analytics tracking for terms expansion
+  document.querySelectorAll<HTMLDetailsElement>("[id='terms-section'] details").forEach((details) => {
+    details.addEventListener("toggle", () => {
+      if (details.open) {
+        // You could send a track event here if using analytics
+        console.log("Terms expanded");
+      }
+    });
+  });
+</script>
