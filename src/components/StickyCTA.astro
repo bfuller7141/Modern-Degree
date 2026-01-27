@@ -1,0 +1,110 @@
+---
+interface Props {
+  text?: string;
+  link?: string;
+  phone?: string;
+  ariaLabel?: string;
+}
+
+const { 
+  text = "Claim Your Offer",
+  link = "#promo-form",
+  phone,
+  ariaLabel = "Claim Your Offer"
+} = Astro.props;
+
+const href = phone ? `tel:${phone}` : link;
+---
+
+<div class="sticky-cta-container">
+  <a 
+    href={href}
+    class="sticky-cta-button"
+    aria-label={ariaLabel}
+  >
+    {text}
+  </a>
+</div>
+
+<style>
+  .sticky-cta-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 100;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent);
+    padding: var(--spacing-md);
+  }
+
+  .sticky-cta-button {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+    color: var(--white);
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: var(--fs-body);
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    font-family: var(--font-heading);
+  }
+
+  .sticky-cta-button:active {
+    transform: scale(0.98);
+  }
+
+  .sticky-cta-button:hover {
+    background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+  }
+
+  /* Show on mobile only */
+  @media (max-width: 768px) {
+    .sticky-cta-container {
+      display: block;
+    }
+  }
+
+  /* Hide on very small screens where space is needed */
+  @media (max-height: 600px) and (max-width: 768px) {
+    .sticky-cta-container {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  /**
+   * Logic to hide sticky CTA when the contact form section is visible
+   * and show it again when scrolling away
+   */
+  const stickyContainer = document.querySelector(
+    ".sticky-cta-container"
+  ) as HTMLElement;
+  const formSection = document.getElementById(
+    "promo-form"
+  ) as HTMLElement;
+
+  if (stickyContainer && formSection && window.innerWidth <= 768) {
+    const hideFormWhenInView = () => {
+      if (!formSection) return;
+
+      const rect = formSection.getBoundingClientRect();
+      // Hide sticky CTA if form section is more than 20% visible
+      if (rect.top < window.innerHeight * 0.8) {
+        stickyContainer.style.display = "none";
+      } else {
+        stickyContainer.style.display = "block";
+      }
+    };
+
+    window.addEventListener("scroll", hideFormWhenInView, { passive: true });
+    // Check on load
+    hideFormWhenInView();
+  }
+</script>

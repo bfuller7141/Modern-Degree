@@ -1,0 +1,389 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+}
+
+const { id = "promo-contact-form", class: className = "" } = Astro.props;
+---
+
+<form {id} class={`promo-form ${className}`} method="POST" action="/api/contact">
+  <div class="form-grid">
+    {/* NAME FIELD */}
+    <div class="form-group">
+      <label for="full-name" class="form-label">Full Name *</label>
+      <input
+        type="text"
+        id="full-name"
+        name="fullName"
+        class="form-input"
+        placeholder="John Smith"
+        required
+        aria-required="true"
+      />
+    </div>
+
+    {/* PHONE FIELD */}
+    <div class="form-group">
+      <label for="phone" class="form-label">Phone Number *</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        class="form-input"
+        placeholder="(480) 123-4567"
+        pattern="[0-9\-\(\)\s]+"
+        required
+        aria-required="true"
+      />
+    </div>
+
+    {/* EMAIL FIELD */}
+    <div class="form-group">
+      <label for="email" class="form-label">Email Address *</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-input"
+        placeholder="you@example.com"
+        required
+        aria-required="true"
+      />
+    </div>
+
+    {/* ZIP CODE FIELD */}
+    <div class="form-group">
+      <label for="zip-code" class="form-label">Zip Code *</label>
+      <input
+        type="text"
+        id="zip-code"
+        name="zipCode"
+        class="form-input"
+        placeholder="85001"
+        pattern="[0-9]{5}"
+        required
+        aria-required="true"
+      />
+    </div>
+
+    {/* HOMEOWNER STATUS - RADIO GROUP */}
+    <fieldset class="form-fieldset full-width">
+      <legend class="form-legend">Are you an Arizona homeowner? *</legend>
+      <div class="radio-group">
+        <div class="radio-item">
+          <input
+            type="radio"
+            id="homeowner-yes"
+            name="isHomeowner"
+            value="yes"
+            required
+            aria-required="true"
+          />
+          <label for="homeowner-yes" class="radio-label">Yes</label>
+        </div>
+        <div class="radio-item">
+          <input
+            type="radio"
+            id="homeowner-no"
+            name="isHomeowner"
+            value="no"
+            required
+            aria-required="true"
+          />
+          <label for="homeowner-no" class="radio-label">No</label>
+        </div>
+      </div>
+    </fieldset>
+
+    {/* TERMS AGREEMENT CHECKBOX */}
+    <fieldset class="form-fieldset full-width">
+      <legend class="sr-only">Terms Agreement</legend>
+      <div class="checkbox-item">
+        <input
+          type="checkbox"
+          id="terms-agree"
+          name="termsAgreed"
+          value="yes"
+          required
+          aria-required="true"
+          aria-describedby="terms-description"
+        />
+        <label for="terms-agree" class="checkbox-label">
+          I understand and agree to the terms of this special offer *
+        </label>
+      </div>
+      <p id="terms-description" class="terms-note">
+        Offer valid for Arizona homeowners only. See terms section for full details.
+      </p>
+    </fieldset>
+  </div>
+
+  {/* SUBMIT BUTTON */}
+  <div class="form-actions">
+    <button type="submit" class="button-primary full-width">
+      Check My Eligibility
+    </button>
+    <p class="form-note">We'll contact you within 24 hours to discuss your offer.</p>
+  </div>
+
+  {/* HIDDEN FIELD FOR TRACKING */}
+  <input type="hidden" name="offerType" value="trane-hvac-promo" />
+</form>
+
+<style>
+  .promo-form {
+    max-width: 600px;
+    margin: var(--spacing-xxl) auto;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xxl);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-label {
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--fs-body);
+    color: var(--secondary-500);
+    font-family: var(--font-heading);
+  }
+
+  .form-input {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: 1px solid var(--gray-400);
+    border-radius: 0.5rem;
+    font-size: var(--fs-body);
+    font-family: var(--font-body);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--white);
+    color: var(--secondary-500);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(242, 142, 34, 0.1);
+  }
+
+  .form-input::placeholder {
+    color: var(--gray-600);
+  }
+
+  /* FIELDSET STYLES */
+  .form-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    grid-column: 1 / -1;
+  }
+
+  .form-legend {
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    font-size: var(--fs-body);
+    color: var(--secondary-500);
+    font-family: var(--font-heading);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* RADIO GROUP STYLES */
+  .radio-group {
+    display: flex;
+    gap: var(--spacing-xl);
+    flex-wrap: wrap;
+  }
+
+  .radio-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .radio-item input[type="radio"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    accent-color: var(--primary-500);
+  }
+
+  .radio-label {
+    font-size: var(--fs-body);
+    cursor: pointer;
+    color: var(--secondary-500);
+    font-family: var(--font-body);
+  }
+
+  /* CHECKBOX STYLES */
+  .checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.125rem;
+    cursor: pointer;
+    accent-color: var(--primary-500);
+    flex-shrink: 0;
+  }
+
+  .checkbox-label {
+    font-size: var(--fs-body);
+    cursor: pointer;
+    color: var(--secondary-500);
+    line-height: 1.5;
+    font-family: var(--font-body);
+  }
+
+  .terms-note {
+    font-size: var(--fs-bodysm);
+    color: var(--gray-600);
+    margin-top: var(--spacing-sm);
+    margin-left: var(--spacing-xl);
+  }
+
+  /* FORM ACTIONS */
+  .form-actions {
+    text-align: center;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .button-primary {
+    padding: var(--spacing-lg) var(--spacing-xxl);
+    font-size: var(--fs-body);
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+    color: var(--white);
+    font-family: var(--font-heading);
+    transition: all 0.3s ease;
+  }
+
+  .button-primary:hover {
+    background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-note {
+    margin-top: var(--spacing-lg);
+    font-size: var(--fs-bodysm);
+    color: var(--gray-600);
+  }
+
+  /* MOBILE RESPONSIVENESS */
+  @media (max-width: 640px) {
+    .promo-form {
+      margin: var(--spacing-lg) 0;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .form-group,
+    .form-fieldset {
+      grid-column: 1 / -1;
+    }
+
+    .radio-group {
+      gap: var(--spacing-lg);
+    }
+
+    .button-primary {
+      width: 100%;
+      padding: var(--spacing-md) var(--spacing-lg);
+    }
+  }
+</style>
+
+<script>
+  // Optional: Add client-side form validation and submission handling
+  const form = document.getElementById("promo-contact-form") as HTMLFormElement;
+
+  if (form) {
+    form.addEventListener("submit", async (e: Event) => {
+      e.preventDefault();
+
+      // Collect form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      try {
+        // Submit to your contact endpoint
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          // Show success message
+          form.innerHTML = `
+            <div class="success-message" role="alert">
+              <h3>Thank you!</h3>
+              <p>We've received your information and will contact you within 24 hours.</p>
+            </div>
+          `;
+        } else {
+          alert("There was an error submitting the form. Please try again.");
+        }
+      } catch (error) {
+        console.error("Form submission error:", error);
+        alert("There was an error submitting the form. Please try again.");
+      }
+    });
+  }
+</script>
+
+<style>
+  .success-message {
+    padding: var(--spacing-xxl);
+    background: var(--success-200);
+    border: 1px solid var(--success-500);
+    border-radius: 0.75rem;
+    text-align: center;
+    color: var(--secondary-500);
+  }
+
+  .success-message h3 {
+    margin-top: 0;
+    font-size: var(--title-sm);
+    font-family: var(--font-heading);
+  }
+
+  .success-message p {
+    margin-bottom: 0;
+    font-family: var(--font-body);
+  }
+</style>

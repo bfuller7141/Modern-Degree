@@ -1,0 +1,290 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavMain from "../components/NavMain.astro";
+import FooterMain from "../components/FooterMain.astro";
+import PromoContactForm from "../components/PromoContactForm.astro";
+import TermsSection from "../components/TermsSection.astro";
+import TrustBadges from "../components/TrustBadges.astro";
+import MainCTA from "../components/MainCTA.astro";
+import FacebookPixel from "../components/FacebookPixel.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="FREE Mini-Split or Water Heater with Trane HVAC Purchase — Modern Degree"
+      description="Get a FREE Mitsubishi mini-split system or water heater (up to $6,500 value) with your new Trane HVAC system purchase. Limited time offer ends March 31, 2026."
+      image=""
+    />
+    <link
+      rel="canonical"
+      href="https://www.moderndegreeservices.com/trane-hvac-promo"
+    />
+  </head>
+
+  <body>
+    <header>
+      <NavMain />
+    </header>
+
+    <main id="main-content">
+      {/* HERO SECTION */}
+      <section class="hero" role="banner">
+        <div class="padding-hero">
+          <div class="container wrapper-column">
+            <div class="wrapper large">
+              <h1 class="title-page">
+                FREE Mini-Split or<br />
+                <span class="title-page highlight">Water Heater Included</span>
+              </h1>
+              <p class="body-text">
+                Get a FREE Mitsubishi mini-split system OR water heater (up to $6,500 in value) when you purchase a new Trane HVAC system. Limited time offer.
+              </p>
+              <div class="offer-highlight">
+                <p class="offer-text">
+                  <span class="highlight-bold">Minimum $12,000 purchase</span> on new Trane HVAC system installation by Modern Degree LLC
+                </p>
+              </div>
+              <div class="wrapper-button">
+                <a
+                  href="#promo-form"
+                  class="button-primary"
+                  aria-label="Claim Your Free Offer"
+                >
+                  Claim Your Free Offer
+                </a>
+                <a
+                  href="tel:+14807192917"
+                  class="button-secondary"
+                  aria-label="Call for Details"
+                >
+                  Call for Details
+                </a>
+              </div>
+            </div>
+            <div class="wrapper small">
+              <img
+                src="/images/static/trane-hvac-system.webp"
+                alt="Modern Trane HVAC system ready for installation"
+                class="image-hero"
+                width="693"
+                height="550"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TRUST BADGES SECTION */}
+      <TrustBadges
+      />
+
+      {/* OFFER DETAILS SECTION */}
+      <section class="offer-details padding-normal">
+        <div class="container">
+          <div class="title-wrapper">
+            <h2 class="title-section">What's Included in This Offer</h2>
+          </div>
+          <div class="offer-grid">
+            <div class="offer-card">
+              <h3 class="title-card">Option 1: Mini-Split System</h3>
+              <p class="body-text">
+                Up to 24,000 BTU Mitsubishi mini-split system installed in one zone of your home.
+              </p>
+              <ul class="feature-list">
+                <li>Professional installation included</li>
+                <li>Up to $6,500 in value</li>
+                <li>Electrical run up to 30 feet</li>
+              </ul>
+            </div>
+            <div class="offer-card">
+              <h3 class="title-card">Option 2: Water Heater</h3>
+              <p class="body-text">
+                FREE standard water heater installation with your new Trane system.
+              </p>
+              <ul class="feature-list">
+                <li>Professional installation included</li>
+                <li>Up to $6,500 in value</li>
+                <li>Standard installation only</li>
+              </ul>
+            </div>
+            <div class="offer-card">
+              <h3 class="title-card">Option 3: Installation Discount</h3>
+              <p class="body-text">
+                Or take $1,500 off your complete HVAC installation instead.
+              </p>
+              <ul class="feature-list">
+                <li>Applied to total project cost</li>
+                <li>Works with any system choice</li>
+                <li>Simplifies your investment</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* REQUIREMENTS CALLOUT */}
+      <section class="requirements padding-normal small-top">
+        <div class="container">
+          <div class="callout-box">
+            <h3 class="title-card">Before You Apply</h3>
+            <p class="body-text">
+              To qualify for this offer, your home must meet these requirements:
+            </p>
+            <ul class="requirement-list">
+              <li>Arizona homeowner's only</li>
+              <li>Room in electrical panel for required circuit (mini-split option)</li>
+              <li>Electrical run to mini-split location must be less than 30 feet</li>
+              <li>Work outside these parameters requires additional fees</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT FORM SECTION */}
+      <section id="promo-form" class="form-section padding-normal small-top">
+        <div class="container">
+          <div class="title-wrapper">
+            <h2 class="title-section">Get Your FREE Upgrade Today</h2>
+            <p class="body-text">
+              Fill out the form below and we'll contact you within 24 hours to discuss your options.
+            </p>
+          </div>
+          <PromoContactForm />
+        </div>
+      </section>
+
+      {/* TERMS SECTION */}
+      <TermsSection
+        title="Important Details"
+        terms="Special ends on March 31st, 2026. Mini-split size is up to 24000 BTU. There must be room in the electrical panel for the required circuit. Electrical run to mini-split must be less than 30'. Any work needed outside of these parameters will not be included in the deal and will require additional fees. Standard water heater installation only, no tankless. Arizona homeowner's only."
+      />
+
+      {/* MAIN CTA */}
+      <section class="padding-normal small-top large-bottom">
+        <div class="container">
+          <MainCTA />
+        </div>
+      </section>
+    </main>
+
+    <FooterMain />
+  </body>
+</html>
+
+<style>
+  .offer-highlight {
+    background-color: var(--primary-100);
+    border-left: 4px solid var(--primary-500);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    border-radius: 0.75rem;
+  }
+
+  .offer-text {
+    margin: 0;
+    font-size: var(--fs-bodylg);
+    color: var(--secondary-500);
+    font-family: var(--font-body);
+  }
+
+  .highlight-bold {
+    font-weight: 700;
+    color: var(--primary-500);
+  }
+
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xxl);
+    margin-top: var(--spacing-xxl);
+  }
+
+  .offer-card {
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: 0.75rem;
+    padding: var(--spacing-xxl);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .offer-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .title-card {
+    font-size: var(--title-sm);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    color: var(--secondary-500);
+    font-family: var(--font-heading);
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--spacing-xl);
+  }
+
+  .feature-list li {
+    padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-xl);
+    position: relative;
+    font-size: var(--fs-body);
+    color: var(--secondary-500);
+    font-family: var(--font-body);
+  }
+
+  .feature-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-500);
+    font-weight: 700;
+  }
+
+  .requirement-list {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--spacing-xl);
+  }
+
+  .requirement-list li {
+    padding: var(--spacing-md) 0 var(--spacing-md) var(--spacing-xl);
+    position: relative;
+    font-size: var(--fs-body);
+    color: var(--secondary-500);
+    font-family: var(--font-body);
+  }
+
+  .requirement-list li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-500);
+    font-weight: 700;
+  }
+
+  .callout-box {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+    border-radius: 0.75rem;
+    padding: var(--spacing-xxl);
+  }
+
+  .form-section {
+    background: var(--accent-500);
+  }
+
+  @media (max-width: 768px) {
+    .offer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .offer-highlight {
+      padding: var(--spacing-lg);
+    }
+  }
+</style>
