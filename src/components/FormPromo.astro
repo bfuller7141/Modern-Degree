@@ -39,23 +39,23 @@ const formName = "promo-contact";
     </div>
   </div>
 
-  <div class="form-row">
-    <!-- Are You Arizona Home Owner -->
-    <div class="form-group">
-      <label for="homeowner" class="form-label">Are you an Arizona Home Owner? *</label>
-      <select id="homeowner" name="homeowner" class="form-select" required>
-        <option value="" disabled selected>Select an option</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-    </div>
+  <div class="form-group">
+    <label for="homeowner" class="form-label">Are you an Arizona Home Owner? *</label>
+    <select id="homeowner" name="homeowner" class="form-select" required>
+      <option value="" disabled selected>Select an option</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    <p id="homeowner-message" class="form-message error" style="display: none;">
+      We're sorry, you don't qualify for this offer. This promotion is available to Arizona homeowners only.
+    </p>
   </div>
 
   <div class="form-row">
     <!-- Terms Agreement -->
     <div class="form-group">
       <label>
-        <input type="checkbox" name="terms" required />
+        <input type="checkbox" name="terms" value="Accepted" required />
         I have read and agree to the terms of this special offer.*
         <p>* Special ends on March 31st, 2026. Mini-split size is up to 24000 BTU. There must be room in the electrical panel for the required circuit. Electrical run to mini-split must be less than 30 feet. Any work needed outside of these parameters will not be included in the deal and will require additional fees. Standard water heater installation only, no tankless. Arizona homeowner’s only.</p>
       </label>
@@ -72,6 +72,16 @@ const formName = "promo-contact";
 
 .hidden {
     display: none;
+}
+
+.form-message.error {
+  margin-top: 0.75rem;
+  padding: 1rem;
+  background-color: #fef2f2;
+  border-left: 3px solid #dc2626;
+  color: #991b1b;
+  font-size: 0.9375rem;
+  border-radius: 0 0.25rem 0.25rem 0;
 }
 
 /* Form Styles */
@@ -174,4 +184,29 @@ const formName = "promo-contact";
           : 'Winter Promo Submission';
       });
     }
+
+  // Homeowner eligibility message
+  const homeownerSelect = document.getElementById('homeowner') as HTMLSelectElement | null;
+  const homeownerMessage = document.getElementById('homeowner-message') as HTMLElement | null;
+  const contactForm = document.querySelector('.contact-form') as HTMLFormElement | null;
+
+  if (homeownerSelect && homeownerMessage) {
+    homeownerSelect.addEventListener('change', () => {
+      if (homeownerSelect.value === 'No') {
+        homeownerMessage.style.display = 'block';
+      } else {
+        homeownerMessage.style.display = 'none';
+      }
+    });
+  }
+
+  if (contactForm && homeownerSelect && homeownerMessage) {
+    contactForm.addEventListener('submit', (e) => {
+      if (homeownerSelect.value === 'No') {
+        e.preventDefault();
+        homeownerMessage.style.display = 'block';
+        homeownerSelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
 </script>
