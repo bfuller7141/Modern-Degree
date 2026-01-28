@@ -1,0 +1,175 @@
+---
+export interface Props {
+  title: string;
+  titleSpan: string;
+  description: string;
+  primaryLink: string;
+  primaryText: string;
+  secondaryLink?: string;
+  secondaryText?: string;
+  imageSource: string;
+  imageAlt: string;
+  features?: { title: string; desc: string; icon?: string }[];
+}
+
+const {
+  title,
+  titleSpan,
+  description,
+  primaryLink,
+  primaryText,
+  secondaryLink,
+  secondaryText,
+  imageSource,
+  imageAlt,
+  features = []
+} = Astro.props;
+---
+
+<section class="wrapper-column">
+  <div class="wrapper large">
+    <h2 class="title-section">
+      {title}<br />
+      <span class="title-section highlight">{titleSpan}</span>
+    </h2>
+
+    <p class="body-text">{description}</p>
+
+    {features.length > 0 && (
+      <ul class="feature-list">
+        {features.map((feat) => (
+          <li class="feature-card">
+            <div class="feature-header">
+              {feat.icon && (
+                <span class="feature-icon" aria-hidden="true">
+                  <img src={feat.icon} alt="" width="24" height="24" />
+                </span>
+              )}
+              <h3 class="feature-title">{feat.title}</h3>
+            </div>
+            <p class="feature-desc">{feat.desc}</p>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <p class="terms-text">Special ends on March 31st, 2026.  Mini-split size is up to 24000 BTU. There must be room in the electrical panel for the required circuit. Electrical run to mini-split must be less than 30'. Any work needed outside of these parameters will not be included in the deal and will require additional fees. Standard water heater installation only, no tankless. Arizona homeowner’s only.</p>
+
+    <div class="wrapper-button">
+      <a href={primaryLink} class="button-primary">
+        {primaryText}
+      </a>
+      {secondaryLink && secondaryText && (
+        <a href={secondaryLink} class="button-secondary">
+          {secondaryText}
+        </a>
+      )}
+    </div>
+  </div>
+
+  <div class="wrapper small">
+    <img
+      src={imageSource}
+      alt={imageAlt}
+      class="image-main"
+      loading="lazy"
+      width="651"
+      height="800"
+    />
+  </div>
+</section>
+
+<style>
+  .wrapper-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .wrapper-column .wrapper.large {
+    order: 2;
+    flex: 1 1 40rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrapper-column .wrapper.small {
+    order: 1;
+    flex: 1 1 30rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Feature list - FAQ card style */
+  ul.feature-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .feature-card {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .feature-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--primary-100, rgba(242, 142, 34, 0.1));
+    border-radius: 0.5rem;
+  }
+
+  .feature-icon img {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+  }
+
+  .feature-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--primary-500);
+  }
+
+  .feature-desc {
+    margin: 0;
+    font-size: var(--fs-bodysm, 0.9375rem);
+    color: var(--secondary-500);
+    line-height: 1.6;
+  }
+
+  .terms-text {
+    font-size: 1rem;
+    color: var(--gray-800);
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 1099px) {
+    .wrapper-column .wrapper.large {
+      flex: 1 1;
+    }
+
+    .wrapper-column .wrapper.small {
+      flex: 1 1;
+    }
+  }
+</style>

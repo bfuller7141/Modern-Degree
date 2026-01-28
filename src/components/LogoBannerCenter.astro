@@ -1,0 +1,40 @@
+<section class="logo-banner">
+  <div class="container">
+    <div class="logo-banner-row">
+      <div class="mitsubishi-logo">
+        <img src="/images/logos/mitsubishi.svg" alt="Mitsubishi Electric" />
+        <img src="/images/logos/diamond-dealer.svg" alt="Mitsubishi Diamond Contractor" />
+      </div>
+      <img src="/images/logos/trane.svg" alt="Trane" />
+    </div>
+  </div>
+</section>
+
+<style>
+.logo-banner {
+  padding: 4rem 0;
+}
+.logo-banner-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+.logo-banner-row img {
+  height: 4rem;
+  width: auto;
+  object-fit: contain;
+}
+.mitsubishi-logo {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+@media (max-width: 768px) {
+  .logo-banner-row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+</style>
