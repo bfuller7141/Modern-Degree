@@ -171,13 +171,13 @@ const formName = "promo-contact";
 }
 </style>
 
-<script>
+<script is:inline>
   // Dynamic email subject
   document.addEventListener('DOMContentLoaded', () => {
-    const nameInput = document.getElementById('name') as HTMLInputElement | null;
-    const subjectInput = document.getElementById('form-subject') as HTMLInputElement | null;
+    const nameInput = document.getElementById('name');
+    const subjectInput = document.getElementById('form-subject');
 
-    if (nameInput && subjectInput) {
+    if (nameInput instanceof HTMLInputElement && subjectInput instanceof HTMLInputElement) {
       nameInput.addEventListener('input', () => {
         const name = nameInput.value.trim();
         subjectInput.value = name 
@@ -189,11 +189,11 @@ const formName = "promo-contact";
 
   // Homeowner eligibility message
 document.addEventListener('DOMContentLoaded', () => {
-  const homeownerSelect = document.getElementById('homeowner') as HTMLSelectElement | null;
-  const homeownerMessage = document.getElementById('homeowner-message') as HTMLElement | null;
-  const contactForm = document.querySelector('.contact-form') as HTMLFormElement | null;
+  const homeownerSelect = document.getElementById('homeowner');
+  const homeownerMessage = document.getElementById('homeowner-message');
+  const contactForm = document.querySelector('.contact-form');
 
-  if (homeownerSelect && homeownerMessage) {
+  if (homeownerSelect instanceof HTMLSelectElement && homeownerMessage instanceof HTMLElement) {
     homeownerSelect.addEventListener('change', () => {
       if (homeownerSelect.value === 'No') {
         homeownerMessage.style.display = 'block';
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (contactForm && homeownerSelect && homeownerMessage) {
+  if (contactForm instanceof HTMLFormElement && homeownerSelect instanceof HTMLSelectElement && homeownerMessage instanceof HTMLElement) {
     contactForm.addEventListener('submit', (e) => {
       if (homeownerSelect.value === 'No') {
         e.preventDefault();
