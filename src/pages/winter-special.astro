@@ -240,46 +240,6 @@ import LogoBannerCenter from "../components/LogoBannerCenter.astro";
 </style>
 
 <script is:inline>
-  // Smooth scroll for anchor links
-  document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      e.preventDefault();
-      const currentAnchor = e.currentTarget;
-      if (!(currentAnchor instanceof HTMLAnchorElement)) return;
-      const href = currentAnchor.getAttribute("href");
-      const target = href ? document.querySelector(href) : null;
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    });
-  });
-  });
-
-  // Hide sticky CTA when form is in view
-  document.addEventListener('DOMContentLoaded', () => {
-  const formSection = document.getElementById("claim-offer");
-  const stickyCta = document.querySelector(".mobile-sticky-cta");
-
-  if (formSection && stickyCta instanceof HTMLElement) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            stickyCta.style.transform = "translateY(100%)";
-            stickyCta.style.transition = "transform 0.3s ease";
-          } else {
-            stickyCta.style.transform = "translateY(0)";
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(formSection);
-  }
-  });
+console.log('Script loaded');
+alert('Script is running');
 </script>
