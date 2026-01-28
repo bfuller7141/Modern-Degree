@@ -173,6 +173,7 @@ const formName = "promo-contact";
 
 <script>
   // Dynamic email subject
+  document.addEventListener('DOMContentLoaded', () => {
     const nameInput = document.getElementById('name') as HTMLInputElement | null;
     const subjectInput = document.getElementById('form-subject') as HTMLInputElement | null;
 
@@ -184,8 +185,10 @@ const formName = "promo-contact";
           : 'Winter Promo Submission';
       });
     }
+  });
 
   // Homeowner eligibility message
+document.addEventListener('DOMContentLoaded', () => {
   const homeownerSelect = document.getElementById('homeowner') as HTMLSelectElement | null;
   const homeownerMessage = document.getElementById('homeowner-message') as HTMLElement | null;
   const contactForm = document.querySelector('.contact-form') as HTMLFormElement | null;
@@ -209,4 +212,5 @@ const formName = "promo-contact";
       }
     });
   }
+});
 </script>

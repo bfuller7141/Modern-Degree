@@ -238,6 +238,7 @@ import LogoBannerCenter from "../components/LogoBannerCenter.astro";
 
 <script>
   // Smooth scroll for anchor links
+  document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", (e) => {
       e.preventDefault();
@@ -252,8 +253,10 @@ import LogoBannerCenter from "../components/LogoBannerCenter.astro";
       }
     });
   });
+  });
 
   // Hide sticky CTA when form is in view
+  document.addEventListener('DOMContentLoaded', () => {
   const formSection = document.getElementById("claim-offer");
   const stickyCta = document.querySelector<HTMLElement>(".mobile-sticky-cta");
 
@@ -274,4 +277,5 @@ import LogoBannerCenter from "../components/LogoBannerCenter.astro";
 
     observer.observe(formSection);
   }
+  });
 </script>
