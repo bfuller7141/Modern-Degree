@@ -16,6 +16,7 @@ const formName = "promo-contact";
       Don’t fill this out if you’re human: <input name="bot-field" />
     </label>
   </p>
+  <input type="hidden" name="subject" id="form-subject" value="Winter Promo Submission" />
 
   <div class="form-row">
     <!-- Full Name & Email -->
@@ -160,4 +161,17 @@ const formName = "promo-contact";
 }
 </style>
 
-<script  src="/js/datedropper-javascript.js" defer></script>
+<script>
+  // Dynamic email subject
+    const nameInput = document.getElementById('name') as HTMLInputElement | null;
+    const subjectInput = document.getElementById('form-subject') as HTMLInputElement | null;
+
+    if (nameInput && subjectInput) {
+      nameInput.addEventListener('input', () => {
+        const name = nameInput.value.trim();
+        subjectInput.value = name 
+          ? `Winter Promo Submission - ${name}` 
+          : 'Winter Promo Submission';
+      });
+    }
+</script>

@@ -2,7 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import NavMain from "../components/NavMain.astro";
 import ColumnRightCards from "../components/ColumnRightCards.astro";
-import TestimonialGrid from "../components/TestimoniaGridLg.astro";
+import TestimonialGrid3 from "../components/TestimoniaGrid3.astro";
 import FormPromo from "../components/FormPromo.astro";
 import MainCTA from "../components/MainCTA.astro";
 import FooterMain from "../components/FooterMain.astro";
@@ -76,6 +76,28 @@ import LogoBannerCenter from "../components/LogoBannerCenter.astro";
         </div>
       </section>
 
+      <section id="claim-offer">
+        <div class="padding-normal small-top">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2 id="offer-form" class="title-section">
+                  Schedule Your Free Estimate
+              </h2>
+              <p class="body-text center short">
+                Fill out the form below to claim this limited-time offer and schedule your free estimate. A member of our team will reach out to set up an appointment and discuss the next steps.
+                <img
+                  src="/images/deco/dashes.svg"
+                  alt=""
+                  aria-hidden="true"
+                  role="presentation"
+                  class="deco-dashes"
+                />
+            </div>
+            <FormPromo />
+          </div>
+        </div>
+      </section>
+
       <section role="region" aria-labelledby="testimonials-title">
         <div class="padding-normal">
           <div class="container">
@@ -91,30 +113,16 @@ import LogoBannerCenter from "../components/LogoBannerCenter.astro";
                 class="deco-dashes"
               />
             </div>
-
-            <TestimonialGrid />
-          </div>
-        </div>
-      </section>
-      <section id="claim-offer">
-        <div class="padding-normal small-top">
-          <div class="container">
-            <div class="title-wrapper">
-              <h2 id="testimonials-title" class="title-section">
-                  Claim Your Special Offer Today
-                </h2>
-                <img
-                  src="/images/deco/dashes.svg"
-                  alt=""
-                  aria-hidden="true"
-                  role="presentation"
-                  class="deco-dashes"
-                />
+            <TestimonialGrid3 />
+            <div class="wrapper-button center">
+              <a href="#claim-offer" class="button-secondary center"> 
+                Claim The Limited-Time Offer
+              </a>
             </div>
-            <FormPromo />
           </div>
         </div>
       </section>
+
       <section>
         <div class="padding-normal small-top large-bottom">
           <div class="container">
@@ -231,9 +239,11 @@ import LogoBannerCenter from "../components/LogoBannerCenter.astro";
 <script>
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
+    anchor.addEventListener("click", (e) => {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
+      const currentAnchor = e.currentTarget as HTMLAnchorElement | null;
+      const href = currentAnchor?.getAttribute("href");
+      const target = href ? document.querySelector(href) : null;
       if (target) {
         target.scrollIntoView({
           behavior: "smooth",
@@ -245,7 +255,7 @@ import LogoBannerCenter from "../components/LogoBannerCenter.astro";
 
   // Hide sticky CTA when form is in view
   const formSection = document.getElementById("claim-offer");
-  const stickyCta = document.querySelector(".mobile-sticky-cta");
+  const stickyCta = document.querySelector<HTMLElement>(".mobile-sticky-cta");
 
   if (formSection && stickyCta) {
     const observer = new IntersectionObserver(
