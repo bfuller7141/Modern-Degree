@@ -40,12 +40,10 @@ const canonicalUrl = base ? new URL(Astro.url.pathname, base).href : "";
     script-src 'self' 'unsafe-inline' https://connect.facebook.net https://calendar.google.com;
     connect-src 'self' https://www.facebook.com https://connect.facebook.net;
     style-src 'self' 'unsafe-inline' https://use.typekit.net;
-    img-src 'self' data: https://www.facebook.com;
+    img-src 'self' data: https://www.facebook.com https://seal-central-northern-western-arizona.bbb.org;
     frame-src 'self' https://calendar.google.com;
     font-src 'self' https://use.typekit.net data:;
-    preconnect-src https://use.typekit.net https://p.typekit.net;
-    img-src 'self' data: https://seal-central-northern-western-arizona.bbb.org;
-  "
+    "
 />
 
 <!-- Fonts -->
