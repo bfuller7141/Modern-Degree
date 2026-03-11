@@ -20,6 +20,12 @@ function shuffle(array: any[]) {
 
 const citiesShuffled = shuffle([...citiesAll]);
 const cities = citiesShuffled.slice(0, 6);
+
+const bbbHref =
+  "https://www.bbb.org/us/az/buckeye/profile/air-conditioning-contractors/modern-degree-llc-1126-1000100214/#sealclick";
+
+const bbbSeal =
+  "https://seal-central-northern-western-arizona.bbb.org/seals/blue-seal-250-52-whitetxt-bbb-1000100214.png";
 ---
 
 <footer
@@ -169,7 +175,15 @@ const cities = citiesShuffled.slice(0, 6);
                 </a>
               </li>
               <li>
-                <a href="https://www.bbb.org/us/az/buckeye/profile/air-conditioning-contractors/modern-degree-llc-1126-1000100214/#sealclick" target="_blank" rel="nofollow"><img src="https://seal-central-northern-western-arizona.bbb.org/seals/blue-seal-250-52-whitetxt-bbb-1000100214.png" style="border: 0;" alt="Modern Degree LLC BBB Business Review" /></a>
+                <a href={bbbHref} target="_blank" rel="nofollow noopener noreferrer">
+                  <img
+                    src={bbbSeal}
+                    alt="Modern Degree LLC BBB Business Review"
+                    width="250"
+                    height="52"
+                    style="border: 0;"
+                  />
+                </a>
               </li>
             </ul>
 
