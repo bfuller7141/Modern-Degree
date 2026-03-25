@@ -17,14 +17,15 @@ const reviewModules = import.meta.glob("../content/reviews/*.md", { eager: true 
 >;
 
 const reviews = Object.values(reviewModules).map((m) => m.frontmatter);
-const randomReview = reviews.length > 0
-  ? reviews[Math.floor(Math.random() * reviews.length)]
-  : {
-      author: "Carla Howard",
-      rating: 5,
-      text: "This is the second time I've had Modern Degree out to fix my AC over the last 2 years. They fit me into their schedule quickly and from first call to onsite service they have been thoughtful, efficient, and reliable. Modern Degree is my \"go to\" AC company!",
-      date: "2025-06-12",
-    };
+const fallbackReview = {
+  author: "Carla Howard",
+  rating: 5,
+  text: "This is the second time I've had Modern Degree out to fix my AC over the last 2 years. They fit me into their schedule quickly and from first call to onsite service they have been thoughtful, efficient, and reliable. Modern Degree is my \"go to\" AC company!",
+  date: "2025-06-12",
+};
+const initialReview = reviews[0] ?? fallbackReview;
+const clientReviews = reviews.length > 0 ? reviews : [fallbackReview];
+const clientReviewsJson = JSON.stringify(clientReviews).replace(/</g, "\\u003c");
 ---
 
 <!DOCTYPE html>
@@ -191,12 +192,12 @@ const randomReview = reviews.length > 0
                 </div>
               </div>
               <div class="wrapper small">
-                <p class="review-stars">{Array(randomReview.rating).fill("\u2605").join(" ")}</p>
-                <p class="body-text white">
-                  {randomReview.text}
+                <p class="review-stars" id="hero-review-stars">{Array(initialReview.rating).fill("\u2605").join(" ")}</p>
+                <p class="body-text white" id="hero-review-text">
+                  {initialReview.text}
                 </p>
                 <p class="body-text white">
-                  <span class="bold-text">{randomReview.author}</span>
+                  <span class="bold-text" id="hero-review-author">{initialReview.author}</span>
                 </p>
               </div>
             </div>
@@ -285,5 +286,26 @@ const randomReview = reviews.length > 0
     </main>
 
     <FooterMain />
+    <script id="hero-review-data" type="application/json" set:html={clientReviewsJson}></script>
+    <script is:inline>
+      (() => {
+        const dataEl = document.getElementById("hero-review-data");
+        if (!dataEl) return;
+
+        const reviews = JSON.parse(dataEl.textContent || "[]");
+        if (!Array.isArray(reviews) || reviews.length === 0) return;
+
+        const selected = reviews[Math.floor(Math.random() * reviews.length)];
+        const starsEl = document.getElementById("hero-review-stars");
+        const textEl = document.getElementById("hero-review-text");
+        const authorEl = document.getElementById("hero-review-author");
+        if (!starsEl || !textEl || !authorEl) return;
+
+        const rating = Math.max(1, Math.min(5, Number(selected.rating) || 5));
+        starsEl.textContent = Array(rating).fill("\u2605").join(" ");
+        textEl.textContent = selected.text || "";
+        authorEl.textContent = selected.author || "";
+      })();
+    </script>
   </body>
 </html>
