@@ -10,6 +10,21 @@ import MainCTA from "../components/MainCTA.astro";
 import FooterMain from "../components/FooterMain.astro";
 import FacebookPixel from "../components/FacebookPixel.astro";
 import LogoBanner from "../components/LogoBanner.astro";
+
+const reviewModules = import.meta.glob("../content/reviews/*.md", { eager: true }) as Record<
+  string,
+  { frontmatter: { author: string; text: string; rating: number; date: string } }
+>;
+
+const reviews = Object.values(reviewModules).map((m) => m.frontmatter);
+const randomReview = reviews.length > 0
+  ? reviews[Math.floor(Math.random() * reviews.length)]
+  : {
+      author: "Carla Howard",
+      rating: 5,
+      text: "This is the second time I've had Modern Degree out to fix my AC over the last 2 years. They fit me into their schedule quickly and from first call to onsite service they have been thoughtful, efficient, and reliable. Modern Degree is my \"go to\" AC company!",
+      date: "2025-06-12",
+    };
 ---
 
 <!DOCTYPE html>
@@ -176,12 +191,12 @@ import LogoBanner from "../components/LogoBanner.astro";
                 </div>
               </div>
               <div class="wrapper small">
-                <p class="review-stars">★ ★ ★ ★ ★</p>
+                <p class="review-stars">{Array(randomReview.rating).fill("\u2605").join(" ")}</p>
                 <p class="body-text white">
-                  This is the second time I've had Modern Degree out to fix my AC over the last 2 years. They fit me into their schedule quickly and from first call to onsite service they have been thoughtful, efficient, and reliable. Modern Degree is my "go to" AC company!
+                  {randomReview.text}
                 </p>
                 <p class="body-text white">
-                  <span class="bold-text">Carla Howard</span>
+                  <span class="bold-text">{randomReview.author}</span>
                 </p>
               </div>
             </div>

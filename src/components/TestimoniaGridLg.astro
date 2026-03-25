@@ -11,16 +11,48 @@ const reviewModules = import.meta.glob('../content/reviews/*.md', { eager: true 
 let reviews = Object.values(reviewModules).map((m) => m.frontmatter);
 
 // Randomize order and take up to 6
-reviews = shuffle(reviews).slice(0, 6);
+reviews = shuffle(reviews);
 ---
-<div class="testimonial-area-grid">
+<div class="testimonial-masonry">
   {reviews.map((review) => (
-    <div class="area-item">
+    <div class="testimonial-masonry-item area-item">
       <p class="review-stars">
-        {Array(review.rating).fill('★').join(' ')}
+        {Array(review.rating).fill("\u2605").join(" ")}
       </p>
       <p class="body-text">{review.text}</p>
       <p class="body-text"><span class="bold-text">{review.author}</span></p>
     </div>
   ))}
 </div>
+
+<style>
+  .testimonial-masonry {
+    --masonry-gap: 2.25rem;
+    columns: 3;
+    column-gap: var(--masonry-gap);
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .testimonial-masonry-item {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 0 var(--masonry-gap);
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  @media (max-width: 1099px) {
+    .testimonial-masonry {
+      columns: 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-masonry {
+      columns: 1;
+    }
+  }
+</style>
