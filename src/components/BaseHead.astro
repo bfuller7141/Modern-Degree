@@ -1,5 +1,6 @@
 ---
 import FacebookPixel from './FacebookPixel.astro';
+import GoogleTag from './GoogleTag.astro';
 
 interface Props {
   title?: string;
@@ -20,6 +21,9 @@ const canonicalUrl = base ? new URL(Astro.url.pathname, base).href : "";
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+<!-- Google Tag (gtag.js) -->
+<GoogleTag />
+
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="description" content={description} />
@@ -37,8 +41,8 @@ const canonicalUrl = base ? new URL(Astro.url.pathname, base).href : "";
   http-equiv="Content-Security-Policy"
   content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://connect.facebook.net https://calendar.google.com;
-    connect-src 'self' https://www.facebook.com https://connect.facebook.net;
+    script-src 'self' 'unsafe-inline' https://connect.facebook.net https://calendar.google.com https://www.googletagmanager.com;
+    connect-src 'self' https://www.facebook.com https://connect.facebook.net https://www.google-analytics.com https://region1.google-analytics.com;
     style-src 'self' 'unsafe-inline' https://use.typekit.net;
     img-src 'self' data: https://www.facebook.com https://seal-central-northern-western-arizona.bbb.org;
     frame-src 'self' https://calendar.google.com;
