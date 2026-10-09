@@ -22,6 +22,7 @@ collections:
       - { label: "Heading Title", name: "heading", widget: "string" }
       - { label: "About Title", name: "about_title", widget: "string" }
       - { label: "About Paragraph", name: "about_paragraph", widget: "text" }
+      - { label: "Service Image", name: "image", widget: "image", required: false }
       - label: "Benefits"
         name: "benefits"
         widget: "list"

@@ -18,7 +18,8 @@ export async function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const { title, heading, about_title, about_paragraph, benefits, faqs } = service.data;
+const { title, heading, about_title, about_paragraph, image, benefits, faqs } = service.data;
+const serviceImage = image || `/images/services/${service.slug}-about.webp`;
 
 // Get other services for related services section
 const allEntries = await getCollection('services', (entry) =>
@@ -35,14 +36,14 @@ const otherServices = allEntries
     <BaseHead
       title={`${title} — Modern Degree HVAC Services`}
       description={`Professional ${title.toLowerCase()} services in the West Valley. ${about_paragraph.substring(0, 150)}...`}
-      image={`/images/services/${service.slug}-hero.webp`}
+      image={serviceImage}
     />
     <link
       rel="canonical"
       href={`https://www.moderndegreeservices.com/services/${service.slug}`}
     />
   </head>
-  <body>
+  <body class="service-page">
     <header>
       <NavMain />
     </header>
@@ -90,7 +91,7 @@ const otherServices = allEntries
               primaryText="Request Free Quote"
               secondaryLink="tel:+14807192917"
               secondaryText="Call Us Today"
-              imageSource={`/images/services/${service.slug}-about.webp`}
+              imageSource={serviceImage}
               imageAlt={`${title} Service`}
             />
           </div>
@@ -287,6 +288,47 @@ const otherServices = allEntries
   @media (max-width: 1004px) {
     .benefits-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 499px) {
+    :global(.service-page) {
+      overflow-x: hidden;
+    }
+
+    :global(.service-page .container),
+    :global(.service-page .title-wrapper),
+    :global(.service-page .wrapper-column),
+    :global(.service-page .wrapper) {
+      width: calc(100vw - 2rem);
+      min-width: 0;
+      max-width: calc(100vw - 2rem);
+      box-sizing: border-box;
+    }
+
+    :global(.service-page .title-wrapper) {
+      align-items: stretch;
+    }
+
+    :global(.service-page .title-page) {
+      width: 100%;
+      max-width: 100%;
+      font-size: 2.5rem;
+      line-height: 1.05;
+      overflow-wrap: break-word;
+    }
+
+    :global(.service-page .title-section) {
+      width: 100%;
+      max-width: 100%;
+      font-size: 2.25rem;
+      line-height: 1.05;
+      overflow-wrap: break-word;
+    }
+
+    :global(.service-page .body-text) {
+      max-width: 100%;
+      overflow-wrap: break-word;
     }
   }
 </style>

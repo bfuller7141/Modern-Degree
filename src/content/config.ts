@@ -7,6 +7,7 @@ const services = defineCollection({
     heading:         z.string(),
     about_title:     z.string(),
     about_paragraph: z.string(),
+    image:           z.string().optional(),
     benefits: z
       .array(z.object({
         icon:  z.string(),
